@@ -48,4 +48,8 @@
     <string name="pos_b_alert_setting">Принять</string>
     <string name="neg_b_alert_setting">Отменить</string>
     <string name="message_alert_setting">Текущие настройки будут сброшены</string>
+    <string name="alarm_setting">Настройки будильника</string>
+    <string name="quote_settings">Цитаты</string>
+    <string name="quote_settings_desc">Показывать случайные цитаты на экране будильника</string>
+    <string name="vol_alarm_settings">Громкость</string>
 </resources>

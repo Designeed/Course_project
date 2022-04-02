@@ -35,10 +35,10 @@
                         style="@style/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:gravity="start"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_toStartOf="@+id/lCheckLoad"
+                        android:gravity="start"
                         android:text="@string/settings_theme" />
 
                     <com.airbnb.lottie.LottieAnimationView
@@ -119,8 +119,8 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        app:useMaterialThemeColors="false"
-                        android:layout_marginStart="20dp"/>
+                        android:layout_marginStart="20dp"
+                        app:useMaterialThemeColors="false" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -186,7 +186,6 @@
                         app:np_min="6"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </RelativeLayout>
-
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -317,6 +316,86 @@
                 </RelativeLayout>
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            style="@style/bg_settings"
+            android:padding="20dp"
+            android:layout_marginBottom="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="start"
+                    android:text="@string/alarm_setting" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/tvQuoteSet"
+                    style="@style/txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/sQuoteShow"
+                    android:text="@string/quote_settings" />
+
+                <TextView
+                    style="@style/txt_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/sQuoteShow"
+                    android:layout_below="@+id/tvQuoteSet"
+                    android:text="@string/quote_settings_desc" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sQuoteShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:checked="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    app:useMaterialThemeColors="false" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/sQuoteShow"
+                    android:text="@string/vol_alarm_settings" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sVolAlarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0"
+                    android:valueTo="20"
+                    android:stepSize="1"
+                    android:value="10"
+                    app:tickVisible="false" />
+            </LinearLayout>
+        </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bSettingsDefault"
                 android:layout_width="wrap_content"
@@ -324,6 +403,7 @@
                 android:layout_marginBottom="20dp"
                 app:cornerRadius="20dp"
                 style="@style/txt"
+                android:background="@color/transparent"
                 android:textSize="15sp"
                 android:textAllCaps="false"
                 android:text="@string/default_set"/>

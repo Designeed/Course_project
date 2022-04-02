@@ -17,11 +17,7 @@ public class MyVibrator{
         }
     }
 
-    public static void vibrateAlarm(long ms, Context context, int repeat){
-        if (Build.VERSION.SDK_INT >= 26) {
-            ((Vibrator) context.getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.EFFECT_HEAVY_CLICK));
-        } else {
-            ((Vibrator) context.getSystemService(VIBRATOR_SERVICE)).vibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }, repeat);
-        }
+    public static void vibrateAlarm(Context context, int repeat){
+        ((Vibrator) context.getSystemService(VIBRATOR_SERVICE)).vibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }, repeat);
     }
 }

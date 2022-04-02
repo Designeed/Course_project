@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.Sleepy.R;
+import com.example.Sleepy.classes.MyVibrator;
 import com.example.Sleepy.classes.QuotesAlarm;
 import com.example.Sleepy.databinding.ActivityAlarmBinding;
 import com.google.android.material.button.MaterialButton;
@@ -33,9 +34,11 @@ public class AlarmActivity extends AppCompatActivity {
     private MaterialButton bStopAlarm;
     private TextView tvTime;
     private MediaPlayer mpRingtone = new MediaPlayer();
+    AudioManager audioManager;
     private Ringtone ringtone;
     private Uri notificationUri;
     private TextView tvQuote;
+    private int volume, oldVolumeMus, oldVolumeAlarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +54,10 @@ public class AlarmActivity extends AppCompatActivity {
         notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_ALARM);
 
         if(notificationUri == null){
-            notificationUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+            notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_RINGTONE);
 
             if(notificationUri == null) {
-                notificationUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_NOTIFICATION);
             }
         }
 
@@ -64,9 +67,6 @@ public class AlarmActivity extends AppCompatActivity {
         if(!ringtone.isPlaying()) {
             mpRingtone = MediaPlayer.create(getApplicationContext(), notificationUri);
             mpRingtone.setLooping(true);
-            AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
-            mpRingtone.setVolume(0.5f, 0.9f);
             mpRingtone.start();
         }
 
@@ -95,12 +95,17 @@ public class AlarmActivity extends AppCompatActivity {
             ringtone.stop();
             Log.i("alarm_ringtone", "Stop ringtone Playing");
         }
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, oldVolumeMus, 0);
+        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, oldVolumeAlarm, 0);
     }
 
     private void init(){
         bStopAlarm = binding.bStopAlarm;
         tvTime = binding.tvAlarmTime;
         tvQuote = binding.tvAlarmInfo;
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        oldVolumeMus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        oldVolumeAlarm = audioManager.getStreamVolume(AudioManager.STREAM_ALARM);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         tvQuote.setText(QuotesAlarm.getQuote());
@@ -114,5 +119,8 @@ public class AlarmActivity extends AppCompatActivity {
         win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON);
+
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 18, 0); //todo sharedprefs volume
+        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, 18, 0); //todo sharedprefs volume
     }
 }
