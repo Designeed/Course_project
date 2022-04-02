@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rlSettingsBg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                style="@style/bg_settings">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvTitleThemeSet"
+                        style="@style/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="start"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/lCheckLoad"
+                        android:text="@string/settings_theme" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lCheckLoad"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        app:lottie_rawRes="@raw/check_mark_settings" />
+                </RelativeLayout>
+
+                <RadioGroup
+                    android:id="@+id/rgTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp">
+
+                    <RadioButton
+                        android:id="@+id/rbThemePurple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:button="@drawable/theme_checked_button"
+                        android:drawableEnd="@drawable/button_theme_p"
+                        android:drawablePadding="-20dp"
+                        android:gravity="start" />
+
+                    <RadioButton
+                        android:id="@+id/rbThemeDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:button="@drawable/theme_checked_button"
+                        android:drawableEnd="@drawable/button_theme_d"
+                        android:drawablePadding="-20dp"
+                        android:gravity="start" />
+
+                    <RadioButton
+                        android:id="@+id/rbThemeAuto"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/theme_checked_button"
+                        android:drawableEnd="@drawable/button_theme_a"
+                        android:drawablePadding="-20dp"
+                        android:gravity="start" />
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvAnimSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/sAnimations"
+                        android:text="@string/s_animations" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/sAnimations"
+                        android:layout_below="@+id/tvAnimSet"
+                        android:text="@string/s_use_anim" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sAnimations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:useMaterialThemeColors="false"
+                        android:layout_marginStart="20dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/bg_settings"
+                android:padding="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/bSettingsInfo"
+                        android:gravity="start"
+                        android:text="@string/settings_main" />
+
+                    <ImageView
+                        android:id="@+id/bSettingsInfo"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_info" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvSelectCyclesSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/npCycles"
+                        android:text="@string/s_card" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/npCycles"
+                        android:layout_below="@+id/tvSelectCyclesSet"
+                        android:text="@string/settings_select_cycles" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/npCycles"
+                        style="@style/numPicSettings"
+                        app:np_max="30"
+                        app:np_maxFlingVelocityCoefficient="10"
+                        app:np_min="6"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvCheckTimeSleepSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/sSleepTime"
+                        android:text="@string/s_sleep" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/sSleepTime"
+                        android:layout_below="@+id/tvCheckTimeSleepSet"
+                        android:text="@string/s_time_sleep" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sSleepTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        app:useMaterialThemeColors="false" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvTimeSleepSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/npTimeSleep"
+                        android:text="@string/s_time_sleep_sub" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvTimeSleepSet"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/npTimeSleep"
+                        android:text="@string/s_select_time_sleep" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/npTimeSleep"
+                        style="@style/numPicSettings"
+                        app:np_max="60"
+                        app:np_maxFlingVelocityCoefficient="4"
+                        app:np_min="0"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvFormatSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/sTimeFormat"
+                        android:text="@string/s_time_format" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvFormatSet"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/sTimeFormat"
+                        android:text="@string/s_time_format_24" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sTimeFormat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:checked="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        app:useMaterialThemeColors="false" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvSleepCycleSet"
+                        style="@style/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/npDurationCycle"
+                        android:text="@string/s_cycle" />
+
+                    <TextView
+                        style="@style/txt_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/npDurationCycle"
+                        android:layout_below="@+id/tvSleepCycleSet"
+                        android:text="@string/s_duration_sleep" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/npDurationCycle"
+                        style="@style/numPicSettings"
+                        app:np_max="180"
+                        app:np_maxFlingVelocityCoefficient="2"
+                        app:np_min="30"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bSettingsDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cornerRadius="20dp"
+                style="@style/txt"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                android:text="@string/default_set"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!--
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabSettingsSave"
+        style="@style/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        app:icon="@drawable/ic_edit_pen"
+        app:iconTint="@color/white" />
+        -->
+
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--system-->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <!--main-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <!--purple-->
+    <color name="bg_p">#6B4367</color>
+    <color name="start_splash_grad_p">#44264F</color>
+    <color name="end_splash_grad_p">#CC5CC1</color>
+    <color name="bg_time_peak_page_p">#AE76A9</color>
+    <color name="bg_time_peak_p">#4DEB4DDB</color>
+    <color name="bg_item_p">#78ED95E4</color>
+    <color name="bg_menu_p">#6B2364</color>
+    <color name="bg_menu_header_p">#5B2056</color>
+    <color name="text_header_p">#ED95E4</color>
+    <color name="bg_logo_splash_p">#50376E</color>
+    <color name="bg_settings_p">#4DED95E4</color>
+    <!--dark-->
+    <color name="bg_d">#42313B</color>
+    <color name="start_splash_grad_d">#42313B</color>
+    <color name="end_splash_grad_d">#6D2D2D</color>
+    <color name="bg_time_peak_page_d">#DC8778</color>
+    <color name="bg_time_peak_d">#4DA04636</color>
+    <color name="bg_item_d">#78F1DCC9</color>
+    <color name="bg_menu_d">#6D2D2D</color>
+    <color name="bg_menu_header_d">#542323</color>
+    <color name="text_header_d">#F1DCC9</color>
+    <color name="bg_logo_splash_d">#6D2D2D</color>
+    <color name="bg_settings_d">#4DDC8778</color>
+    <!--other-->
+    <color name="six_cycles">#91D689</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="checked">#4DCB5A</color>
+    <color name="checked_variant">#255E2B</color>
+    <color name="indicator">#77FFFFFF</color>
+    <color name="txt_settings">#80FFFFFF</color>
+    <color name="divider">#33FFFFFF</color>
+    <color name="error">#E15449</color>
+</resources>

@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Sleepy</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Sleepy</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="when_sleep">Когда уснуть</string>
+    <string name="when_wake">Когда проснуться</string>
+    <string name="settings">Настройки</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="item1_description">Здесь вы сможете удобно расчитать время для засыпания и пробуждения</string>
+    <string name="item2_description">Меняйте тему приложения в настрйоках</string>
+    <string name="item3_description">Устанавливайте будильники свайпом</string>
+    <string name="board_start_activity">Понятно</string>
+    <string name="board_next">Далее</string>
+
+    <string name="btn_calc">Рассчитать</string>
+    <string name="six_cycles">6 циклов</string>
+    <string name="skip">Пропустить</string>
+    <string name="settings_theme">Интерфейс</string>
+    <string name="settings_main">Основные настройки</string>
+    <string name="settings_select_cycles">Выберите отображаемое количество циклов</string>
+    <string name="fab_txt">Сохранить</string>
+    <string name="font">comfortaa_bold</string>
+    <string name="alarm">Будильник</string>
+    <string name="s_animations">Анимации</string>
+    <string name="s_use_anim">Использовать анимации в приложении</string>
+    <string name="s_card">Карточки</string>
+    <string name="s_sleep">Засыпание</string>
+    <string name="s_time_sleep">Учитывать время засыпания</string>
+    <string name="s_time_sleep_sub">Время засыпания</string>
+    <string name="s_select_time_sleep">Выберите время засыпания (мин.)</string>
+    <string name="s_time_format">Формат веремни</string>
+    <string name="s_time_format_24">Использовать 24-часовой формат</string>
+    <string name="s_cycle">Цикл сна</string>
+    <string name="s_duration_sleep">Укажите продолжительность цикла сна (мин.)</string>
+    <string name="alarm_list">Следующий будильник</string>
+    <string name="add_alarm">Добавить</string>
+    <string name="b_stop">Выключить</string>
+    <string name="_00_00">00:00</string>
+    <string name="cancel_alarm">Отменить</string>
+    <string name="default_set">По умолчанию</string>
+
+    <string name="title_alert_setting">Предупреждение</string>
+    <string name="pos_b_alert_setting">Принять</string>
+    <string name="neg_b_alert_setting">Отменить</string>
+    <string name="message_alert_setting">Текущие настройки будут сброшены</string>
+</resources>

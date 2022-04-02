@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable-v24/alarm_clock_time.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/background.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_alarm_sheet.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_card_six.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_main.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_numpic_d.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_numpic_p.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_settings.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_settings_d.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_settings_p.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_splash_logo_d.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_splash_logo_p.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_timepicker.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/bg_timepicker_svg.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/board_1_svg.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/board_2_svg.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/board_3_svg.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/board_ind_active.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/board_ind_inactive.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_menu_bg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_menu_bg_d.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_theme.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_theme_a.xml" value="0.14375" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_theme_d.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/button_theme_p.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/header_logo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/header_logo_d.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/header_logo_svg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_add_alarm.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/ic_rotate_reloaded.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/img_alarm.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/menu_bg.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/moon_svg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/settings_svg.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/shadow.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/side_nav_bar.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/splash_b.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/splash_bg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/splash_bg_d.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/splash_logo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/splash_logo_d.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/sun_svg.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/theme_checked_button.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/activity_alarm.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/activity_demo.xml" value="0.16354166666666667" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/activity_main2.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/alarm_card_item.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/app_bar_main.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/bottom_sheet_content.xml" value="0.264" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/card_item.xml" value="0.264" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/content_main.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_alarm.xml" value="0.25" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_gallery.xml" value="0.2" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_sleep.xml" value="0.176" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/fragment_slideshow.xml" value="0.16893115942028986" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/item_container_onboarding.xml" value="0.2" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/nav_header_main.xml" value="0.2" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/layout/settings_activity.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/menu/activity_main_drawer.xml" value="0.6" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/menu/main.xml" value="0.4" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Acer/test_project/app/src/main/res/xml/root_preferences.xml" value="0.17291666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
