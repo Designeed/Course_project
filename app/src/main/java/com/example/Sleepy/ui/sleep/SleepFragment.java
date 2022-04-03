@@ -125,7 +125,7 @@ public class SleepFragment extends Fragment {
         svSleep.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                lTimePicker.setFrame(scrollY/3);
+                lTimePicker.setFrame(scrollY/4);
             }
         });
 

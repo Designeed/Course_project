@@ -28,15 +28,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bCancelAlarm"
+                style="@style/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/rvAlarmList"
+                android:layout_centerHorizontal="true"
                 android:text="@string/cancel_alarm"
                 android:textAllCaps="false"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/rvAlarmList"
-                style="@style/fab"
-                app:cornerRadius="30dp"
-                />
+                app:cornerRadius="30dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAlarmList"

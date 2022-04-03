@@ -45,14 +45,14 @@ public class MyAlarm extends AppCompatActivity {
         Intent alarmInfoIntent = new Intent(view.getContext(), MainActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("alarm", "Alarm INFO");
-        return PendingIntent.getActivity(view.getContext(), 0, alarmInfoIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        return PendingIntent.getActivity(view.getContext(), 0, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private static PendingIntent getAlarmActionPendingIntent(View view){
         Intent alarmInfoIntent = new Intent(view.getContext(), AlarmActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("alarm", "Alarm START");
-        return PendingIntent.getActivity(view.getContext(), 1, alarmInfoIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        return PendingIntent.getActivity(view.getContext(), 1, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public static void cancelAlarm(View view){

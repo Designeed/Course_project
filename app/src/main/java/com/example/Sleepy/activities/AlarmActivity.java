@@ -1,10 +1,14 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_RING;
 import static android.media.RingtoneManager.TYPE_ALARM;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
@@ -34,11 +38,10 @@ public class AlarmActivity extends AppCompatActivity {
     private MaterialButton bStopAlarm;
     private TextView tvTime;
     private MediaPlayer mpRingtone = new MediaPlayer();
-    AudioManager audioManager;
     private Ringtone ringtone;
     private Uri notificationUri;
     private TextView tvQuote;
-    private int volume, oldVolumeMus, oldVolumeAlarm;
+    private SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +56,6 @@ public class AlarmActivity extends AppCompatActivity {
 
         notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_ALARM);
 
-        if(notificationUri == null){
-            notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_RINGTONE);
-
-            if(notificationUri == null) {
-                notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_NOTIFICATION);
-            }
-        }
-
         ringtone = RingtoneManager.getRingtone(getApplicationContext(), notificationUri);
         ringtone.play();
 
@@ -68,14 +63,17 @@ public class AlarmActivity extends AppCompatActivity {
             mpRingtone = MediaPlayer.create(getApplicationContext(), notificationUri);
             mpRingtone.setLooping(true);
             mpRingtone.start();
+            Log.i("alarm_ringtone", "Start media Playing");
+        }else{
+            Log.i("alarm_ringtone", "Start ringtone Playing");
         }
 
         bStopAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 stopAlarm();
+                startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 finish();
-                onDestroy();
             }
         });
     }
@@ -83,6 +81,7 @@ public class AlarmActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         stopAlarm();
+        startActivity(new Intent(this, SplashActivity.class));
         super.onDestroy();
     }
 
@@ -95,20 +94,22 @@ public class AlarmActivity extends AppCompatActivity {
             ringtone.stop();
             Log.i("alarm_ringtone", "Stop ringtone Playing");
         }
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, oldVolumeMus, 0);
-        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, oldVolumeAlarm, 0);
     }
 
     private void init(){
         bStopAlarm = binding.bStopAlarm;
         tvTime = binding.tvAlarmTime;
         tvQuote = binding.tvAlarmInfo;
-        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        oldVolumeMus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        oldVolumeAlarm = audioManager.getStreamVolume(AudioManager.STREAM_ALARM);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        prefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
 
-        tvQuote.setText(QuotesAlarm.getQuote());
+        setVolumeControlStream(STREAM_RING);
+
+        if(prefs.getBoolean("QUOTE", true)){
+            tvQuote.setText(QuotesAlarm.getQuote());
+        }else{
+            tvQuote.setText("Будильник");
+        }
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "Sleepy:alarmScreen");
@@ -119,8 +120,5 @@ public class AlarmActivity extends AppCompatActivity {
         win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON);
-
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 18, 0); //todo sharedprefs volume
-        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, 18, 0); //todo sharedprefs volume
     }
 }

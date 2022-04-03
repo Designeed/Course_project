@@ -47,7 +47,9 @@
                         android:layout_height="34dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
-                        app:lottie_rawRes="@raw/check_mark_settings" />
+                        app:lottie_rawRes="@raw/check_mark_settings"
+                        android:tooltipText="@string/settings_done"
+                        tools:targetApi="o" />
                 </RelativeLayout>
 
                 <RadioGroup
@@ -364,10 +366,10 @@
                     android:id="@+id/sQuoteShow"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:checked="true"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
+                    android:checked="true"
                     app:useMaterialThemeColors="false" />
             </RelativeLayout>
 
@@ -384,12 +386,12 @@
                     android:layout_toStartOf="@+id/sQuoteShow"
                     android:text="@string/vol_alarm_settings" />
 
-                <com.google.android.material.slider.Slider
+                <SeekBar
                     android:id="@+id/sVolAlarm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:valueFrom="0"
-                    android:valueTo="20"
+                    android:min="0"
+                    android:max="20"
                     android:stepSize="1"
                     android:value="10"
                     app:tickVisible="false" />
@@ -403,6 +405,7 @@
                 android:layout_marginBottom="20dp"
                 app:cornerRadius="20dp"
                 style="@style/txt"
+                android:drawableLeft="@drawable/ic_rotate_reloaded"
                 android:background="@color/transparent"
                 android:textSize="15sp"
                 android:textAllCaps="false"

@@ -99,21 +99,29 @@ public class AlarmFragment extends Fragment {
         bCancelAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar timeLastAlarm = new GregorianCalendar();
-                timeLastAlarm.setTime(calcAlarmTime());
-                MyAlarm.cancelAlarm(clMain);
-                initCardItem();
+                try{
+                    Calendar timeLastAlarm = new GregorianCalendar();
+                    timeLastAlarm.setTime(calcAlarmTime());
+                    MyAlarm.cancelAlarm(clMain);
+                    initCardItem();
 
-                Snackbar.make(
-                        clMain,
-                        "Будильник на " + new SimpleDateFormat("HH:mm").format(timeLastAlarm.getTime()) + " отменен",
-                        Snackbar.LENGTH_LONG)
-                        .setAction("Вернуть", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        setAlarm(timeLastAlarm, clMain);
-                    }
-                }).show();
+                    Snackbar.make(
+                            clMain,
+                            "Будильник на " + new SimpleDateFormat("HH:mm").format(timeLastAlarm.getTime()) + " отменен",
+                            Snackbar.LENGTH_LONG)
+                            .setAction("Вернуть", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    setAlarm(timeLastAlarm, clMain);
+                                }
+                            }).show();
+                }catch (Exception ex){
+                    initCardItem();
+                    Snackbar.make(
+                            clMain,
+                            "Будильник отменен",
+                            Snackbar.LENGTH_LONG).show();
+                }
             }
         });
 

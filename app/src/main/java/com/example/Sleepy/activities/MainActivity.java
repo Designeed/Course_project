@@ -1,5 +1,7 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_RING;
+
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         AppTheme.setShareTheme(getApplicationContext());
         setContentView(binding.getRoot());
+
+        setVolumeControlStream(STREAM_RING);
 
         setSupportActionBar(binding.appBarMain.toolbar);
 

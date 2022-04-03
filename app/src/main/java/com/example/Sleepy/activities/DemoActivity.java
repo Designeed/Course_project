@@ -1,5 +1,7 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_RING;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
@@ -36,6 +38,8 @@ public class DemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_demo);
         binding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        setVolumeControlStream(STREAM_RING);
 
         final ViewPager2 vpCards = binding.vpDemo;
         vpCards.setAdapter(boardAdapter);
