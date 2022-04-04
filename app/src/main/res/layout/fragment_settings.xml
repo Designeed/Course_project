@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:id="@+id/rlSettingsBg"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -47,8 +47,9 @@
                         android:layout_height="34dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
-                        app:lottie_rawRes="@raw/check_mark_settings"
                         android:tooltipText="@string/settings_done"
+                        android:layout_centerVertical="true"
+                        app:lottie_rawRes="@raw/check_mark_settings"
                         tools:targetApi="o" />
                 </RelativeLayout>
 
@@ -176,8 +177,8 @@
                         style="@style/txt_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toStartOf="@+id/npCycles"
                         android:layout_below="@+id/tvSelectCyclesSet"
+                        android:layout_toStartOf="@+id/npCycles"
                         android:text="@string/settings_select_cycles" />
 
                     <com.shawnlin.numberpicker.NumberPicker
@@ -386,15 +387,17 @@
                     android:layout_toStartOf="@+id/sQuoteShow"
                     android:text="@string/vol_alarm_settings" />
 
-                <SeekBar
+                <com.google.android.material.slider.Slider
                     android:id="@+id/sVolAlarm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:min="0"
-                    android:max="20"
+                    android:valueFrom="0"
+                    android:valueTo="20"
                     android:stepSize="1"
+                    app:labelBehavior="gone"
                     android:value="10"
-                    app:tickVisible="false" />
+                    app:tickVisible="false"
+                    android:layout_marginTop="10dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -412,19 +415,4 @@
                 android:text="@string/default_set"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!--
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabSettingsSave"
-        style="@style/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:textAlignment="center"
-        app:icon="@drawable/ic_edit_pen"
-        app:iconTint="@color/white" />
-        -->
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

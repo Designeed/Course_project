@@ -11,20 +11,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.Sleepy.R;
 import com.example.Sleepy.databinding.FragmentSettingsBinding;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.slider.Slider;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.shawnlin.numberpicker.NumberPicker;
@@ -42,10 +45,13 @@ public class SettingsFragment extends Fragment {
     private SharedPreferences prefs = null;
     RadioButton rbAuto;
     private MaterialButton bSetDefault;
-    private RelativeLayout rlSettings;
-    private SeekBar sVolume;
+    private CoordinatorLayout clSettings;
+    private Slider sVolume;
     private AudioManager amAlarm;
     Handler handler;
+    BottomSheetBehavior bsInfo;
+    ImageView ivInfo;
+    ConstraintLayout clBottomSheet;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
@@ -71,7 +77,7 @@ public class SettingsFragment extends Fragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 ClearSharedPreferences();
                                 init();
-                                Snackbar.make(rlSettings, "Настройки сброшены", Snackbar.LENGTH_SHORT).show();
+                                Snackbar.make(clSettings, "Настройки сброшены", Snackbar.LENGTH_SHORT).show();
                             }
                         })
                         .show();
@@ -181,31 +187,20 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        sVolume.setOnClickListener(new View.OnClickListener() {
+        sVolume.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
                 try {
-                    //prefs.edit().putInt("VOLUME", (int)sVolume.getValue()).apply();
-                    amAlarm.setStreamVolume(AudioManager.STREAM_RING, sVolume.getProgress(), 0);
+                    amAlarm.setStreamVolume(AudioManager.STREAM_ALARM, (int)value, 0);
                 }catch (Exception ex){
                     errorPlay();
                 }
             }
         });
 
-        sVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        ivInfo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                amAlarm.setStreamVolume(AudioManager.STREAM_RING, i, 1);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onClick(View view) {
 
             }
         });
@@ -236,13 +231,15 @@ public class SettingsFragment extends Fragment {
         lCheckLoad = binding.lCheckLoad;
         rbAuto = binding.rbThemeAuto;
         bSetDefault = binding.bSettingsDefault;
-        rlSettings = binding.rlSettingsBg;
+        clSettings = binding.rlSettingsBg;
         sQuote = binding.sQuoteShow;
         sVolume = binding.sVolAlarm;
         amAlarm = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         handler = new Handler();
         handler.removeCallbacks(run);
         handler.postDelayed(run, 100);
+        ivInfo = binding.bSettingsInfo;
+        //bsInfo = BottomSheetBehavior.from()
 
         prefs = getContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
 
@@ -257,9 +254,9 @@ public class SettingsFragment extends Fragment {
             npCycleDuration.setValue(prefs.getInt("CYCLE_DURATION", 90));
             sQuote.setChecked(prefs.getBoolean("QUOTE", true));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                sVolume.setMin(amAlarm.getStreamMinVolume(AudioManager.STREAM_RING));
+                sVolume.setValueFrom(amAlarm.getStreamMinVolume(AudioManager.STREAM_ALARM));
             }
-            sVolume.setMax(amAlarm.getStreamMaxVolume(AudioManager.STREAM_RING));
+            sVolume.setValueTo(amAlarm.getStreamMaxVolume(AudioManager.STREAM_ALARM));
             loadPlay();
         }catch (Exception ex){
             errorPlay();
@@ -270,7 +267,7 @@ public class SettingsFragment extends Fragment {
     private Runnable run = new Runnable() {
         @Override
         public void run() {
-            sVolume.setProgress(amAlarm.getStreamVolume(AudioManager.STREAM_RING));
+            sVolume.setValue(amAlarm.getStreamVolume(AudioManager.STREAM_ALARM));
             handler.postDelayed(this, 1000);
         }
     };

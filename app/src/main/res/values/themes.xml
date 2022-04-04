@@ -24,6 +24,10 @@
     </style>
 
     <!--layouts-->
+    
+    <style name="bottomSheet" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@drawable/bg_bottom_sheet_p</item>
+    </style>
 
     <style name="numPicSettings" parent="Theme.AppCompat.DayNight">
         <item name="android:layout_height">40dp</item>

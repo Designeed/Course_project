@@ -4,13 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/background.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/bg_bottom_sheet_d.xml" value="0.18368055555555557" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/bg_bottom_sheet_p.xml" value="0.18368055555555557" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/draw_circle.xml" value="0.18368055555555557" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_rotate_reloaded.xml" value="0.18368055555555557" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout-v26/fragment_settings.xml" value="0.259375" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_alarm.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/bottom_sheet_settings.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/fragment_alarm.xml" value="0.17291666666666666" />
-        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/fragment_settings.xml" value="0.2" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/fragment_sleep.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/item_container_onboarding.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable-v24/alarm_clock_time.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Acer/test_project/app/src/main/res/drawable/background.xml" value="0.24444444444444444" />

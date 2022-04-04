@@ -1,5 +1,6 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_ALARM;
 import static android.media.AudioManager.STREAM_RING;
 import static android.media.RingtoneManager.TYPE_ALARM;
 
@@ -9,11 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
@@ -42,6 +45,9 @@ public class AlarmActivity extends AppCompatActivity {
     private Uri notificationUri;
     private TextView tvQuote;
     private SharedPreferences prefs = null;
+    PowerManager.WakeLock mWakeLock;
+    PowerManager pm;
+    AudioAttributes aaAlarmType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +63,15 @@ public class AlarmActivity extends AppCompatActivity {
         notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_ALARM);
 
         ringtone = RingtoneManager.getRingtone(getApplicationContext(), notificationUri);
+        ringtone.setAudioAttributes(aaAlarmType);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ringtone.setLooping(true);
+        }
         ringtone.play();
 
         if(!ringtone.isPlaying()) {
             mpRingtone = MediaPlayer.create(getApplicationContext(), notificationUri);
+            mpRingtone.setAudioAttributes(aaAlarmType);
             mpRingtone.setLooping(true);
             mpRingtone.start();
             Log.i("alarm_ringtone", "Start media Playing");
@@ -94,6 +105,9 @@ public class AlarmActivity extends AppCompatActivity {
             ringtone.stop();
             Log.i("alarm_ringtone", "Stop ringtone Playing");
         }
+        if (mWakeLock.isHeld()) {
+            mWakeLock.release();
+        }
     }
 
     private void init(){
@@ -103,7 +117,7 @@ public class AlarmActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         prefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
 
-        setVolumeControlStream(STREAM_RING);
+        setVolumeControlStream(STREAM_ALARM);
 
         if(prefs.getBoolean("QUOTE", true)){
             tvQuote.setText(QuotesAlarm.getQuote());
@@ -111,8 +125,13 @@ public class AlarmActivity extends AppCompatActivity {
             tvQuote.setText("Будильник");
         }
 
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "Sleepy:alarmScreen");
+        aaAlarmType = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build();
+
+        pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "Sleepy:alarmScreen");
         mWakeLock.acquire(10*60*1000L /*10 minutes*/);
 
         final Window win = getWindow();

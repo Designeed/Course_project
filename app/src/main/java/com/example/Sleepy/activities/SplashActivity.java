@@ -1,5 +1,6 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_ALARM;
 import static android.media.AudioManager.STREAM_RING;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         AppTheme.setShareTheme(getApplicationContext());
         setContentView(R.layout.activity_splash);
 
-        setVolumeControlStream(STREAM_RING);
+        setVolumeControlStream(STREAM_ALARM);
 
         prefs = getSharedPreferences("SETTINGS_RUN", Context.MODE_PRIVATE);
 

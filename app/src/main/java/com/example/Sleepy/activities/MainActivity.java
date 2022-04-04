@@ -1,5 +1,6 @@
 package com.example.Sleepy.activities;
 
+import static android.media.AudioManager.STREAM_ALARM;
 import static android.media.AudioManager.STREAM_RING;
 
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         AppTheme.setShareTheme(getApplicationContext());
         setContentView(binding.getRoot());
 
-        setVolumeControlStream(STREAM_RING);
+        setVolumeControlStream(STREAM_ALARM);
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
