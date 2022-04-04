@@ -9,21 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
@@ -34,26 +26,19 @@ import com.example.Sleepy.databinding.FragmentSleepBinding;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class SleepFragment extends Fragment {
     private SleepViewModel sleepViewModel;
     private FragmentSleepBinding binding;
-    final private Calendar curTimeFull = new GregorianCalendar();
-    private final ArrayList<TimeCards> timeCards = new ArrayList<TimeCards>();
+    final private Calendar curTimeFull = Calendar.getInstance();
+    private final ArrayList<TimeCards> timeCards = new ArrayList<>();
     private final TimeCardsAdapter timeCardsAdapter = new TimeCardsAdapter(timeCards);
     private SimpleDateFormat sdf;
-    private SharedPreferences prefs;
     private int cardCount = 6, Min = -90, remMin = 90, cycleDuration, fallingAsleepTime;
     private MainActivity mainAct;
-    private TextView tvSetTime, tvGoToSleep, tvFallingAsleepTime;
-    private TimePicker tpSetTime;
-    private Button bCalc, bReload, bSetAlarm;
-    private LottieAnimationView lTimePicker, lCat;
     private boolean isAnimate;
-    private NestedScrollView svSleep;
-    private CoordinatorLayout clMain;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -64,135 +49,101 @@ public class SleepFragment extends Fragment {
         init();
         initCardItem();
 
-        sleepViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                tvSetTime.setText(s);
-            }
+        sleepViewModel.getText().observe(getViewLifecycleOwner(), s -> binding.tvSetTime.setText(s));
+
+        sleepViewModel.getCurTime().observe(getViewLifecycleOwner(), date -> {
+            binding.tpSleep.setHour(date.get(Calendar.HOUR_OF_DAY));
+            binding.tpSleep.setMinute(date.get(Calendar.MINUTE));
+            binding.tpSleep.setIs24HourView(true);
         });
 
-        sleepViewModel.getCurTime().observe(getViewLifecycleOwner(), new Observer<Calendar>() {
-            @Override
-            public void onChanged(Calendar date) {
-                tpSetTime.setCurrentHour(date.getTime().getHours());
-                tpSetTime.setCurrentMinute(date.getTime().getMinutes());
-                tpSetTime.setIs24HourView(true);
-            }
+        sleepViewModel.getTextSleep().observe(getViewLifecycleOwner(), s -> binding.tvGoToSleep.setText(s));
+
+        binding.bCalc.setOnClickListener(v -> {
+            MyVibrator.vibrate(30, getContext());
+            remMin = cycleDuration;
+            curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
+            initCardItem();
+            setTitleTime();
         });
 
-        sleepViewModel.getTextSleep().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                tvGoToSleep.setText(s);
-            }
+        binding.tpSleep.setOnTimeChangedListener((view, hourOfDay, minute) -> {
+            Calendar c = new GregorianCalendar();
+            c.set(Calendar.getInstance().get(Calendar.YEAR),
+                    Calendar.getInstance().get(Calendar.MONTH),
+                    Calendar.getInstance().get(Calendar.DATE),
+                    hourOfDay,
+                    minute);
+            sleepViewModel.setCurTime(c);
+            MyVibrator.vibrate(15, getContext());
         });
 
-        bCalc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyVibrator.vibrate(30, getContext());
-                remMin=cycleDuration;
-                curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, tpSetTime.getHour(), tpSetTime.getMinute());
-                initCardItem();
-                setTitleTime();
-            }
+        binding.bClearTime.setOnClickListener(view -> {
+            MyVibrator.vibrate(30, getContext());
+            binding.tpSleep.setHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+            binding.tpSleep.setMinute(Calendar.getInstance().get(Calendar.MINUTE));
         });
 
-        tpSetTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                Calendar c = new GregorianCalendar();
-                c.set(Calendar.getInstance().getTime().getYear(),
-                        Calendar.getInstance().getTime().getMonth(),
-                        Calendar.getInstance().getTime().getDay(),
-                        hourOfDay,
-                        minute);
-                sleepViewModel.setCurTime(c);
-                MyVibrator.vibrate(15, getContext());
-            }
-        });
+        binding.svMainSleep.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
+                binding.lStarTimePicker.setFrame(scrollY/4));
 
-        bReload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyVibrator.vibrate(30, getContext());
-                tpSetTime.setHour(new Date().getHours());
-                tpSetTime.setMinute(new Date().getMinutes());
-            }
-        });
-
-        svSleep.setSmoothScrollingEnabled(true);
-        svSleep.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                lTimePicker.setFrame(scrollY/4);
-            }
-        });
-
-        bSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar timeAlarm = Calendar.getInstance();
-                timeAlarm.set(Calendar.MINUTE, tpSetTime.getMinute());
-                timeAlarm.set(Calendar.HOUR_OF_DAY, tpSetTime.getHour());
-                setAlarm(timeAlarm, clMain);
-            }
+        binding.bAddAlarm.setOnClickListener(view -> {
+            Calendar timeAlarm = Calendar.getInstance();
+            timeAlarm.set(Calendar.MINUTE, binding.tpSleep.getMinute());
+            timeAlarm.set(Calendar.HOUR_OF_DAY, binding.tpSleep.getHour());
+            setAlarm(timeAlarm, binding.clMain);
         });
 
         return root;
     }
 
     private void init() {
-        tvSetTime = binding.tvSetTime;
-        tvGoToSleep = binding.tvGoToSleep;
-        tpSetTime = binding.tpSleep;
-        bCalc = binding.bCalc;
-        bReload = binding.bClearTime;
-        bSetAlarm = binding.bAddAlarm;
-        lTimePicker = binding.lStarTimePicker;
-        lCat = binding.lCatSleepMain;
-        tvFallingAsleepTime = binding.tvTimeAsleep;
-        svSleep = binding.svMainSleep;
-        clMain = binding.clMain;
         mainAct = (MainActivity) getActivity();
-
-        curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, tpSetTime.getHour(), tpSetTime.getMinute());
+        curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
         sdf = new SimpleDateFormat("HH:mm");
-        prefs = getContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        cardCount = prefs.getInt("CARD_COUNT", 6);
-        fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
-        cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
+
         remMin = cycleDuration;
         Min = -cycleDuration;
-        isAnimate = prefs.getBoolean("ANIMATIONS", true);
 
-        if (fallingAsleepTime != 0){
-            tvFallingAsleepTime.setVisibility(View.VISIBLE);
-            tvFallingAsleepTime.setText("Расчитано с учетом времени засыпания - " + fallingAsleepTime + " мин.");
-        }else {
-            tvFallingAsleepTime.setVisibility(View.GONE);
-        }
+        getShared();
+        getAsleepText();
+        getAnimations();
+    }
 
+    private void getAnimations() {
         if (!isAnimate){
-            lCat.setSpeed(0);
+            binding.lCatSleepMain.setSpeed(0);
         }else{
-            lCat.setSpeed(1);
+            binding.lCatSleepMain.setSpeed(1);
         }
     }
 
+    private void getAsleepText() {
+        if (fallingAsleepTime != 0){
+            binding.tvTimeAsleep.setVisibility(View.VISIBLE);
+            binding.tvTimeAsleep.setText(new StringBuilder().append("Расчитано с учетом времени засыпания - ").append(fallingAsleepTime).append(" мин."));
+        }else {
+            binding.tvTimeAsleep.setVisibility(View.GONE);
+        }
+    }
+
+    private void getShared(){
+        SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
+        cardCount = prefs.getInt("CARD_COUNT", 6);
+        fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
+        cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
+        isAnimate = prefs.getBoolean("ANIMATIONS", true);
+    }
+
     private void setAlarm(Calendar time, View view){
-        Log.i("alarm", "Time Alarm - " + time.getTime().getHours() + ":" + time.getTime().getMinutes());
+        Log.i("alarm", "Time Alarm - " + time.get(Calendar.HOUR_OF_DAY) + ":" + time.get(Calendar.MINUTE));
         MyAlarm.setAlarm(time, view);
     }
 
     private void initCardItem() {
-        //TODO настройка кароче чтобы карточки прошедшего времени не отображались сделай пж
-        //TODO темы для всех активити
-        //TODO перенести
-        final RecyclerView rvCards = binding.rvCards;
-        rvCards.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvCards.setAdapter(timeCardsAdapter);
-        Log.i("initCard", "initCard");
+        binding.rvCards.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvCards.setAdapter(timeCardsAdapter);
+
         timeCards.clear();
 
         curTimeFull.add(Calendar.MINUTE, Min * (cardCount + 1));
@@ -203,6 +154,7 @@ public class SleepFragment extends Fragment {
             timeCards.add(new TimeCards(("" + sdf.format(curTimeFull.getTime())), ("Осталось " + getFormatTime(remMin))));
             remMin -= cycleDuration;
         }
+        Log.i("initCard", "initCard");
     }
 
     private void setTitleTime(){
