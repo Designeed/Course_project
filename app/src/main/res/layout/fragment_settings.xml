@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/rlSettingsBg"
+    android:id="@+id/clSettingsBg"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -147,12 +147,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/bSettingsInfo"
+                        android:layout_toStartOf="@+id/ivSettingsInfo"
                         android:gravity="start"
                         android:text="@string/settings_main" />
 
                     <ImageView
-                        android:id="@+id/bSettingsInfo"
+                        android:id="@+id/ivSettingsInfo"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"

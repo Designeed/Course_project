@@ -102,10 +102,11 @@ public class SleepFragment extends Fragment {
         curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
         sdf = new SimpleDateFormat("HH:mm");
 
+        getShared();
+
         remMin = cycleDuration;
         Min = -cycleDuration;
 
-        getShared();
         getAsleepText();
         getAnimations();
     }
