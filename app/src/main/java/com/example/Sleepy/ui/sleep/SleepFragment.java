@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class SleepFragment extends Fragment {
@@ -100,7 +101,7 @@ public class SleepFragment extends Fragment {
     private void init() {
         mainAct = (MainActivity) getActivity();
         curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
-        sdf = new SimpleDateFormat("HH:mm");
+        sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         getShared();
 

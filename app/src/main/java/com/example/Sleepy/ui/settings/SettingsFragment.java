@@ -139,12 +139,18 @@ public class SettingsFragment extends Fragment {
     }
 
     private void init() {
-        amAlarm = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+        amAlarm = (AudioManager) Objects.requireNonNull(getContext()).getSystemService(Context.AUDIO_SERVICE);
+        binding.sVolAlarm.setValue(amAlarm.getStreamVolume(AudioManager.STREAM_ALARM));
         handler = new Handler();
         handler.removeCallbacks(run);
         handler.postDelayed(run, 100);
 
         getShared();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            binding.sVolAlarm.setValueFrom(amAlarm.getStreamMinVolume(AudioManager.STREAM_ALARM));
+        }
+        binding.sVolAlarm.setValueTo(amAlarm.getStreamMaxVolume(AudioManager.STREAM_ALARM));
     }
 
     private void loadPlay() {
@@ -169,10 +175,6 @@ public class SettingsFragment extends Fragment {
             binding.sTimeFormat.setChecked(prefs.getBoolean("TIME_FORMAT", true));
             binding.npDurationCycle.setValue(prefs.getInt("CYCLE_DURATION", 90));
             binding.sQuoteShow.setChecked(prefs.getBoolean("QUOTE", true));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                binding.sVolAlarm.setValueFrom(amAlarm.getStreamMinVolume(AudioManager.STREAM_ALARM));
-            }
-            binding.sVolAlarm.setValueTo(amAlarm.getStreamMaxVolume(AudioManager.STREAM_ALARM));
             loadPlay();
         }catch (Exception ex){
             errorPlay();
@@ -183,7 +185,11 @@ public class SettingsFragment extends Fragment {
     private final Runnable run = new Runnable() {
         @Override
         public void run() {
-            binding.sVolAlarm.setValue(amAlarm.getStreamVolume(AudioManager.STREAM_ALARM));
+            try{
+                binding.sVolAlarm.setValue(amAlarm.getStreamVolume(AudioManager.STREAM_ALARM));
+            }catch (Exception ex){
+                Log.i("SETTINGS", "setVolume" + ex);
+            }
             handler.postDelayed(this, 1000);
         }
     };

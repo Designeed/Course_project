@@ -23,7 +23,6 @@ import java.util.Set;
 public class MyAlarm extends AppCompatActivity {
     public static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
     private static AlarmManager alarmManager;
-    private static AlarmManager.AlarmClockInfo alarmClockInfo;
 
     public static void setAlarm(Calendar time, View view){
         if (time.before(Calendar.getInstance())){
@@ -31,10 +30,13 @@ public class MyAlarm extends AppCompatActivity {
         }
 
         alarmManager = (AlarmManager) view.getContext().getSystemService(Context.ALARM_SERVICE);
-        alarmClockInfo = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(), getAlarmInfoPendingIntent(view));
-        //alarmManager.set(AlarmManager.RTC_WAKEUP, alarmClockInfo.getTriggerTime(), getAlarmActionPendingIntent(view));
+        AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(), getAlarmInfoPendingIntent(view));
         alarmManager.setAlarmClock(alarmClockInfo, getAlarmActionPendingIntent(view));
 
+        printInfo(view, time);
+    }
+
+    private static void printInfo(View view, Calendar time) {
         Log.i("alarm", "Alarm SET " + sdf.format(time.getTime()));
         Snackbar.make(view, "Будильник установлен на " + sdf.format(time.getTime()), Snackbar.LENGTH_LONG)
                 .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
@@ -43,14 +45,18 @@ public class MyAlarm extends AppCompatActivity {
 
     private static PendingIntent getAlarmInfoPendingIntent(View view){
         Intent alarmInfoIntent = new Intent(view.getContext(), MainActivity.class)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("alarm", "Alarm INFO");
         return PendingIntent.getActivity(view.getContext(), 0, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private static PendingIntent getAlarmActionPendingIntent(View view){
         Intent alarmInfoIntent = new Intent(view.getContext(), AlarmActivity.class)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("alarm", "Alarm START");
         return PendingIntent.getActivity(view.getContext(), 1, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
@@ -61,7 +67,6 @@ public class MyAlarm extends AppCompatActivity {
         }catch (Exception ex){
             Log.e("ERROR", "Error cancel alarm " + ex.toString());
         }
-
     }
 
     private static void saveTimeAlarm(Calendar time, View view){
@@ -72,5 +77,5 @@ public class MyAlarm extends AppCompatActivity {
         }
         TimeList.add("" + sdf.format(time.getTime()));
         prefs.edit().putStringSet("ALARM", TimeList).apply();
-    }
+    } //marking for deletion
 }

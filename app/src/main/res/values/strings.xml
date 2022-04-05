@@ -53,4 +53,6 @@
     <string name="quote_settings_desc">Показывать случайные цитаты на экране будильника</string>
     <string name="vol_alarm_settings">Громкость</string>
     <string name="settings_done">Настройки загружены</string>
+    <string name="cd_menu">menu</string>
+    <string name="cd_information">information</string>
 </resources>

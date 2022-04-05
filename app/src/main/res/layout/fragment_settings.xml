@@ -48,8 +48,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:tooltipText="@string/settings_done"
-                        android:layout_centerVertical="true"
                         app:lottie_rawRes="@raw/check_mark_settings"
+                        tools:ignore="ImageContrastCheck"
                         tools:targetApi="o" />
                 </RelativeLayout>
 
@@ -70,7 +70,8 @@
                         android:button="@drawable/theme_checked_button"
                         android:drawableEnd="@drawable/button_theme_p"
                         android:drawablePadding="-20dp"
-                        android:gravity="start" />
+                        android:gravity="start"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <RadioButton
                         android:id="@+id/rbThemeDark"
@@ -84,13 +85,14 @@
 
                     <RadioButton
                         android:id="@+id/rbThemeAuto"
-                        android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@drawable/theme_checked_button"
+                        android:checked="true"
                         android:drawableEnd="@drawable/button_theme_a"
                         android:drawablePadding="-20dp"
-                        android:gravity="start" />
+                        android:gravity="start"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
                 </RadioGroup>
 
                 <RelativeLayout
@@ -111,10 +113,11 @@
                         style="@style/txt_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvAnimSet"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/sAnimations"
-                        android:layout_below="@+id/tvAnimSet"
-                        android:text="@string/s_use_anim" />
+                        android:text="@string/s_use_anim"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/sAnimations"
@@ -157,7 +160,8 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_info" />
+                        android:src="@drawable/ic_info"
+                        android:contentDescription="@string/cd_information"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -179,7 +183,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvSelectCyclesSet"
                         android:layout_toStartOf="@+id/npCycles"
-                        android:text="@string/settings_select_cycles" />
+                        android:text="@string/settings_select_cycles"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.shawnlin.numberpicker.NumberPicker
                         android:id="@+id/npCycles"
@@ -207,10 +212,11 @@
                         style="@style/txt_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvCheckTimeSleepSet"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/sSleepTime"
-                        android:layout_below="@+id/tvCheckTimeSleepSet"
-                        android:text="@string/s_time_sleep" />
+                        android:text="@string/s_time_sleep"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/sSleepTime"
@@ -242,7 +248,8 @@
                         android:layout_below="@+id/tvTimeSleepSet"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/npTimeSleep"
-                        android:text="@string/s_select_time_sleep" />
+                        android:text="@string/s_select_time_sleep"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.shawnlin.numberpicker.NumberPicker
                         android:id="@+id/npTimeSleep"
@@ -274,7 +281,8 @@
                         android:layout_below="@+id/tvFormatSet"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/sTimeFormat"
-                        android:text="@string/s_time_format_24" />
+                        android:text="@string/s_time_format_24"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/sTimeFormat"
@@ -304,10 +312,11 @@
                         style="@style/txt_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvSleepCycleSet"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/npDurationCycle"
-                        android:layout_below="@+id/tvSleepCycleSet"
-                        android:text="@string/s_duration_sleep" />
+                        android:text="@string/s_duration_sleep"
+                        tools:ignore="TextContrastCheck" />
 
                     <com.shawnlin.numberpicker.NumberPicker
                         android:id="@+id/npDurationCycle"
@@ -384,7 +393,6 @@
                     style="@style/txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/sQuoteShow"
                     android:text="@string/vol_alarm_settings" />
 
                 <com.google.android.material.slider.Slider
@@ -395,7 +403,6 @@
                     android:valueTo="20"
                     android:stepSize="1"
                     app:labelBehavior="gone"
-                    android:value="10"
                     app:tickVisible="false"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
@@ -412,7 +419,8 @@
                 android:background="@color/transparent"
                 android:textSize="15sp"
                 android:textAllCaps="false"
-                android:text="@string/default_set"/>
+                android:text="@string/default_set"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

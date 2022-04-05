@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:alpha="0.4"
-                    app:lottie_rawRes="@raw/star_fall_purp"/>
+                    app:lottie_rawRes="@raw/star_fall_purple"/>
 
                 <RelativeLayout
                     style="@style/tp_bg"
@@ -86,7 +86,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_below="@id/tpSleep"
-                        android:text="@string/btn_calc" />
+                        android:text="@string/btn_calc"
+                        tools:ignore="TextContrastCheck" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -118,8 +119,8 @@
 
             <TextView
                 android:id="@+id/tvTimeAsleep"
-                style="@style/txt"
-                android:fontFamily="@font/comfortaa_regular"
+                style="@style/txt_setting"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

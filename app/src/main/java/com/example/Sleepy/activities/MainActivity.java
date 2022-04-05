@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,24 +31,27 @@ public class MainActivity extends AppCompatActivity {
         AppTheme.setShareTheme(getApplicationContext());
         setContentView(binding.getRoot());
 
+        init();
+    }
+
+    private void init(){
         setVolumeControlStream(STREAM_ALARM);
-
         setSupportActionBar(binding.appBarMain.toolbar);
+        setNavConfig();
+    }
 
-        drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+    private void setNavConfig() {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_sleep, R.id.nav_wake, R.id.nav_alarm, R.id.nav_settings)
-                .setOpenableLayout(drawer)
+                .setOpenableLayout(binding.drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)) binding.drawerLayout.closeDrawer(GravityCompat.START);
         else super.onBackPressed();
     }
 

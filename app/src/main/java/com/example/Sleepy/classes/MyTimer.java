@@ -24,7 +24,7 @@ public class MyTimer {
 
     public static String getFormatTime(long minute){
         String RemTime;
-        long h = 0, m = 0;
+        long h, m;
         h = minute / 60;
         m = minute - h * 60;
         if (m == 0){

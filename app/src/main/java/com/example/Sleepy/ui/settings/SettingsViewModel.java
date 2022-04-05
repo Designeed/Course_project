@@ -20,11 +20,6 @@ public class SettingsViewModel extends ViewModel{
 
     private SharedPreferences prefs;
 
-    //public SettingsViewModel(){
-    //    Theme = new MutableLiveData<>();
-    //    Theme.setValue(prefs.getInt("THEME", 2));
-    //}
-
     public MutableLiveData<Integer> getTheme() {
         return Theme;
     }

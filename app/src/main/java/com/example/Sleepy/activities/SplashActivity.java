@@ -17,6 +17,7 @@ import com.example.Sleepy.classes.AppTheme;
 public class SplashActivity extends AppCompatActivity {
 
     SharedPreferences prefs = null;
+    boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +25,30 @@ public class SplashActivity extends AppCompatActivity {
         AppTheme.setShareTheme(getApplicationContext());
         setContentView(R.layout.activity_splash);
 
+        init();
+        checkRun();
+    }
+
+    private void init(){
         setVolumeControlStream(STREAM_ALARM);
+        getShared();
+    }
 
-        prefs = getSharedPreferences("SETTINGS_RUN", Context.MODE_PRIVATE);
-
-        if(prefs.getBoolean("FIRST_RUN", true)){
+    private void checkRun() {
+        if(isFirstRun){
             startActivity(new Intent(this, DemoActivity.class));
             finish();
             prefs.edit().putBoolean("FIRST_RUN", false).apply();
-            Log.i("run","" + prefs.getBoolean("FIRST_RUN", true));
+            Log.i("run","first");
         }else{
             startActivity(new Intent(this, MainActivity.class));
             finish();
-            Log.i("run","" + prefs.getBoolean("FIRST_RUN", false));
+            Log.i("run","not first");
         }
-        overridePendingTransition(R.anim.nav_default_enter_anim, R.anim.nav_default_exit_anim);
+    }
 
+    private void getShared() {
+        prefs = getSharedPreferences("SETTINGS_RUN", Context.MODE_PRIVATE);
+        isFirstRun = prefs.getBoolean("FIRST_RUN", true);
     }
 }

@@ -1,7 +1,6 @@
 package com.example.Sleepy.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
-import static android.media.AudioManager.STREAM_RING;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -9,9 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -27,10 +24,8 @@ import java.util.ArrayList;
 public class DemoActivity extends AppCompatActivity {
 
     private ActivityDemoBinding binding;
-    private LinearLayout llOnboarding;
-    private Button bNext, bSkip;
-    ArrayList<OnBoarding> states = new ArrayList<OnBoarding>();
-    OnBoardingAdapter boardAdapter = new OnBoardingAdapter(states);
+    ArrayList<OnBoarding> states;
+    OnBoardingAdapter boardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +35,13 @@ public class DemoActivity extends AppCompatActivity {
         binding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setVolumeControlStream(STREAM_ALARM);
-
-        final ViewPager2 vpCards = binding.vpDemo;
-        vpCards.setAdapter(boardAdapter);
-        llOnboarding = binding.llIndicators;
-        bNext = binding.bNext;
-        bSkip = binding.bSkip;
-
+        init();
         initCardItem();
         setCurrentIndicator(0);
-        setOnboardingIndicators();
-        vpCards.setCurrentItem(vpCards.getCurrentItem());
+        setOnBoardingIndicators();
+        binding.vpDemo.setCurrentItem(binding.vpDemo.getCurrentItem());
 
-        vpCards.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        binding.vpDemo.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
@@ -61,33 +49,33 @@ public class DemoActivity extends AppCompatActivity {
             }
         });
 
-        bNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyVibrator.vibrate(30, DemoActivity.this);
-                if(vpCards.getCurrentItem() + 1 < boardAdapter.getItemCount()){
-                    vpCards.setCurrentItem(vpCards.getCurrentItem() + 1);
-                }else {
-                    bNext.setEnabled(false);
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }
-            }
-        });
-
-        bSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bSkip.setEnabled(false);
-                MyVibrator.vibrate(30, DemoActivity.this);
+        binding.bNext.setOnClickListener(view -> {
+            MyVibrator.vibrate(30, DemoActivity.this);
+            if(binding.vpDemo.getCurrentItem() + 1 < boardAdapter.getItemCount()){
+                binding.vpDemo.setCurrentItem(binding.vpDemo.getCurrentItem() + 1);
+            }else {
+                binding.bNext.setEnabled(false);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
         });
+
+        binding.bSkip.setOnClickListener(view -> {
+            binding.bSkip.setEnabled(false);
+            MyVibrator.vibrate(30, DemoActivity.this);
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        });
+    }
+
+    private void init(){
+        setVolumeControlStream(STREAM_ALARM);
+        states = new ArrayList<>();
+        boardAdapter = new OnBoardingAdapter(states);
+        binding.vpDemo.setAdapter(boardAdapter);
     }
 
     private void initCardItem() {
-
         OnBoarding item1 = new OnBoarding();
         item1.setTitle(getString(R.string.app_name));
         item1.setDescription(getString(R.string.item1_description));
@@ -110,10 +98,11 @@ public class DemoActivity extends AppCompatActivity {
         boardAdapter = new OnBoardingAdapter(states);
     }
 
-    private void setOnboardingIndicators(){
+    private void setOnBoardingIndicators(){
         ImageView[] indicators = new ImageView[boardAdapter.getItemCount()];
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
         );
         lParams.setMargins(8,0,8,0);
         for(int i = 0; i < indicators.length; i++){
@@ -123,14 +112,14 @@ public class DemoActivity extends AppCompatActivity {
                     R.drawable.board_ind_active//active
             ));
             indicators[i].setLayoutParams(lParams);
-            llOnboarding.addView(indicators[i]);
+            binding.llIndicators.addView(indicators[i]);
         }
     }
 
     private void setCurrentIndicator(int ind){
-        int childCount = llOnboarding.getChildCount();
+        int childCount =  binding.llIndicators.getChildCount();
         for(int i = 0; i < childCount; i++){
-            ImageView iv = (ImageView) llOnboarding.getChildAt(i);
+            ImageView iv = (ImageView)  binding.llIndicators.getChildAt(i);
             if(i == ind){
                 iv.setImageDrawable(
                         ContextCompat.getDrawable(
@@ -148,9 +137,9 @@ public class DemoActivity extends AppCompatActivity {
             }
         }
         if(ind == boardAdapter.getItemCount() - 1){
-            bNext.setText(R.string.board_start_activity);
+            binding.bNext.setText(R.string.board_start_activity);
         }else {
-            bNext.setText(R.string.board_next);
+            binding.bNext.setText(R.string.board_next);
         }
     }
 
