@@ -26,13 +26,8 @@ public class WakeFragment extends Fragment {
     binding = FragmentWakeBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        wakeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        final TextView textView = binding.tvSetTime;
+        wakeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

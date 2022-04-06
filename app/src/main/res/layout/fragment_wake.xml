@@ -1,23 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/clMain"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.wake.WakeFragment">
+    android:layout_height="wrap_content"
+    tools:context=".ui.sleep.SleepFragment">
 
-    <TextView
-        android:id="@+id/text_gallery"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svMainWake"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvSetTime"
+                style="@style/txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:padding="10dp" />
+
+            <RelativeLayout
+                android:id="@+id/rlTimePicker"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lStarTimePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    app:lottie_rawRes="@raw/star_fall_purple"/>
+
+                <RelativeLayout
+                    style="@style/tp_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp">
+
+                    <TimePicker
+                        android:id="@+id/tpWake"
+                        style="@style/time_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_centerHorizontal="true"
+                        android:theme="@style/txt" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bClearTime"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toStartOf="@id/tpWake"
+                        android:foreground="@drawable/ic_rotate_reloaded"
+                        android:foregroundGravity="center"
+                        app:cornerRadius="50dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bCalc"
+                        style="@style/btn_timer"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/tpWake"
+                        android:text="@string/btn_calc"
+                        tools:ignore="TextContrastCheck" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvGoToSleep"
+                    style="@style/txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:id="@+id/tvTimeAsleep"
+                style="@style/txt_setting"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lYogaWake"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:scaleX="2"
+                android:scaleY="2"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                style="@style/yoga_wake"
+                android:scaleType="centerInside"
+                android:layout_gravity="bottom|start"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

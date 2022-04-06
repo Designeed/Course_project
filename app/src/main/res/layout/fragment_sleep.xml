@@ -33,7 +33,7 @@
                 android:id="@+id/lyTimePicker"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
                 <com.airbnb.lottie.LottieAnimationView
@@ -41,12 +41,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
-                    app:lottie_rawRes="@raw/star_fall_purple"/>
+                    app:lottie_rawRes="@raw/star_fall_purple" />
 
                 <RelativeLayout
                     style="@style/tp_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="230dp">
+                    android:layout_height="wrap_content">
 
                     <TimePicker
                         android:id="@+id/tpSleep"
@@ -80,7 +80,7 @@
                         app:cornerRadius="50dp"
                         tools:ignore="SpeakableTextPresentCheck" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/bCalc"
                         style="@style/btn_timer"
                         android:layout_width="match_parent"

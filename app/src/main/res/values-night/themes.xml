@@ -21,6 +21,14 @@
 
     <!--layouts-->
 
+    <style name="bg_tp_wake" parent="Theme.AppCompat.DayNight">
+        <item name="lottie_rawRes">@raw/sun_d</item>
+    </style>
+
+    <style name="yoga_wake" parent="Theme.AppCompat.DayNight">
+        <item name="lottie_rawRes">@raw/yoga_d</item>
+    </style>
+
     <style name="bottomSheet" parent="Theme.AppCompat.DayNight">
         <item name="android:background">@drawable/bg_bottom_sheet_d</item>
     </style>

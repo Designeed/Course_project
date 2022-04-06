@@ -23,14 +23,13 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.classes.QuotesAlarm;
+import com.example.Sleepy.classes.Quotes;
 import com.example.Sleepy.databinding.ActivityAlarmBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Stack;
 
 public class AlarmActivity extends AppCompatActivity {
 
@@ -126,7 +125,7 @@ public class AlarmActivity extends AppCompatActivity {
         binding.tvAlarmTime.setText(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date().getTime()));
 
         if(quote){
-            binding.tvAlarmInfo.setText(QuotesAlarm.getQuote());
+            binding.tvAlarmInfo.setText(Quotes.getQuoteAlarm());
         }else{
             binding.tvAlarmInfo.setText("Будильник");
         }

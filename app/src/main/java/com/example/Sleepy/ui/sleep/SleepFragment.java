@@ -16,12 +16,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.Sleepy.R;
 import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.classes.MyAlarm;
 import com.example.Sleepy.classes.MyVibrator;
+import com.example.Sleepy.classes.Quotes;
 import com.example.Sleepy.databinding.FragmentSleepBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -93,6 +97,22 @@ public class SleepFragment extends Fragment {
             timeAlarm.set(Calendar.MINUTE, binding.tpSleep.getMinute());
             timeAlarm.set(Calendar.HOUR_OF_DAY, binding.tpSleep.getHour());
             setAlarm(timeAlarm, binding.clMain);
+        });
+
+        binding.lCatSleepMain.setOnClickListener(view -> {
+            String q = Quotes.getQuoteCat();
+            Snackbar s = Snackbar.make(view, q, Snackbar.LENGTH_LONG)
+                    .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE);
+
+            if(q.equals("Хочешь анекдот?")){
+                s.setAction("Да", view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
+                        .setTitle(getString(R.string.title_alert_cat))
+                        .setMessage(Quotes.getAnecdote())
+                        .setPositiveButton(getString(R.string.pos_b_alert_cat), (dialogInterface, i) -> dialogInterface.cancel())
+                        .show()).show();
+            }else{
+                s.show();
+            }
         });
 
         return root;
