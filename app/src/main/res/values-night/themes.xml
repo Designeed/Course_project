@@ -79,7 +79,6 @@
         <item name="contentPaddingBottom">10dp</item>
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">0dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
     <style name="alarm_card_style" parent="Theme.AppCompat.DayNight">

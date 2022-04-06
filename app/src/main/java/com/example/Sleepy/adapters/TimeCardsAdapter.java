@@ -23,7 +23,7 @@ public class TimeCardsAdapter extends RecyclerView.Adapter<TimeCardsAdapter.View
     @Override
     public TimeCardsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_sleep, parent, false);
         return new ViewHolder(view);
     }
 

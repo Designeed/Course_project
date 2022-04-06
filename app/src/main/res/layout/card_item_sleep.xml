@@ -21,20 +21,6 @@
                     android:layout_height="wrap_content"
                     style="@style/txt"
                     android:textSize="35sp" />
-                <TextView
-                    android:id="@+id/six_cycles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/six_cycles"
-                    style="@style/txt"
-                    android:visibility="gone"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textSize="14sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:background="@drawable/bg_card_six"
-                    android:padding="0dp"/>
             </RelativeLayout>
 
             <TextView

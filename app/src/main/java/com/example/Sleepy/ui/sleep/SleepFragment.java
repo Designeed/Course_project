@@ -3,12 +3,11 @@ package com.example.Sleepy.ui.sleep;
 import static com.example.Sleepy.classes.MyTimer.getFormatTime;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,6 +22,7 @@ import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.classes.MyAlarm;
+import com.example.Sleepy.classes.MyTimer;
 import com.example.Sleepy.classes.MyVibrator;
 import com.example.Sleepy.classes.Quotes;
 import com.example.Sleepy.databinding.FragmentSleepBinding;
@@ -85,24 +85,18 @@ public class SleepFragment extends Fragment {
             MyVibrator.vibrate(15, getContext());
         });
 
-        binding.bClearTime.setOnClickListener(view -> {
-            MyVibrator.vibrate(30, getContext());
-            binding.tpSleep.setHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
-            binding.tpSleep.setMinute(Calendar.getInstance().get(Calendar.MINUTE));
-        });
+        binding.bClearTime.setOnClickListener(view -> MyTimer.clearTime(binding.tpSleep, getContext()));
 
         binding.svMainSleep.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
                 binding.lStarTimePicker.setFrame(scrollY/4));
 
         binding.bAddAlarm.setOnClickListener(view -> {
-            Calendar timeAlarm = Calendar.getInstance();
-            timeAlarm.set(Calendar.MINUTE, binding.tpSleep.getMinute());
-            timeAlarm.set(Calendar.HOUR_OF_DAY, binding.tpSleep.getHour());
+            Calendar timeAlarm = MyTimer.getCurrentTime(binding.tpSleep);
 
             if(!alarmType){
-                setAlarmInApp(timeAlarm);
+                MyTimer.setAlarmInApp(timeAlarm, getContext(), binding.clMain);
             }else{
-                setAlarm(timeAlarm, binding.clMain);
+                MyAlarm.setAlarm(timeAlarm, binding.clMain);
             }
         });
 
@@ -135,7 +129,7 @@ public class SleepFragment extends Fragment {
         remMin = cycleDuration;
         Min = -cycleDuration;
 
-        getAsleepText();
+        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep);
         getAnimations();
     }
 
@@ -147,15 +141,6 @@ public class SleepFragment extends Fragment {
         }
     }
 
-    private void getAsleepText() {
-        if (fallingAsleepTime != 0){
-            binding.tvTimeAsleep.setVisibility(View.VISIBLE);
-            binding.tvTimeAsleep.setText(new StringBuilder().append("Расчитано с учетом времени засыпания - ").append(fallingAsleepTime).append(" мин."));
-        }else {
-            binding.tvTimeAsleep.setVisibility(View.GONE);
-        }
-    }
-
     private void getShared(){
         SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
         cardCount = prefs.getInt("CARD_COUNT", 6);
@@ -163,22 +148,6 @@ public class SleepFragment extends Fragment {
         cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
         isAnimate = prefs.getBoolean("ANIMATIONS", true);
         alarmType = prefs.getBoolean("WHAT_ALARM", true);
-    }
-
-    private void setAlarmInApp(Calendar time){
-        try{
-            startActivity(new Intent(AlarmClock.ACTION_SET_ALARM)
-                    .putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm")
-                    .putExtra(AlarmClock.EXTRA_HOUR, time.get(Calendar.HOUR_OF_DAY))
-                    .putExtra(AlarmClock.EXTRA_MINUTES, time.get(Calendar.MINUTE)));
-        }catch (Exception ex){
-            Snackbar.make(binding.clMain, "Не удалось открыть будильник :(", Snackbar.LENGTH_LONG).show();
-        }
-    }
-
-    private void setAlarm(Calendar time, View view){
-        Log.i("alarm", "Time Alarm - " + time.get(Calendar.HOUR_OF_DAY) + ":" + time.get(Calendar.MINUTE));
-        MyAlarm.setAlarm(time, view);
     }
 
     private void initCardItem() {
@@ -195,6 +164,7 @@ public class SleepFragment extends Fragment {
             timeCards.add(new TimeCards(("" + sdf.format(curTimeFull.getTime())), ("Осталось " + getFormatTime(remMin))));
             remMin -= cycleDuration;
         }
+
         Log.i("initCard", "initCard");
     }
 
