@@ -3,8 +3,10 @@ package com.example.Sleepy.ui.sleep;
 import static com.example.Sleepy.classes.MyTimer.getFormatTime;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +45,7 @@ public class SleepFragment extends Fragment {
     private SimpleDateFormat sdf;
     private int cardCount = 6, Min = -90, remMin = 90, cycleDuration, fallingAsleepTime;
     private MainActivity mainAct;
-    private boolean isAnimate;
+    private boolean isAnimate, alarmType;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -96,7 +98,12 @@ public class SleepFragment extends Fragment {
             Calendar timeAlarm = Calendar.getInstance();
             timeAlarm.set(Calendar.MINUTE, binding.tpSleep.getMinute());
             timeAlarm.set(Calendar.HOUR_OF_DAY, binding.tpSleep.getHour());
-            setAlarm(timeAlarm, binding.clMain);
+
+            if(!alarmType){
+                setAlarmInApp(timeAlarm);
+            }else{
+                setAlarm(timeAlarm, binding.clMain);
+            }
         });
 
         binding.lCatSleepMain.setOnClickListener(view -> {
@@ -109,10 +116,10 @@ public class SleepFragment extends Fragment {
                         .setTitle(getString(R.string.title_alert_cat))
                         .setMessage(Quotes.getAnecdote())
                         .setPositiveButton(getString(R.string.pos_b_alert_cat), (dialogInterface, i) -> dialogInterface.cancel())
-                        .show()).show();
-            }else{
-                s.show();
+                        .show());
             }
+
+            s.show();
         });
 
         return root;
@@ -155,6 +162,18 @@ public class SleepFragment extends Fragment {
         fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
         cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
         isAnimate = prefs.getBoolean("ANIMATIONS", true);
+        alarmType = prefs.getBoolean("WHAT_ALARM", true);
+    }
+
+    private void setAlarmInApp(Calendar time){
+        try{
+            startActivity(new Intent(AlarmClock.ACTION_SET_ALARM)
+                    .putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm")
+                    .putExtra(AlarmClock.EXTRA_HOUR, time.get(Calendar.HOUR_OF_DAY))
+                    .putExtra(AlarmClock.EXTRA_MINUTES, time.get(Calendar.MINUTE)));
+        }catch (Exception ex){
+            Snackbar.make(binding.clMain, "Не удалось открыть будильник :(", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     private void setAlarm(Calendar time, View view){

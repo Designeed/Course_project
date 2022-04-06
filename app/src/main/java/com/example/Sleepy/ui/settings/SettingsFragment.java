@@ -135,6 +135,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.sChoiceAlarm.setOnClickListener(view -> {
+            try{
+                prefs.edit().putBoolean("WHAT_ALARM", binding.sChoiceAlarm.isChecked()).apply();
+            }catch (Exception ex){
+                errorPlay();
+            }
+        });
+
         return root;
     }
 
@@ -146,7 +154,10 @@ public class SettingsFragment extends Fragment {
         handler.postDelayed(run, 100);
 
         getShared();
+        setVolumeAlarm();
+    }
 
+    private void setVolumeAlarm() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             binding.sVolAlarm.setValueFrom(amAlarm.getStreamMinVolume(AudioManager.STREAM_ALARM));
         }
@@ -175,7 +186,9 @@ public class SettingsFragment extends Fragment {
             binding.sTimeFormat.setChecked(prefs.getBoolean("TIME_FORMAT", true));
             binding.npDurationCycle.setValue(prefs.getInt("CYCLE_DURATION", 90));
             binding.sQuoteShow.setChecked(prefs.getBoolean("QUOTE", true));
+            binding.sChoiceAlarm.setChecked(prefs.getBoolean("WHAT_ALARM", true));
             loadPlay();
+            Log.i("LOADING_SETTINGS", "Ok");
         }catch (Exception ex){
             errorPlay();
             Log.i("LOADING_SETTINGS", "init_error");
