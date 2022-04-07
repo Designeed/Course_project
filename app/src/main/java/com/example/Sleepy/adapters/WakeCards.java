@@ -1,10 +1,10 @@
 package com.example.Sleepy.adapters;
 
-public class AlarmCards {
+public class WakeCards {
     private String Time;
     private String RemainingTime;
 
-    public AlarmCards(String formatTime, String RemainingTimeMinute) {
+    public WakeCards(String formatTime, String RemainingTimeMinute) {
         Time = formatTime;
         RemainingTime = RemainingTimeMinute;
     }

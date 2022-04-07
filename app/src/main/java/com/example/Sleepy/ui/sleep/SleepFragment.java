@@ -40,12 +40,12 @@ public class SleepFragment extends Fragment {
     private SleepViewModel sleepViewModel;
     private FragmentSleepBinding binding;
     final private Calendar curTimeFull = Calendar.getInstance();
-    private final ArrayList<TimeCards> timeCards = new ArrayList<>();
-    private final TimeCardsAdapter timeCardsAdapter = new TimeCardsAdapter(timeCards);
+    private ArrayList<TimeCards> timeCards;
+    private TimeCardsAdapter timeCardsAdapter;
     private SimpleDateFormat sdf;
     private int cardCount = 6, Min = -90, remMin = 90, cycleDuration, fallingAsleepTime;
     private MainActivity mainAct;
-    private boolean isAnimate, alarmType;
+    private boolean isAnimate;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -112,6 +112,8 @@ public class SleepFragment extends Fragment {
     }
 
     private void init() {
+        timeCards = new ArrayList<>();
+        timeCardsAdapter = new TimeCardsAdapter(timeCards);
         mainAct = (MainActivity) getActivity();
         curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
         sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());

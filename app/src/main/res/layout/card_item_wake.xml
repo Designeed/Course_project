@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/srlCard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,11 +14,13 @@
         android:layout_width="80dp"
         android:layout_height="match_parent" >
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ibAddAlarm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_add_alarm"
                 android:foregroundTint="@color/white"
+                android:background="@color/transparent"
                 android:layout_gravity="center"
                 android:contentDescription="@string/add_alarm" />
     </FrameLayout>

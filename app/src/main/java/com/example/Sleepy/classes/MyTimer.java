@@ -4,14 +4,23 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.AlarmClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.Objects;
+
+import kotlin.text.Regex;
 
 public class MyTimer {
 
@@ -83,4 +92,18 @@ public class MyTimer {
             tv.setVisibility(View.GONE);
         }
     }
+
+    public static Calendar getTimeFromText(CharSequence timeStr, String remTime){
+        Calendar c = Calendar.getInstance();
+        //int rem = Integer.parseInt(remTime.replaceAll("[^0-9.]",""));
+        try {
+            c.set(Calendar.HOUR, Objects.requireNonNull(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse((String) timeStr)).getHours());
+            c.set(Calendar.MINUTE, Objects.requireNonNull(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse((String) timeStr)).getMinutes());
+            //c.add(Calendar.DATE, rem%24);
+            //Log.i("timer", "time parse:" + c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + "-" + c.get(Calendar.DATE) + " rem: " + rem%24);
+        } catch (ParseException ex) {
+            Log.i("timer", "parse ex " + ex);
+        }
+        return c;
+    }  //todo прибавлять сутки если осталось больше 24
 }
