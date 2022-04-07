@@ -18,22 +18,32 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 public class MyAlarm extends AppCompatActivity {
     public static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
     private static AlarmManager alarmManager;
 
-    public static void setAlarm(Calendar time, View view){
-        if (time.before(Calendar.getInstance())){
-            time.add(Calendar.DATE, 1);
+    public static void setAlarm(Context context, Calendar time, View view){
+        if(getShared(context)){
+            if (time.before(Calendar.getInstance())){
+                time.add(Calendar.DATE, 1);
+            }
+
+            alarmManager = (AlarmManager) view.getContext().getSystemService(Context.ALARM_SERVICE);
+            AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(), getAlarmInfoPendingIntent(view));
+            alarmManager.setAlarmClock(alarmClockInfo, getAlarmActionPendingIntent(view));
+
+            printInfo(view, time);
+        }else{
+            MyTimer.setAlarmInApp(time, context, view);
         }
+    }
 
-        alarmManager = (AlarmManager) view.getContext().getSystemService(Context.ALARM_SERVICE);
-        AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(), getAlarmInfoPendingIntent(view));
-        alarmManager.setAlarmClock(alarmClockInfo, getAlarmActionPendingIntent(view));
-
-        printInfo(view, time);
+    private static boolean getShared(Context context){
+        SharedPreferences prefs = Objects.requireNonNull(context).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
+        return prefs.getBoolean("WHAT_ALARM", true);
     }
 
     private static void printInfo(View view, Calendar time) {

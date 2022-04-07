@@ -90,15 +90,7 @@ public class SleepFragment extends Fragment {
         binding.svMainSleep.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
                 binding.lStarTimePicker.setFrame(scrollY/4));
 
-        binding.bAddAlarm.setOnClickListener(view -> {
-            Calendar timeAlarm = MyTimer.getCurrentTime(binding.tpSleep);
-
-            if(!alarmType){
-                MyTimer.setAlarmInApp(timeAlarm, getContext(), binding.clMain);
-            }else{
-                MyAlarm.setAlarm(timeAlarm, binding.clMain);
-            }
-        });
+        binding.bAddAlarm.setOnClickListener(view -> MyAlarm.setAlarm(getContext(), MyTimer.getCurrentTime(binding.tpSleep), binding.clMain));
 
         binding.lCatSleepMain.setOnClickListener(view -> {
             String q = Quotes.getQuoteCat();
@@ -147,7 +139,6 @@ public class SleepFragment extends Fragment {
         fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
         cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
         isAnimate = prefs.getBoolean("ANIMATIONS", true);
-        alarmType = prefs.getBoolean("WHAT_ALARM", true);
     }
 
     private void initCardItem() {

@@ -84,7 +84,8 @@
                         android:id="@+id/bCalc"
                         style="@style/btn_timer"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="60dp"
                         android:layout_below="@id/tpSleep"
                         android:text="@string/btn_calc"
                         tools:ignore="TextContrastCheck" />

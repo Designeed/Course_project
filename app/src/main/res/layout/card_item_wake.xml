@@ -25,35 +25,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="UselessParent">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/card_style">
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/card_style">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvTitleCard"
+                    style="@style/txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:textSize="35sp" />
+
+                <TextView
+                    android:id="@+id/tvSecCard"
+                    style="@style/txt"
+                    android:layout_below="@id/tvTitleCard"
+                    android:gravity="start|bottom"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvTitleCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/txt"
-                        android:textSize="35sp" />
-
-                    <TextView
-                        android:id="@+id/tvSecCard"
-                        android:layout_marginTop="-8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/txt" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
 </com.chauthai.swipereveallayout.SwipeRevealLayout>

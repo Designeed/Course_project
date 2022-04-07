@@ -4,7 +4,6 @@ public class TimeCards {
     private String Title;
     private String SecText;
 
-
     public TimeCards(String title, String secText) {
         Title = title;
         SecText = secText;

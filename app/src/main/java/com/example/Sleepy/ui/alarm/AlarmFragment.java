@@ -18,8 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.adapters.AlarmCards;
-import com.example.Sleepy.adapters.AlarmCardsAdapter;
+import com.example.Sleepy.adapters.TimeCards;
+import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.classes.MyAlarm;
 import com.example.Sleepy.classes.MyTimer;
 import com.example.Sleepy.databinding.FragmentAlarmBinding;
@@ -34,15 +34,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Optional;
 
 public class AlarmFragment extends Fragment {
 
     private AlarmViewModel alarmViewModel;
     private FragmentAlarmBinding binding;
     private final Calendar timeAlarm = Calendar.getInstance();
-    private ArrayList<AlarmCards> alarmCards;
-    private AlarmCardsAdapter alarmCardsAdapter;
+    private ArrayList<TimeCards> alarmCards;
+    private TimeCardsAdapter alarmCardsAdapter;
     private AlarmManager alarmManager;
     private MaterialTimePicker mtpTimeAlarm;
 
@@ -104,7 +103,7 @@ public class AlarmFragment extends Fragment {
 
     private void init(){
         alarmCards = new ArrayList<>();
-        alarmCardsAdapter = new AlarmCardsAdapter(alarmCards);
+        alarmCardsAdapter = new TimeCardsAdapter(alarmCards);
         alarmManager = (AlarmManager) Objects.requireNonNull(getContext()).getSystemService(Context.ALARM_SERVICE);
     }
 
@@ -117,7 +116,7 @@ public class AlarmFragment extends Fragment {
     }
 
     private void setAlarm(Calendar time, View view){
-        MyAlarm.setAlarm(time, view);
+        MyAlarm.setAlarm(getContext(), time, view);
         initCardItem();
         Log.i("alarm", "Time Alarm - " +
                 time.get(Calendar.HOUR_OF_DAY) +
@@ -134,7 +133,7 @@ public class AlarmFragment extends Fragment {
             binding.tvAlarmList.setText(R.string.alarm_list);
 
             alarmCards.clear();
-            alarmCards.add(new AlarmCards(
+            alarmCards.add(new TimeCards(
                     "" + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(Objects.requireNonNull(calcAlarmTime())),
                     "Осталось " + MyTimer.calcRemainingTimeMinute(Objects.requireNonNull(calcAlarmTime()))));
         }else{

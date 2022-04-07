@@ -2,33 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
 
     <com.google.android.material.card.MaterialCardView
         style="@style/card_style">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tvTitleCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/txt"
-                    android:textSize="35sp" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/tvTitleCard"
+                style="@style/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/tvSecCard"
-                android:layout_marginTop="-8dp"
+                style="@style/txt"
+                android:layout_below="@id/tvTitleCard"
+                android:gravity="start|bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/txt" />
-        </LinearLayout>
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

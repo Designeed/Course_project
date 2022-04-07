@@ -71,7 +71,7 @@
 
     <style name="card_style" parent="Theme.AppCompat.DayNight">
         <item name="cardBackgroundColor">@color/bg_item_d</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="contentPaddingRight">20dp</item>
         <item name="contentPaddingLeft">20dp</item>

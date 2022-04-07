@@ -61,25 +61,31 @@ public class AlarmActivity extends AppCompatActivity {
     private void init(){
         Objects.requireNonNull(getSupportActionBar()).hide();
         setVolumeControlStream(STREAM_ALARM);
+        setAlarmType();
+        getShared();
+        setQuoteAndTime();
+    }
+
+    private void setAlarmType() {
         aaAlarmType = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_ALARM)
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                 .build();
-
         getNotificationUriAlarm();
-        getShared();
-        setQuoteAndTime();
-        setScreenFlags();
     }
 
     private void getNotificationUriAlarm() {
         notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_ALARM);
+        Log.i("alarm", "type_alarm");
         if(notificationUri == null){
             notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_RINGTONE);
+            Log.i("alarm", "type_ringtone");
             if(notificationUri == null){
                 notificationUri = RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), TYPE_NOTIFICATION);
+                Log.i("alarm", "type_notification");
             }
         }
+        setScreenFlags();
     }
 
     private void playSound() {
@@ -93,20 +99,23 @@ public class AlarmActivity extends AppCompatActivity {
                 ringtone.play();
             }
 
-            if(!ringtone.isPlaying()) {
+            if(!ringtone.isPlaying() && notificationUri != null) {
                 mpRingtone = MediaPlayer.create(getApplicationContext(), notificationUri);
-                mpRingtone.setAudioAttributes(aaAlarmType);
+                try{
+                    mpRingtone.setAudioAttributes(aaAlarmType);
+                }catch (Exception ex){
+                    Log.i("alarm", "setAttributesMethod is null - " + ex);
+                }
                 mpRingtone.setLooping(true);
                 mpRingtone.start();
-                Log.i("alarm_ringtone", "Start media Playing :|");
+                Log.i("alarm", "Start media Playing :|");
             }else{
-                Log.i("alarm_ringtone", "Start ringtone Playing :)");
+                Log.i("alarm", "Start ringtone Playing :)");
             }
         }catch (Exception ex){
             finish();
-            Log.i("alarm_ringtone", "ringtone cannot play :( " + ex);
+            Log.i("alarm", "ringtone cannot play :( " + ex);
         }
-
     }
 
     private void setScreenFlags() {
@@ -146,11 +155,11 @@ public class AlarmActivity extends AppCompatActivity {
     private void stopAlarm(){
         if (mpRingtone != null && mpRingtone.isPlaying()) {
             mpRingtone.stop();
-            Log.i("alarm_ringtone", "Stop media Playing :|");
+            Log.i("alarm", "Stop media Playing :|");
         }
         if(ringtone != null && ringtone.isPlaying()){
             ringtone.stop();
-            Log.i("alarm_ringtone", "Stop ringtone Playing :)");
+            Log.i("alarm", "Stop ringtone Playing :)");
         }
         if (mWakeLock.isHeld()) {
             mWakeLock.release();
