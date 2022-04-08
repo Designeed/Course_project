@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -43,7 +42,7 @@ public class SleepFragment extends Fragment {
     private ArrayList<TimeCards> timeCards;
     private TimeCardsAdapter timeCardsAdapter;
     private SimpleDateFormat sdf;
-    private int cardCount = 6, Min = -90, remMin = 90, cycleDuration, fallingAsleepTime;
+    private int cardCount = 6, Minutes = -90, remMinutes = 90, cycleDuration, fallingAsleepTime;
     private MainActivity mainAct;
     private boolean isAnimate;
 
@@ -68,7 +67,7 @@ public class SleepFragment extends Fragment {
 
         binding.bCalc.setOnClickListener(v -> {
             MyVibrator.vibrate(30, getContext());
-            remMin = cycleDuration;
+            remMinutes = cycleDuration;
             curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
             initCardItem();
             setTitleTime();
@@ -101,7 +100,7 @@ public class SleepFragment extends Fragment {
                 s.setAction("Да", view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
                         .setTitle(getString(R.string.title_alert_cat))
                         .setMessage(Quotes.getAnecdote())
-                        .setPositiveButton(getString(R.string.pos_b_alert_cat), (dialogInterface, i) -> dialogInterface.cancel())
+                        .setPositiveButton(getString(R.string.pos_b_alert), (dialogInterface, i) -> dialogInterface.cancel())
                         .show());
             }
 
@@ -120,8 +119,8 @@ public class SleepFragment extends Fragment {
 
         getShared();
 
-        remMin = cycleDuration;
-        Min = -cycleDuration;
+        remMinutes = cycleDuration;
+        Minutes = -cycleDuration;
 
         MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep);
         getAnimations();
@@ -139,30 +138,32 @@ public class SleepFragment extends Fragment {
         SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
         cardCount = prefs.getInt("CARD_COUNT", 6);
         fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
-        cycleDuration = prefs.getInt("CYCLE_DURATION", 90) + fallingAsleepTime;
+        cycleDuration = prefs.getInt("CYCLE_DURATION", 90);
         isAnimate = prefs.getBoolean("ANIMATIONS", true);
     }
 
     private void initCardItem() {
+        // FIXME: 08.04.2022 время засыпания с инкрементом
         binding.rvCards.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvCards.setAdapter(timeCardsAdapter);
 
         timeCards.clear();
 
-        curTimeFull.add(Calendar.MINUTE, Min * (cardCount + 1));
-        remMin = remMin * cardCount;
+        curTimeFull.add(Calendar.MINUTE, Minutes * (cardCount + 1));
+        curTimeFull.add(Calendar.MINUTE, fallingAsleepTime);
+        remMinutes = remMinutes * cardCount;
 
         for(int i = 0; i < cardCount; i++){
-            curTimeFull.add(Calendar.MINUTE, -Min);
-            timeCards.add(new TimeCards(("" + sdf.format(curTimeFull.getTime())), ("Осталось " + getFormatTime(remMin))));
-            remMin -= cycleDuration;
+            curTimeFull.add(Calendar.MINUTE, -Minutes);
+            timeCards.add(new TimeCards(("" + sdf.format(curTimeFull.getTime())), ("Осталось " + getFormatTime(remMinutes))));
+            remMinutes -= cycleDuration;
         }
 
         Log.i("initCard", "initCard");
     }
 
     private void setTitleTime(){
-        if (timeCards.size()>=6) mainAct.setTitleAppBar("Оптимальное время - " + timeCards.get(timeCards.size()-6).getTitle());
+        if (timeCards.size() >= 6) mainAct.setTitleAppBar("Оптимальное время - " + timeCards.get(timeCards.size() - 6).getTitle());
     }
 
     @Override
@@ -170,5 +171,6 @@ public class SleepFragment extends Fragment {
         super.onDestroyView();
         binding = null;
         mainAct.setTitleAppBar(null);
+        timeCards.clear();
     }
 }

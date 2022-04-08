@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:button="@drawable/theme_checked_button"
+                        android:button="@drawable/ic_checked_btn"
                         android:drawableEnd="@drawable/button_theme_p"
                         android:drawablePadding="-20dp"
                         android:gravity="start"
@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:button="@drawable/theme_checked_button"
+                        android:button="@drawable/ic_checked_btn"
                         android:drawableEnd="@drawable/button_theme_d"
                         android:drawablePadding="-20dp"
                         android:gravity="start" />
@@ -87,7 +87,7 @@
                         android:id="@+id/rbThemeAuto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/theme_checked_button"
+                        android:button="@drawable/ic_checked_btn"
                         android:checked="true"
                         android:drawableEnd="@drawable/button_theme_a"
                         android:drawablePadding="-20dp"
@@ -440,7 +440,6 @@
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
         </LinearLayout>
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bSettingsDefault"
                 android:layout_width="wrap_content"
@@ -456,4 +455,6 @@
                 tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/bottom_sheet_settings" android:id="@+id/incBottomSheet"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

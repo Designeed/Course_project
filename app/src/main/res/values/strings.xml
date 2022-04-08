@@ -47,8 +47,9 @@
     <string name="title_alert_setting">Предупреждение</string>
     <string name="pos_b_alert_setting">Принять</string>
     <string name="neg_b_alert_setting">Отменить</string>
-    <string name="pos_b_alert_cat">Ок</string>
+    <string name="pos_b_alert">Ок</string>
     <string name="title_alert_cat">Анекдот</string>
+    <string name="title_alert_sloth">Интересный факт</string>
     <string name="message_alert_setting">Текущие настройки будут сброшены</string>
     <string name="alarm_setting">Настройки будильника</string>
     <string name="quote_settings">Цитаты</string>

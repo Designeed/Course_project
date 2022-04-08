@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
@@ -48,7 +49,7 @@ public class MyAlarm extends AppCompatActivity {
 
     private static void printInfo(View view, Calendar time) {
         Log.i("alarm", "Alarm SET " + sdf.format(time.getTime()));
-        Snackbar.make(view, "Будильник установлен на " + sdf.format(time.getTime()), Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "Будильник установлен на " + sdf.format(time.getTime()) + "\nОсталось " + MyTimer.calcRemainingTimeMinute(new Date(alarmManager.getNextAlarmClock().getTriggerTime())), Snackbar.LENGTH_LONG)
                 .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
                 .show();
     }

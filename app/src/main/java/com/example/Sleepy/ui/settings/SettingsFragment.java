@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Sleepy.R;
 import com.example.Sleepy.databinding.FragmentSettingsBinding;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -28,7 +30,8 @@ public class SettingsFragment extends Fragment {
     private FragmentSettingsBinding binding;
     private SharedPreferences prefs = null;
     private AudioManager amAlarm;
-    Handler handler;
+    private Handler handler;
+    private BottomSheetBehavior bsbInfo;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
@@ -143,12 +146,21 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.ivSettingsInfo.setOnClickListener(view -> {
+            if(BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).getState() == BottomSheetBehavior.STATE_COLLAPSED){
+                BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+            }else{
+                BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        });
+
         return root;
     }
 
     private void init() {
         amAlarm = (AudioManager) Objects.requireNonNull(getContext()).getSystemService(Context.AUDIO_SERVICE);
         binding.sVolAlarm.setValue(amAlarm.getStreamVolume(AudioManager.STREAM_ALARM));
+        BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).setState(BottomSheetBehavior.STATE_COLLAPSED);
         handler = new Handler();
         handler.removeCallbacks(run);
         handler.postDelayed(run, 100);
