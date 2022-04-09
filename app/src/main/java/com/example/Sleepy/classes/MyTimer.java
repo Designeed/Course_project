@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.Sleepy.adapters.WakeCards;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
@@ -19,13 +20,13 @@ import java.util.Objects;
 
 public class MyTimer {
 
-    public static String calcRemainingTimeMinute(Date currentDate){
+    public static String calcRemainingTimeMinute(Date date){
         String RemTime;
-        long timeUp = currentDate.getTime();
+        long timeUp = date.getTime();
         long diff = timeUp - new Date().getTime();
 
         long diffMinutes = diff / (60 * 1000) % 60;
-        long diffHours = diff / (60 * 60 * 1000) % 24;
+        long diffHours = diff / (60 * 60 * 1000);
 
         if (diffMinutes == 0){
             RemTime = "" + diffHours + "ч";
@@ -88,15 +89,17 @@ public class MyTimer {
         }
     }
 
-    public static Calendar getTimeFromText(CharSequence timeStr, String remTime){
+    public static Calendar getTimeFromText(CharSequence timeStr, String remTime, Date date){
         Calendar c = Calendar.getInstance();
-        //int rem = Integer.parseInt(remTime.replaceAll("[^0-9.]",""));
+        Date d = new Date();
         try {
-            c.set(Calendar.HOUR_OF_DAY, Objects.requireNonNull(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse((String) timeStr)).getHours());
-            c.set(Calendar.MINUTE, Objects.requireNonNull(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse((String) timeStr)).getMinutes());
-        } catch (ParseException ex) {
-            Log.i("timer", "parse ex " + ex);
+            d = new Date(Objects.requireNonNull(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse((String) timeStr)).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+
+        c.set(date.getYear(), date.getMonth(), date.getDate(), d.getHours(), d.getMinutes());
+
         return c;
     }  //todo прибавлять сутки если осталось больше 24
 }

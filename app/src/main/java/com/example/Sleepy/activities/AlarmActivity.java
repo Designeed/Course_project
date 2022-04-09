@@ -52,7 +52,6 @@ public class AlarmActivity extends AppCompatActivity {
         playSound();
 
         binding.bStopAlarm.setOnClickListener(view -> {
-            stopAlarm();
             startActivity(new Intent(getApplicationContext(), SplashActivity.class));
             finish();
         });

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,73 +31,79 @@
                 android:padding="10dp" />
 
             <RelativeLayout
-                android:id="@+id/rlTimePicker"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lStarTimePicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleY="2"
+                    android:scaleX="2"
                     android:alpha="0.7"
-                    app:lottie_rawRes="@raw/star_fall_purple"/>
+                    app:lottie_rawRes="@raw/star_fall_purple" />
 
                 <RelativeLayout
                     style="@style/tp_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="230dp">
 
-                    <TimePicker
-                        android:id="@+id/tpWake"
-                        style="@style/time_picker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="160dp"
-                        android:layout_centerHorizontal="true"
-                        android:theme="@style/txt" />
+                    <RelativeLayout
+                        android:id="@+id/rlWakeTimePicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bClearTime"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_toStartOf="@id/tpWake"
-                        android:foreground="@drawable/ic_rotate_reloaded"
-                        android:foregroundGravity="center"
-                        app:cornerRadius="50dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        <TimePicker
+                            android:id="@+id/tpWake"
+                            style="@style/time_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="160dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:theme="@style/txt" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/bClearTime"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:layout_toStartOf="@id/tpWake"
+                            android:foreground="@drawable/ic_rotate_reloaded"
+                            android:foregroundGravity="center"
+                            app:cornerRadius="50dp"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/bCalc"
                         style="@style/btn_timer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tpWake"
+                        android:layout_alignBottom="@id/rlWakeTimePicker"
+                        android:layout_alignParentBottom="true"
                         android:minHeight="60dp"
                         android:text="@string/btn_calc"
                         tools:ignore="TextContrastCheck" />
                 </RelativeLayout>
-
             </RelativeLayout>
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/tvGoToSleep"
+                style="@style/txt"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="-30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="30dp"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tvGoToSleep"
-                    style="@style/txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"/>
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCards"

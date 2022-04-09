@@ -1,84 +1,456 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/flBottomSheet"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:behavior_hideable="true"
-    app:behavior_peekHeight="0dp"
-    android:layout_marginTop="85dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     style="@style/bottomSheet"
-    android:paddingTop="50dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="50dp"
+    app:behavior_hideable="true"
+    android:layout_marginTop="80dp"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <androidx.core.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsInfoBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivEllipseBG1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llContentInfo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-100dp"
+                android:layout_marginEnd="-50dp"
+                android:layout_marginBottom="-50dp"
+                android:background="@drawable/ellipse_bg_info"
+                android:contentDescription="@string/cd_ellipse" />
+
+            <ImageView
+                android:id="@+id/ivEllipseBG2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="-90dp"
+                android:background="@drawable/ellipse_bg_info"
+                android:contentDescription="@string/cd_ellipse"
+                android:rotation="45" />
+
+            <ImageView
+                android:id="@+id/ivEllipseBG3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivEllipseBG2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="-50dp"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/ellipse_bg_info"
+                android:contentDescription="@string/cd_ellipse"
+                android:rotation="-45" />
+
+            <ImageView
+                android:id="@+id/ivEllipseBG4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivEllipseBG3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="-60dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/ellipse_bg_info"
+                android:contentDescription="@string/cd_ellipse"
+                android:rotation="-95" />
 
             <LinearLayout
+                android:id="@+id/llContentInfo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
                 <TextView
+                    style="@style/title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    style="@style/txt"
-                    android:text="f,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgsf,fjfd,fsdfks;dfjgl;ksdj
-                    fgl;ksjdfl;gkjsdlf;gksdj;fgksdj;fgksdj;fgkjsldkfg;
-                    sdkfjg;lskdfjg;lskdfjg;lskdfgj;sdkfgs\n\n\n"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@drawable/bg_tv_info"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_title_how_work" />
+
+                <TextView
+                    style="@style/txt_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_how_work"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tv_info"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_average_sleep_time" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv16Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv16Hours"
+                            android:text="@string/info_set_newborns" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv16Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv16Hours"
+                            android:text="@string/info_set_0_3_month" />
+
+                        <ImageView
+                            android:id="@+id/iv16Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_16_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv12Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv12Hours"
+                            android:text="@string/info_set_preschoolers" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv12Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv12Hours"
+                            android:text="@string/info_set_3_5_year" />
+
+                        <ImageView
+                            android:id="@+id/iv12Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_12_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv10Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv10Hours"
+                            android:text="@string/info_set_pupils" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv10Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv10Hours"
+                            android:text="@string/info_set_6_13_year" />
+
+                        <ImageView
+                            android:id="@+id/iv10Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_10_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv9Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv9Hours"
+                            android:text="@string/info_set_teenagers" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv9Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv9Hours"
+                            android:text="@string/info_set_14_17_year" />
+
+                        <ImageView
+                            android:id="@+id/iv9Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_9_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv8Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv8Hours"
+                            android:text="@string/info_set_adults" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv8Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv8Hours"
+                            android:text="@string/info_set_18_64_year" />
+
+                        <ImageView
+                            android:id="@+id/iv8Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_8_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv7Title"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv7Hours"
+                            android:text="@string/info_set_elderly" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv7Title"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/iv7Hours"
+                            android:text="@string/info_set_64_year" />
+
+                        <ImageView
+                            android:id="@+id/iv7Hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/ic_7_hours"
+                            android:contentDescription="@string/cd_hours" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_tv_info"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_title_stage" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv1StageTitle"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv1Stage"
+                            android:text="@string/info_set_napping" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv1StageTitle"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv1Stage"
+                            android:text="@string/info_set_napping_desc" />
+
+                        <ImageView
+                            android:id="@+id/iv1Stage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/ic_1_stage"
+                            android:contentDescription="@string/cd_stage" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/tv2StageTitle"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv2Stage"
+                            android:text="@string/info_set_light_sleep" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv2StageTitle"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv2Stage"
+                            android:text="@string/info_set_light_sleep_desc" />
+
+                        <ImageView
+                            android:id="@+id/iv2Stage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/ic_2_stage"
+                            android:contentDescription="@string/cd_stage" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/tv3StageTitle"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv3Stage"
+                            android:text="@string/info_set_deep_sleep" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv3StageTitle"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/iv3Stage"
+                            android:text="@string/info_set_deep_sleep_desc" />
+
+                        <ImageView
+                            android:id="@+id/iv3Stage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/ic_2_stage"
+                            android:contentDescription="@string/cd_stage" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tv_info"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_when_dream" />
+
+                <TextView
+                    style="@style/txt_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/info_set_when_dream_desc"
+                    android:textSize="18sp" />
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </FrameLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

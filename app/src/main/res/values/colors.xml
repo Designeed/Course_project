@@ -44,7 +44,7 @@
     <color name="checked">#4DCB5A</color>
     <color name="checked_variant">#255E2B</color>
     <color name="indicator">#77FFFFFF</color>
-    <color name="txt_settings">#80FFFFFF</color>
+    <color name="txt_settings">#B3FFFFFF</color>
     <color name="divider">#33FFFFFF</color>
     <color name="error">#E15449</color>
 </resources>

@@ -1,24 +1,33 @@
 package com.example.Sleepy.adapters;
 
+import android.icu.text.SimpleDateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.Sleepy.R;
+import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.classes.MyAlarm;
 import com.example.Sleepy.classes.MyTimer;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 public class WakeCardsAdapter extends RecyclerView.Adapter<WakeCardsAdapter.ViewHolder> {
     private final List<WakeCards> alarmCards;
     View view;
+
     private final ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
 
     public WakeCardsAdapter(List<WakeCards> cards) {
@@ -36,8 +45,12 @@ public class WakeCardsAdapter extends RecyclerView.Adapter<WakeCardsAdapter.View
         WakeCards state = alarmCards.get(position);
         holder.titleView.setText(state.getTime());
         holder.remTime.setText(state.getRemainingTime());
+
         viewBinderHelper.setOpenOnlyOne(true);
         viewBinderHelper.bind(holder.srlCard, state.getTime());
+
+        holder.ivAddAlarm.setOnClickListener(view1 -> MyAlarm.setAlarm(view.getContext(), state.getTriggerTime(), view1));
+        //Toast.makeText(view.getContext(), "" + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(state.getTriggerTime()), Toast.LENGTH_SHORT).show());
     }
 
     @Override
@@ -54,16 +67,13 @@ public class WakeCardsAdapter extends RecyclerView.Adapter<WakeCardsAdapter.View
         final TextView titleView, remTime;
         final ImageView ivAddAlarm;
         final SwipeRevealLayout srlCard;
+
         ViewHolder(View view){
             super(view);
             titleView = view.findViewById(R.id.tvTitleCard);
             remTime = view.findViewById(R.id.tvSecCard);
             ivAddAlarm = view.findViewById(R.id.ibAddAlarm);
             srlCard = view.findViewById(R.id.srlCard);
-
-            ivAddAlarm.setOnClickListener(view1 -> MyAlarm.setAlarm(view.getContext(),
-                    MyTimer.getTimeFromText(titleView.getText(), (String) remTime.getText()),
-                    view));
         }
     }
 }

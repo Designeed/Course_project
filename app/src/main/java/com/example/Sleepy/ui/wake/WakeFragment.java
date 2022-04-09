@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -79,7 +80,7 @@ public class WakeFragment extends Fragment {
         });
 
         binding.svMainWake.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
-                binding.lStarTimePicker.setFrame(scrollY/4));
+                binding.lStarTimePicker.setFrame(scrollY/8));
 
         binding.lYogaWake.setOnClickListener(view -> {
             String q = Quotes.getQuoteSloth();
@@ -125,7 +126,7 @@ public class WakeFragment extends Fragment {
     }
 
     private void setCurTime() {
-        curTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpWake.getHour(), binding.tpWake.getMinute());
+        curTime.set(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DATE), binding.tpWake.getHour(), binding.tpWake.getMinute());
         curTime.add(Calendar.MINUTE, fallingAsleepTime);
     }
 
@@ -153,7 +154,7 @@ public class WakeFragment extends Fragment {
 
         for(int i = 0; i < cardCount; i++){
             curTime.add(Calendar.MINUTE, Minutes);
-            timeCards.add(new WakeCards(("" + sdf.format(curTime.getTime())), ("Время на сон " + getFormatTime(remMinutes))));
+            timeCards.add(new WakeCards(("" + sdf.format(curTime.getTime())), ("Время на сон " + getFormatTime(remMinutes)), curTime));
             remMinutes += cycleDuration;
         }
 

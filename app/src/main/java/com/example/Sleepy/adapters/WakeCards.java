@@ -1,12 +1,17 @@
 package com.example.Sleepy.adapters;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class WakeCards {
     private String Time;
     private String RemainingTime;
+    private Calendar TriggerTime = Calendar.getInstance();
 
-    public WakeCards(String formatTime, String RemainingTimeMinute) {
+    public WakeCards(String formatTime, String remainingTimeMinute, Calendar triggerTime) {
         Time = formatTime;
-        RemainingTime = RemainingTimeMinute;
+        RemainingTime = remainingTimeMinute;
+        TriggerTime.set(triggerTime.get(Calendar.YEAR), triggerTime.get(Calendar.MONTH), triggerTime.get(Calendar.DATE), triggerTime.get(Calendar.HOUR_OF_DAY), triggerTime.get(Calendar.MINUTE));
     }
 
     public String getRemainingTime() {
@@ -23,5 +28,13 @@ public class WakeCards {
 
     public void setTime(String time) {
         Time = time;
+    }
+
+    public void setTriggerTime(Calendar triggerTime) {
+        TriggerTime.setTime(triggerTime.getTime());
+    }
+
+    public Calendar getTriggerTime() {
+        return TriggerTime;
     }
 }
