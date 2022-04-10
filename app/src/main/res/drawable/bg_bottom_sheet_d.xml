@@ -14,9 +14,9 @@
 
             <item
                 android:gravity="center_horizontal"
-                android:top="10dp"
-                android:width="60dp"
-                android:height="5dp">
+                android:top="20dp"
+                android:width="100dp"
+                android:height="6dp">
                 <shape
                     android:shape="rectangle"
                     android:thickness="2dp">

@@ -1,21 +1,21 @@
 package com.example.Sleepy.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
-import static android.media.AudioManager.STREAM_RING;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.Sleepy.R;
 import com.example.Sleepy.classes.AppTheme;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.Sleepy.databinding.ActivityMainBinding;
 
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    LottieAnimationView lStar, lLogo;
+    boolean isAnimate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,26 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         setVolumeControlStream(STREAM_ALARM);
         setSupportActionBar(binding.appBarMain.toolbar);
+        lLogo = binding.navView.getHeaderView(0).findViewById(R.id.lLogo);
+        lStar = binding.navView.getHeaderView(0).findViewById(R.id.lMenuBg);
         setNavConfig();
+        getShared();
+        setAnimation();
+    }
+
+    private void getShared() {
+        SharedPreferences prefs = (SharedPreferences) getApplicationContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
+        isAnimate = prefs.getBoolean("ANIMATIONS", true);
+    }
+
+    private void setAnimation(){
+        if (!isAnimate){
+            lLogo.setSpeed(0);
+            lStar.setSpeed(0);
+        }else{
+            lStar.setSpeed(1);
+            lLogo.setSpeed(1);
+        }
     }
 
     private void setNavConfig() {

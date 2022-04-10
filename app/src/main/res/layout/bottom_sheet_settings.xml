@@ -7,9 +7,9 @@
     style="@style/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="50dp"
+    android:paddingTop="40dp"
     app:behavior_hideable="true"
-    android:layout_marginTop="80dp"
+    android:layout_marginTop="50dp"
     app:behavior_peekHeight="0dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

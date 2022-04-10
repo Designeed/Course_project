@@ -79,8 +79,10 @@ public class WakeFragment extends Fragment {
             MyVibrator.vibrate(15, getContext());
         });
 
-        binding.svMainWake.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
-                binding.lStarTimePicker.setFrame(scrollY/8));
+        if(isAnimate){
+            binding.svMainWake.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
+                    binding.lStarTimePicker.setFrame(scrollY/8));
+        }
 
         binding.lYogaWake.setOnClickListener(view -> {
             String q = Quotes.getQuoteSloth();

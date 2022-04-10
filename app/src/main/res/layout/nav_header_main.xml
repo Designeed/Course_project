@@ -21,20 +21,20 @@
             android:layout_height="110dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/moon_logo"/>
+            app:lottie_rawRes="@raw/moon_logo" />
 
         <TextView
             style="@style/header_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="35dp"
             android:layout_marginRight="10dp"
             android:layout_toEndOf="@id/lLogo"
             android:fontFamily="@font/comfortaa_bold"
             android:text="@string/nav_header_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="25sp" />
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <com.airbnb.lottie.LottieAnimationView

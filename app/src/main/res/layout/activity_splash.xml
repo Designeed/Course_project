@@ -7,14 +7,4 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashActivity"
     android:gravity="center">
-
-    <!--
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lAnimSplash"
-        android:layout_height="150dp"
-        android:layout_width="150dp"
-        style="@style/splash_lottie"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
-    -->
 </LinearLayout>

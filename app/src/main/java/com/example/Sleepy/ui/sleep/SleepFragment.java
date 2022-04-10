@@ -87,8 +87,10 @@ public class SleepFragment extends Fragment {
 
         binding.bClearTime.setOnClickListener(view -> MyTimer.clearTime(binding.tpSleep, getContext()));
 
-        binding.svMainSleep.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
-                binding.lStarTimePicker.setFrame(scrollY/8));
+        if(isAnimate){
+            binding.svMainSleep.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) ->
+                    binding.lStarTimePicker.setFrame(scrollY/8));
+        }
 
         binding.bAddAlarm.setOnClickListener(view -> MyAlarm.setAlarm(getContext(), MyTimer.getCurrentTime(binding.tpSleep), binding.clMain));
 

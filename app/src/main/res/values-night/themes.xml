@@ -13,7 +13,6 @@
         <item name="colorOnSecondary">@color/text_header_d</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="textAppearanceHeadline1">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -138,6 +137,15 @@
 
     <style name="Theme.splash" parent="Theme.AppCompat.DayNight">
         <item name="android:windowBackground">@drawable/splash_bg_d</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.AppCompat.DayNight.NoActionBar.FullScreen" parent="@style/Theme.splash">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="app_bar" parent="Theme.AppCompat.DayNight">
