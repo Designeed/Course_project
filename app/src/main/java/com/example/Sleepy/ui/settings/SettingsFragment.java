@@ -82,6 +82,7 @@ public class SettingsFragment extends Fragment {
         binding.sAnimations.setOnClickListener(view -> {
             try{
                 prefs.edit().putBoolean("ANIMATIONS", binding.sAnimations.isChecked()).apply();
+                Objects.requireNonNull(getActivity()).recreate();
             }catch(Exception ex){
                 errorPlay();
             }
