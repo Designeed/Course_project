@@ -22,6 +22,7 @@ import com.example.Sleepy.R;
 import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.WakeCards;
 import com.example.Sleepy.adapters.WakeCardsAdapter;
+import com.example.Sleepy.classes.MyAnimator;
 import com.example.Sleepy.classes.MyTimer;
 import com.example.Sleepy.classes.MyVibrator;
 import com.example.Sleepy.classes.Quotes;
@@ -55,6 +56,7 @@ public class WakeFragment extends Fragment {
 
         init();
         initCardItem();
+        MyAnimator.setFadeAnimation(root);
 
         wakeViewModel.getText().observe(getViewLifecycleOwner(), s -> binding.tvSetTime.setText(s));
 

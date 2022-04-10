@@ -21,6 +21,7 @@ import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.classes.MyAlarm;
+import com.example.Sleepy.classes.MyAnimator;
 import com.example.Sleepy.classes.MyTimer;
 import com.example.Sleepy.classes.MyVibrator;
 import com.example.Sleepy.classes.Quotes;
@@ -31,7 +32,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
@@ -55,6 +55,7 @@ public class SleepFragment extends Fragment {
 
         init();
         initCardItem();
+        MyAnimator.setFadeAnimation(root);
 
         sleepViewModel.getText().observe(getViewLifecycleOwner(), s -> binding.tvSetTime.setText(s));
 
@@ -119,7 +120,6 @@ public class SleepFragment extends Fragment {
         mainAct = (MainActivity) getActivity();
         curTimeFull.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, binding.tpSleep.getHour(), binding.tpSleep.getMinute());
         sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
-
         getShared();
 
         remMinutes = cycleDuration;

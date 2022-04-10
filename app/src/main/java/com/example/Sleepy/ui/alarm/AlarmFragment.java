@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.Settings;
 import android.util.Log;
@@ -21,7 +22,9 @@ import com.example.Sleepy.R;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.classes.MyAlarm;
+import com.example.Sleepy.classes.MyAnimator;
 import com.example.Sleepy.classes.MyTimer;
+import com.example.Sleepy.classes.MyVibrator;
 import com.example.Sleepy.databinding.FragmentAlarmBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.timepicker.MaterialTimePicker;
@@ -52,8 +55,7 @@ public class AlarmFragment extends Fragment {
         View root = binding.getRoot();
 
         init();
-        initCardItem();
-        getPermission();
+        MyAnimator.setFadeAnimation(root);
 
         binding.fabAddAlarm.setOnClickListener(view -> {
             mtpTimeAlarm = new MaterialTimePicker.Builder()
@@ -98,6 +100,12 @@ public class AlarmFragment extends Fragment {
             }
         });
 
+        binding.srlUpdateAlarm.setOnRefreshListener(() -> {
+            MyVibrator.vibrate(30, getContext());
+            init();
+            binding.srlUpdateAlarm.setRefreshing(false);
+        });
+
         return root;
     }
 
@@ -105,6 +113,8 @@ public class AlarmFragment extends Fragment {
         alarmCards = new ArrayList<>();
         alarmCardsAdapter = new TimeCardsAdapter(alarmCards);
         alarmManager = (AlarmManager) Objects.requireNonNull(getContext()).getSystemService(Context.ALARM_SERVICE);
+        initCardItem();
+        getPermission();
     }
 
     private void getPermission() {

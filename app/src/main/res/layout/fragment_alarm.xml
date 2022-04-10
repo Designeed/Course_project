@@ -6,54 +6,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.alarm.AlarmFragment">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/clAlarm"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlUpdateAlarm"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/clAlarm"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvAlarmList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/title"
-                android:text="@string/alarm_list"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bCancelAlarm"
+                <TextView
+                    android:id="@+id/tvAlarmList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/title"
+                    android:text="@string/alarm_list"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bCancelAlarm"
+                    style="@style/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rvAlarmList"
+                    android:text="@string/cancel_alarm"
+                    android:textAllCaps="false"
+                    app:cornerRadius="30dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAlarmList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvAlarmList"
+                    android:textSize="30sp" />
+            </RelativeLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/fabAddAlarm"
                 style="@style/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rvAlarmList"
-                android:text="@string/cancel_alarm"
-                android:textAllCaps="false"
-                app:cornerRadius="30dp" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="30dp"
+                android:text="@string/add_alarm"
+                android:textAlignment="center"
+                app:icon="@drawable/ic_add_alarm"
+                app:iconTint="@color/white" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAlarmList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvAlarmList"
-                android:textSize="30sp" />
-        </RelativeLayout>
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fabAddAlarm"
-            style="@style/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="30dp"
-            android:text="@string/add_alarm"
-            android:textAlignment="center"
-            app:icon="@drawable/ic_add_alarm"
-            app:iconTint="@color/white" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

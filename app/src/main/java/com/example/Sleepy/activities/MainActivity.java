@@ -17,6 +17,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.Sleepy.classes.MyAnimator;
 import com.example.Sleepy.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         init();
+        MyAnimator.setFadeAnimation(binding.getRoot());
     }
 
     private void init(){

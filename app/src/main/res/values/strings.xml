@@ -89,4 +89,6 @@
     <string name="info_set_deep_sleep_desc">Расслабление и восстановление</string>
     <string name="info_set_when_dream">✨ Когда возникают сновидения?</string>
     <string name="info_set_when_dream_desc">\t\t\t\tСновидения возникают, как правило, в фазе быстрого сна. \n\n\t\t\t\tНовейшие исследования доказывают, что сновидения возникают также и во время медленного сна, но их продолжительность короче и они не такие эмоциональные.</string>
+    <string name="vibration_set_title">Вибрация</string>
+    <string name="use_vibration">Использовать вибрацию в приложении</string>
 </resources>
