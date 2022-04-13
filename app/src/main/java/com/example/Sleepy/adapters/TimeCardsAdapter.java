@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Sleepy.R;
@@ -22,6 +23,7 @@ public class TimeCardsAdapter extends RecyclerView.Adapter<TimeCardsAdapter.View
         this.timeCards = timeCards;
     }
 
+    @NonNull
     @Override
     public TimeCardsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_sleep, parent, false);
@@ -33,7 +35,7 @@ public class TimeCardsAdapter extends RecyclerView.Adapter<TimeCardsAdapter.View
         TimeCards timeCards = this.timeCards.get(position);
         holder.titleView.setText(timeCards.getTitle());
         holder.secText.setText(timeCards.getSecText());
-        //MyAnimator.setFadeAnimation(holder.itemView);
+        //MyAnimator.setScaleAnimation(holder.itemView);
     }
 
     @Override

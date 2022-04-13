@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getShared() {
-        SharedPreferences prefs = (SharedPreferences) getApplicationContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
         isAnimate = prefs.getBoolean("ANIMATIONS", true);
     }
 

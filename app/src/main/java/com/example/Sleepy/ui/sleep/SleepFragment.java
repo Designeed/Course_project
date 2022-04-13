@@ -146,7 +146,6 @@ public class SleepFragment extends Fragment {
     }
 
     private void initCardItem() {
-        // FIXME: 08.04.2022 время засыпания с инкрементом
         binding.rvCards.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvCards.setAdapter(timeCardsAdapter);
 

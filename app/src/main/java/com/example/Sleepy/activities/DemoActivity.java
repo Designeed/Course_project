@@ -56,7 +56,6 @@ public class DemoActivity extends AppCompatActivity {
             }else {
                 binding.bNext.setEnabled(false);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
                 finish();
             }
         });
