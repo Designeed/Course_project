@@ -5,11 +5,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.Sleepy.R;
 import com.example.Sleepy.activities.AlarmActivity;
 import com.example.Sleepy.activities.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -49,7 +51,7 @@ public class MyAlarm extends AppCompatActivity {
 
     private static void printInfo(View view, Calendar time) {
         Log.i("alarm", "Alarm SET " + sdf.format(time.getTime()));
-        Snackbar.make(view, "Будильник установлен на " + sdf.format(time.getTime()) + "\nОсталось " + MyTimer.calcRemainingTimeMinute(new Date(alarmManager.getNextAlarmClock().getTriggerTime())), Snackbar.LENGTH_LONG)
+        Snackbar.make(view, view.getContext().getString(R.string.alarm_set_for) + sdf.format(time.getTime()) + view.getContext().getString(R.string.remaining_time_snackbar) + MyTimer.calcRemainingTimeMinute(new Date(alarmManager.getNextAlarmClock().getTriggerTime()), view.getContext()), Snackbar.LENGTH_LONG)
                 .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
                 .show();
     }

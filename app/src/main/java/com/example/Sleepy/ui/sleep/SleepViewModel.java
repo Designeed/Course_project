@@ -1,23 +1,27 @@
 package com.example.Sleepy.ui.sleep;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.Sleepy.R;
 
 import java.util.Calendar;
 
 public class SleepViewModel extends ViewModel {
 
-    private MutableLiveData<String> SetTimeText;
-    private MutableLiveData<String> SetSleepText;
-    private MutableLiveData<Calendar> CurTime;
+    private final MutableLiveData<String> SetTimeText;
+    private final MutableLiveData<String> SetSleepText;
+    private final MutableLiveData<Calendar> CurTime;
 
-    public SleepViewModel() {
+    public SleepViewModel(Context context) {
         SetTimeText = new MutableLiveData<>();
-        SetTimeText.setValue("Выберите время, в которое хотели бы проснуться...");
+        SetTimeText.setValue(context.getString(R.string.choose_time));
 
         SetSleepText = new MutableLiveData<>();
-        SetSleepText.setValue("Ложитесь в...");
+        SetSleepText.setValue(context.getString(R.string.go_to_bed));
 
         CurTime = new MutableLiveData<>();
         CurTime.setValue(Calendar.getInstance());

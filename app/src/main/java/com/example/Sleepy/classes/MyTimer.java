@@ -3,12 +3,11 @@ package com.example.Sleepy.classes;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.AlarmClock;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.Sleepy.adapters.WakeCards;
+import com.example.Sleepy.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
@@ -20,7 +19,7 @@ import java.util.Objects;
 
 public class MyTimer {
 
-    public static String calcRemainingTimeMinute(Date date){
+    public static String calcRemainingTimeMinute(Date date, Context context){
         String RemTime;
         long timeUp = date.getTime();
         long diff = timeUp - new Date().getTime();
@@ -29,26 +28,26 @@ public class MyTimer {
         long diffHours = diff / (60 * 60 * 1000);
 
         if (diffMinutes == 0){
-            RemTime = "" + diffHours + "ч";
+            RemTime = "" + diffHours + context.getString(R.string.hours);
         }else if(diffHours == 0){
-            RemTime = "" + diffMinutes + "м";
+            RemTime = "" + diffMinutes + context.getString(R.string.minute);
         }else{
-            RemTime = "" + diffHours + "ч" + diffMinutes + "м";
+            RemTime = "" + diffHours + context.getString(R.string.hours) + diffMinutes + context.getString(R.string.minute);
         }
         return RemTime;
     }
 
-    public static String getFormatTime(long minute){
+    public static String getFormatTime(long minute, Context context){
         String RemTime;
         long h, m;
         h = minute / 60;
         m = minute - h * 60;
         if (m == 0){
-            RemTime = "" + h + "ч";
+            RemTime = "" + h + context.getString(R.string.hours);
         }else if(h != 0 && m != 0){
-            RemTime = "" + h + "ч" + m + "м";
+            RemTime = "" + h + context.getString(R.string.hours) + m + context.getString(R.string.minute);
         }else{
-            RemTime = "" + m + "м";
+            RemTime = "" + m + context.getString(R.string.minute);
         }
         return RemTime;
     }
@@ -73,17 +72,17 @@ public class MyTimer {
                     .putExtra(AlarmClock.EXTRA_HOUR, time.get(Calendar.HOUR_OF_DAY))
                     .putExtra(AlarmClock.EXTRA_MINUTES, time.get(Calendar.MINUTE)));
         }catch (Exception ex){
-            Snackbar.make(view, "Не удалось открыть будильник :(", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, context.getString(R.string.error_open_alarm), Snackbar.LENGTH_LONG).show();
         }
     }
 
-    public static void getAsleepText(int asleepTime, TextView tv) {
+    public static void getAsleepText(int asleepTime, TextView tv, Context context) {
         if (asleepTime != 0){
             tv.setVisibility(View.VISIBLE);
             tv.setText(new StringBuilder()
-                    .append("Расчитано с учетом времени засыпания - ")
+                    .append(context.getString(R.string.calculate_with_sleep_time))
                     .append(asleepTime)
-                    .append(" мин."));
+                    .append(context.getString(R.string.min)));
         }else {
             tv.setVisibility(View.GONE);
         }

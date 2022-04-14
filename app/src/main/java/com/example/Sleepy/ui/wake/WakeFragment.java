@@ -9,13 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.Sleepy.R;
@@ -50,7 +48,7 @@ public class WakeFragment extends Fragment {
     private boolean isAnimate;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        wakeViewModel = new ViewModelProvider(this).get(WakeViewModel.class);
+        wakeViewModel = new WakeViewModel(Objects.requireNonNull(getContext()));
         binding = FragmentWakeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -91,8 +89,8 @@ public class WakeFragment extends Fragment {
             Snackbar s = Snackbar.make(view, q, Snackbar.LENGTH_LONG)
                     .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE);
 
-            if(q.equals("Хочешь интересный факт?")){
-                s.setAction("Да", view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
+            if(q.equals(getString(R.string.you_need_fact))){
+                s.setAction(R.string.yes, view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
                         .setTitle(getString(R.string.title_alert_sloth))
                         .setMessage(Quotes.getFact())
                         .setPositiveButton(getString(R.string.pos_b_alert), (dialogInterface, i) -> dialogInterface.cancel())
@@ -125,7 +123,7 @@ public class WakeFragment extends Fragment {
         remMinutes = cycleDuration;
         Minutes = cycleDuration;
 
-        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep);
+        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, getContext());
         getAnimations();
     }
 
@@ -158,7 +156,7 @@ public class WakeFragment extends Fragment {
 
         for(int i = 0; i < cardCount; i++){
             curTime.add(Calendar.MINUTE, Minutes);
-            timeCards.add(new WakeCards(("" + sdf.format(curTime.getTime())), ("Время на сон " + getFormatTime(remMinutes)), curTime));
+            timeCards.add(new WakeCards((sdf.format(curTime.getTime())), (getString(R.string.time_to_sleep) + getFormatTime(remMinutes, getContext())), curTime));
             remMinutes += cycleDuration;
         }
 
@@ -166,7 +164,7 @@ public class WakeFragment extends Fragment {
     }
 
     private void setTitleTime(){
-        if (timeCards.size() >= 6) mainAct.setTitleAppBar("Оптимальное время - " + timeCards.get(6-1).getTime());
+        if (timeCards.size() >= 6) mainAct.setTitleAppBar(R.string.optimal_time + timeCards.get(6-1).getTime());
     }
 
     @Override

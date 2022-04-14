@@ -15,20 +15,22 @@
         android:layout_width="80dp"
         android:layout_height="match_parent" >
 
-            <ImageButton
-                android:id="@+id/ibAddAlarm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_add_alarm"
-                android:foregroundTint="@color/white"
-                android:background="@color/transparent"
-                android:layout_gravity="center"
-                android:contentDescription="@string/add_alarm" />
+        <ImageButton
+            android:id="@+id/ibAddAlarm"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_add_alarm"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center"
+            android:contentDescription="@string/add_alarm" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp">
 
         <com.google.android.material.card.MaterialCardView
             style="@style/card_style">

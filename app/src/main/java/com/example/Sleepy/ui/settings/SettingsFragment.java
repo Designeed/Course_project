@@ -49,7 +49,7 @@ public class SettingsFragment extends Fragment {
                 .setPositiveButton(getString(R.string.pos_b_alert_setting), (dialogInterface, i) -> {
                     ClearSharedPreferences();
                     init();
-                    Snackbar.make(binding.clSettingsBg, "Настройки сброшены", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(binding.clSettingsBg, getString(R.string.settings_clear), Snackbar.LENGTH_SHORT).show();
                 })
                 .show());
 

@@ -49,7 +49,7 @@ public class SleepFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        sleepViewModel = new ViewModelProvider(this).get(SleepViewModel.class);
+        sleepViewModel = new SleepViewModel(Objects.requireNonNull(getContext()));
         binding = FragmentSleepBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -100,8 +100,8 @@ public class SleepFragment extends Fragment {
             Snackbar s = Snackbar.make(view, q, Snackbar.LENGTH_LONG)
                     .setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE);
 
-            if(q.equals("Хочешь анекдот?")){
-                s.setAction("Да", view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
+            if(q.equals(getString(R.string.you_need_anecdote))){
+                s.setAction(R.string.yes, view1 -> new MaterialAlertDialogBuilder(Objects.requireNonNull(getContext()))
                         .setTitle(getString(R.string.title_alert_cat))
                         .setMessage(Quotes.getAnecdote())
                         .setPositiveButton(getString(R.string.pos_b_alert), (dialogInterface, i) -> dialogInterface.cancel())
@@ -125,7 +125,7 @@ public class SleepFragment extends Fragment {
         remMinutes = cycleDuration;
         Minutes = -cycleDuration;
 
-        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep);
+        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, getContext());
         getAnimations();
     }
 
@@ -157,7 +157,7 @@ public class SleepFragment extends Fragment {
 
         for(int i = 0; i < cardCount; i++){
             curTimeFull.add(Calendar.MINUTE, -Minutes);
-            timeCards.add(new TimeCards(("" + sdf.format(curTimeFull.getTime())), ("Осталось " + getFormatTime(remMinutes))));
+            timeCards.add(new TimeCards((sdf.format(curTimeFull.getTime())), (getString(R.string.remaining_time) + getFormatTime(remMinutes, getContext()))));
             remMinutes -= cycleDuration;
         }
 
@@ -165,7 +165,7 @@ public class SleepFragment extends Fragment {
     }
 
     private void setTitleTime(){
-        if (timeCards.size() >= 6) mainAct.setTitleAppBar("Оптимальное время - " + timeCards.get(timeCards.size() - 6).getTitle());
+        if (timeCards.size() >= 6) mainAct.setTitleAppBar(getString(R.string.optimal_time) + timeCards.get(timeCards.size() - 6).getTitle());
     }
 
     @Override

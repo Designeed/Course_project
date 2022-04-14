@@ -86,16 +86,16 @@ public class AlarmFragment extends Fragment {
                 Snackbar.make(
                         binding.clAlarm,
                         new StringBuilder()
-                                .append("Будильник на ")
+                                .append(getString(R.string.alarm_clock_for))
                                 .append(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(timeLastAlarm.getTime()))
-                                .append(" отменен"),
+                                .append(getString(R.string.has_been_canceled)),
                         Snackbar.LENGTH_LONG)
-                        .setAction("Вернуть", view12 -> setAlarm(timeLastAlarm, binding.clAlarm)).show();
+                        .setAction(R.string.return_alarm,view12 -> setAlarm(timeLastAlarm, binding.clAlarm)).show();
             }catch (Exception ex){
                 initCardItem();
                 Snackbar.make(
                         binding.clAlarm,
-                        "Будильник отменен",
+                        R.string.alarm_canceled,
                         Snackbar.LENGTH_LONG).show();
             }
         });
@@ -144,11 +144,11 @@ public class AlarmFragment extends Fragment {
 
             alarmCards.clear();
             alarmCards.add(new TimeCards(
-                    "" + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(Objects.requireNonNull(calcAlarmTime())),
-                    "Осталось " + MyTimer.calcRemainingTimeMinute(Objects.requireNonNull(calcAlarmTime()))));
+                    new SimpleDateFormat("HH:mm", Locale.getDefault()).format(Objects.requireNonNull(calcAlarmTime())),
+                    getString(R.string.remaining_time) + MyTimer.calcRemainingTimeMinute(Objects.requireNonNull(calcAlarmTime()), getContext())));
         }else{
             alarmCards.clear();
-            binding.tvAlarmList.setText("Пока что нет будильников 😔\n");
+            binding.tvAlarmList.setText(R.string.no_alarm);
             binding.bCancelAlarm.setVisibility(View.GONE);
         }
     }
