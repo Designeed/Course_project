@@ -20,10 +20,6 @@
 
     <!--layouts-->
 
-    <style name="ivBGInfoMoon" parent="Theme.AppCompat.DayNight">
-        <item name="android:background">@drawable/ic_moon_p</item>
-    </style>
-
     <style name="bg_tp_wake" parent="Theme.AppCompat.DayNight">
         <item name="lottie_rawRes">@raw/sun_p</item>
     </style>

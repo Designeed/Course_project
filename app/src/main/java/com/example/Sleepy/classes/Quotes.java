@@ -1,5 +1,11 @@
 package com.example.Sleepy.classes;
 
+import android.app.Application;
+import android.content.Context;
+
+import com.example.Sleepy.R;
+import com.example.Sleepy.activities.MainActivity;
+
 import java.util.Random;
 
 public class Quotes {
@@ -93,7 +99,7 @@ public class Quotes {
             "Спокойной ночи!",
             "Иди поспи",
             "Нажми на меня еще раз",
-            "Хочешь интересный факт?",
+            "Хочешь анекдот?",
             "Ты очень любопытный"
     };
 
