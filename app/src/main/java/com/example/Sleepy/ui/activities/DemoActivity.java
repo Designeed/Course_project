@@ -1,4 +1,4 @@
-package com.example.Sleepy.activities;
+package com.example.Sleepy.ui.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
 

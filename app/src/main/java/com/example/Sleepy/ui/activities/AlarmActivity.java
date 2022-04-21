@@ -1,4 +1,4 @@
-package com.example.Sleepy.activities;
+package com.example.Sleepy.ui.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
 import static android.media.RingtoneManager.TYPE_ALARM;
@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
@@ -23,10 +22,13 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.Sleepy.R;
+import com.example.Sleepy.shared.MyAlarm;
+import com.example.Sleepy.shared.MyPreferences;
 import com.example.Sleepy.shared.Quotes;
 import com.example.Sleepy.databinding.ActivityAlarmBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -39,7 +41,7 @@ public class AlarmActivity extends AppCompatActivity {
     private Uri notificationUri;
     private PowerManager.WakeLock mWakeLock;
     private AudioAttributes aaAlarmType;
-    private boolean quote;
+    private MyPreferences.SettingsApp prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +53,25 @@ public class AlarmActivity extends AppCompatActivity {
         init();
         playSound();
 
-        binding.bStopAlarm.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), SplashActivity.class));
-            finish();
-        });
+        binding.bStopAlarm.setOnClickListener(view -> finish());
+
+        binding.bPlusTime.setOnClickListener(view -> setAlarmWithExtraTime());
     }
 
     private void init(){
+        prefs = new MyPreferences.SettingsApp(this);
+        binding.bPlusTime.setText("Еще " + prefs.getExtraTime() + " мин.");
         Objects.requireNonNull(getSupportActionBar()).hide();
         setVolumeControlStream(STREAM_ALARM);
         setAlarmType();
-        getShared();
         setQuoteAndTime();
+    }
+
+    private void setAlarmWithExtraTime() {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MINUTE, prefs.getExtraTime());
+        finish();
+        MyAlarm.setAlarm(this, c, binding.rlMainAlarm);
     }
 
     private void setAlarmType() {
@@ -132,16 +141,11 @@ public class AlarmActivity extends AppCompatActivity {
     private void setQuoteAndTime() {
         binding.tvAlarmTime.setText(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date().getTime()));
 
-        if(quote){
+        if(prefs.isCheckedQuotes()){
             binding.tvAlarmInfo.setText(Quotes.getQuoteAlarm());
         }else{
             binding.tvAlarmInfo.setText("Будильник");
         }
-    }
-
-    private void getShared() {
-        SharedPreferences prefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        quote = prefs.getBoolean("QUOTE", true);
     }
 
     @Override

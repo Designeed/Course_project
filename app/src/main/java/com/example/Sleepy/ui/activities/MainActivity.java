@@ -1,9 +1,7 @@
-package com.example.Sleepy.activities;
+package com.example.Sleepy.ui.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 

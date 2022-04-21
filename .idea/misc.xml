@@ -30,6 +30,7 @@
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/header_logo_svg.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_3_stage.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_add_alarm.xml" value="0.181786941580756" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_add_time.xml" value="0.18368055555555557" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_alarm_clock.xml" value="0.1" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
@@ -48,7 +49,7 @@
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/sun_svg.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/drawable/theme_checked_button.xml" value="0.181786941580756" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout-v26/fragment_settings.xml" value="0.259375" />
-        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_alarm.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_alarm.xml" value="0.152" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_demo.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_main.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Acer/Sleepy_App/app/src/main/res/layout/activity_splash.xml" value="0.17291666666666666" />

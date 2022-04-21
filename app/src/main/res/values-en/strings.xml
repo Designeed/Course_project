@@ -97,4 +97,6 @@
     <string name="you_need_fact">Do you want an interesting fact?</string>
     <string name="time_to_sleep">Time to sleep\u0020</string>
     <string name="settings_clear">Settings reset</string>
+    <string name="extra_time_desc">Select the time for which you can postpone the alarm</string>
+    <string name="extra_time_title">5 minutes and I get up</string>
 </resources>

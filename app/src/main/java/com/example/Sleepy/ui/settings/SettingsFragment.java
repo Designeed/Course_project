@@ -22,6 +22,7 @@ import com.example.Sleepy.databinding.FragmentSettingsBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.shawnlin.numberpicker.NumberPicker;
 
 import java.util.Objects;
 
@@ -175,11 +176,18 @@ public class SettingsFragment extends Fragment {
 
         binding.sVibration.setOnClickListener(view -> {
             try{
-                if (prefs.isVibrated()){
-                    MyVibrator.vibrate(30, getContext());
-                }
+                MyVibrator.vibrate(30, getContext());
                 prefs.setVibrated(binding.sVibration.isChecked());
             }catch (Exception ex){
+                errorPlay();
+            }
+        });
+
+        binding.npExtraTime.setOnValueChangedListener((picker, oldVal, newVal) -> {
+            try{
+                MyVibrator.vibrate(15, getContext());
+                prefs.setExtraTime(newVal);
+            }catch(Exception ex){
                 errorPlay();
             }
         });
@@ -230,6 +238,7 @@ public class SettingsFragment extends Fragment {
             binding.sQuoteShow.setChecked(prefs.isCheckedQuotes());
             binding.sChoiceAlarm.setChecked(prefs.isBuiltinAlarm());
             binding.sVibration.setChecked(prefs.isVibrated());
+            binding.npExtraTime.setValue(prefs.getExtraTime());
             loadPlay();
             Log.i("LOADING_SETTINGS", "Ok");
         }catch (Exception ex){

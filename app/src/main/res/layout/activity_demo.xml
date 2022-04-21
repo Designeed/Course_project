@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DemoActivity"
+    tools:context=".ui.activities.DemoActivity"
     style="@style/app_bar">
 
     <com.google.android.material.button.MaterialButton

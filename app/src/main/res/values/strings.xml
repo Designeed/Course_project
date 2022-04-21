@@ -110,4 +110,6 @@
     <string name="you_need_fact">Хочешь интересный факт?</string>
     <string name="time_to_sleep">"Время на сон\u0020"</string>
     <string name="settings_clear">Настройки сброшены</string>
+    <string name="extra_time_desc">Выберите время, на которое можно будет отложить будильник</string>
+    <string name="extra_time_title">5 минут и встаю</string>
 </resources>

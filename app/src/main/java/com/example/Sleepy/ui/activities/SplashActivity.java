@@ -1,4 +1,4 @@
-package com.example.Sleepy.activities;
+package com.example.Sleepy.ui.activities;
 
 import static android.media.AudioManager.STREAM_ALARM;
 
@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
             run.setCheckedRun(false);
             Log.i("run","first");
         }else{
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, AlarmActivity.class));
             finish();
             Log.i("run","not first");
         }

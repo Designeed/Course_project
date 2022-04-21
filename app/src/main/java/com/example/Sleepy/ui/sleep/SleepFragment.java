@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.activities.MainActivity;
+import com.example.Sleepy.ui.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
 import com.example.Sleepy.shared.MyAlarm;
