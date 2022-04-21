@@ -9,7 +9,7 @@ import android.view.Menu;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.Sleepy.R;
-import com.example.Sleepy.classes.AppTheme;
+import com.example.Sleepy.shared.AppTheme;
 
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
@@ -18,8 +18,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.Sleepy.classes.MyAnimator;
+import com.example.Sleepy.shared.MyAnimator;
 import com.example.Sleepy.databinding.ActivityMainBinding;
+import com.example.Sleepy.shared.MyPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getShared() {
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        isAnimate = prefs.getBoolean("ANIMATIONS", true);
+        MyPreferences.SettingsApp prefs = new MyPreferences.SettingsApp(this);
+        isAnimate = prefs.isAnimated();
     }
 
     private void setAnimation(){

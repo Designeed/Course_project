@@ -23,7 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.classes.Quotes;
+import com.example.Sleepy.shared.Quotes;
 import com.example.Sleepy.databinding.ActivityAlarmBinding;
 
 import java.text.SimpleDateFormat;

@@ -1,11 +1,11 @@
-package com.example.Sleepy.classes;
+package com.example.Sleepy.shared;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
 
@@ -21,7 +21,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
 
 public class MyAlarm extends AppCompatActivity {
@@ -29,7 +28,7 @@ public class MyAlarm extends AppCompatActivity {
     private static AlarmManager alarmManager;
 
     public static void setAlarm(Context context, Calendar time, View view){
-        if(getShared(context)){
+        if(new MyPreferences.SettingsApp(context).isBuiltinAlarm()){
             if (time.before(Calendar.getInstance())){
                 time.add(Calendar.DATE, 1);
             }
@@ -42,11 +41,6 @@ public class MyAlarm extends AppCompatActivity {
         }else{
             MyTimer.setAlarmInApp(time, context, view);
         }
-    }
-
-    private static boolean getShared(Context context){
-        SharedPreferences prefs = Objects.requireNonNull(context).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        return prefs.getBoolean("WHAT_ALARM", true);
     }
 
     private static void printInfo(View view, Calendar time) {
@@ -82,6 +76,7 @@ public class MyAlarm extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MutatingSharedPrefs")
     private static void saveTimeAlarm(Calendar time, View view){
         SharedPreferences prefs = view.getContext().getSharedPreferences("ALARM_MANAGER", Context.MODE_PRIVATE);
         Set<String> TimeList = new HashSet<>();

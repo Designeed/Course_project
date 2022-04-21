@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.classes.MyAnimator;
 
 import java.util.List;
 

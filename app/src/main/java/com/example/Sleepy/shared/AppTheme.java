@@ -1,7 +1,6 @@
-package com.example.Sleepy.classes;
+package com.example.Sleepy.shared;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -9,8 +8,8 @@ import com.example.Sleepy.R;
 
 public class AppTheme {
     public static void setShareTheme(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        switch (prefs.getInt("THEME", R.id.rbThemeAuto)) {
+        MyPreferences.SettingsApp prefs = new MyPreferences.SettingsApp(context);
+        switch (prefs.getThemeId()) {
             case R.id.rbThemePurple:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 break;

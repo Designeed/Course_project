@@ -1,10 +1,4 @@
-package com.example.Sleepy.classes;
-
-import android.app.Application;
-import android.content.Context;
-
-import com.example.Sleepy.R;
-import com.example.Sleepy.activities.MainActivity;
+package com.example.Sleepy.shared;
 
 import java.util.Random;
 

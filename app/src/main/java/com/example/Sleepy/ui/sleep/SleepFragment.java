@@ -1,9 +1,7 @@
 package com.example.Sleepy.ui.sleep;
 
-import static com.example.Sleepy.classes.MyTimer.getFormatTime;
+import static com.example.Sleepy.shared.MyTimer.getFormatTime;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,18 +11,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.Sleepy.R;
 import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.TimeCards;
 import com.example.Sleepy.adapters.TimeCardsAdapter;
-import com.example.Sleepy.classes.MyAlarm;
-import com.example.Sleepy.classes.MyAnimator;
-import com.example.Sleepy.classes.MyTimer;
-import com.example.Sleepy.classes.MyVibrator;
-import com.example.Sleepy.classes.Quotes;
+import com.example.Sleepy.shared.MyAlarm;
+import com.example.Sleepy.shared.MyAnimator;
+import com.example.Sleepy.shared.MyPreferences;
+import com.example.Sleepy.shared.MyTimer;
+import com.example.Sleepy.shared.MyVibrator;
+import com.example.Sleepy.shared.Quotes;
 import com.example.Sleepy.databinding.FragmentSleepBinding;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -138,11 +136,11 @@ public class SleepFragment extends Fragment {
     }
 
     private void getShared(){
-        SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        cardCount = prefs.getInt("CARD_COUNT", 6);
-        fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
-        cycleDuration = prefs.getInt("CYCLE_DURATION", 90);
-        isAnimate = prefs.getBoolean("ANIMATIONS", true);
+        MyPreferences.SettingsApp prefs = new MyPreferences.SettingsApp(requireContext());
+        cardCount = prefs.getCardCount();
+        fallingAsleepTime = prefs.getSleepTime();
+        cycleDuration = prefs.getCycleDuration();
+        isAnimate = prefs.isAnimated();
     }
 
     private void initCardItem() {

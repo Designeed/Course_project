@@ -1,7 +1,6 @@
 package com.example.Sleepy.ui.settings;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,11 +13,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.classes.MyAnimator;
-import com.example.Sleepy.classes.MyVibrator;
+import com.example.Sleepy.shared.MyAnimator;
+import com.example.Sleepy.shared.MyPreferences;
+import com.example.Sleepy.shared.MyVibrator;
 import com.example.Sleepy.databinding.FragmentSettingsBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -30,9 +29,9 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
     private FragmentSettingsBinding binding;
-    private SharedPreferences prefs = null;
     private AudioManager amAlarm;
     private Handler handler;
+    private MyPreferences.SettingsApp prefs;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
@@ -57,9 +56,9 @@ public class SettingsFragment extends Fragment {
             binding.npTimeSleep.setEnabled( binding.sSleepTime.isChecked());
             try{
                 MyVibrator.vibrate(30, getContext());
-                prefs.edit().putBoolean("CHECK_SLEEP",  binding.sSleepTime.isChecked()).apply();
+                prefs.setCheckedSleepTime(binding.sSleepTime.isChecked());
                 binding.npTimeSleep.setValue(0);
-                prefs.edit().putInt("SLEEP_TIME", 0).apply();
+                prefs.setSleepTime(0);
             }catch(Exception ex){
                 errorPlay();
             }
@@ -70,13 +69,13 @@ public class SettingsFragment extends Fragment {
                 MyVibrator.vibrate(30, getContext());
                 switch (i){
                     case R.id.rbThemeAuto:
-                        prefs.edit().putInt("THEME", R.id.rbThemeAuto).apply();
+                        prefs.setThemeId(R.id.rbThemeAuto);
                         break;
                     case R.id.rbThemeDark:
-                        prefs.edit().putInt("THEME", R.id.rbThemeDark).apply();
+                        prefs.setThemeId(R.id.rbThemeDark);
                         break;
                     case R.id.rbThemePurple:
-                        prefs.edit().putInt("THEME", R.id.rbThemePurple).apply();
+                        prefs.setThemeId(R.id.rbThemePurple);
                         break;
                 }
                 Objects.requireNonNull(getActivity()).recreate();
@@ -88,7 +87,7 @@ public class SettingsFragment extends Fragment {
         binding.sAnimations.setOnClickListener(view -> {
             try{
                 MyVibrator.vibrate(30, getContext());
-                prefs.edit().putBoolean("ANIMATIONS", binding.sAnimations.isChecked()).apply();
+                prefs.setAnimated(binding.sAnimations.isChecked());
                 Objects.requireNonNull(getActivity()).recreate();
             }catch(Exception ex){
                 errorPlay();
@@ -98,7 +97,7 @@ public class SettingsFragment extends Fragment {
         binding.npCycles.setOnValueChangedListener((picker, oldVal, newVal) -> {
             try{
                 MyVibrator.vibrate(15, getContext());
-                prefs.edit().putInt("CARD_COUNT", newVal).apply();
+                prefs.setCardCount(newVal);
             }catch(Exception ex){
                 errorPlay();
             }
@@ -107,7 +106,7 @@ public class SettingsFragment extends Fragment {
         binding.npDurationCycle.setOnValueChangedListener((picker, oldVal, newVal) -> {
             try{
                 MyVibrator.vibrate(10, getContext());
-                prefs.edit().putInt("CYCLE_DURATION", newVal).apply();
+                prefs.setCycleDuration(newVal);
             }catch(Exception ex){
                 errorPlay();
             }
@@ -116,8 +115,8 @@ public class SettingsFragment extends Fragment {
         binding.npTimeSleep.setOnValueChangedListener((picker, oldVal, newVal) -> {
             try{
                 MyVibrator.vibrate(15, getContext());
-                if (binding.sSleepTime.isChecked()) prefs.edit().putInt("SLEEP_TIME", newVal).apply();
-                else prefs.edit().putInt("SLEEP_TIME", 0).apply();
+                if (binding.sSleepTime.isChecked()) prefs.setSleepTime(newVal);
+                else prefs.setSleepTime(0);
             }catch(Exception ex){
                 errorPlay();
             }
@@ -126,7 +125,7 @@ public class SettingsFragment extends Fragment {
         binding.sTimeFormat.setOnClickListener(view -> {
             try{
                 MyVibrator.vibrate(30, getContext());
-                prefs.edit().putBoolean("TIME_FORMAT", binding.sTimeFormat.isChecked()).apply();
+                prefs.set24TimeFormat(binding.sTimeFormat.isChecked());
             }catch(Exception ex){
                 errorPlay();
             }
@@ -135,7 +134,7 @@ public class SettingsFragment extends Fragment {
         binding.sQuoteShow.setOnClickListener(view -> {
             try{
                 MyVibrator.vibrate(30, getContext());
-                prefs.edit().putBoolean("QUOTE", binding.sQuoteShow.isChecked()).apply();
+                prefs.setCheckedQuotes(binding.sQuoteShow.isChecked());
             }catch (Exception ex){
                 errorPlay();
             }
@@ -153,7 +152,7 @@ public class SettingsFragment extends Fragment {
         binding.sChoiceAlarm.setOnClickListener(view -> {
             try{
                 MyVibrator.vibrate(30, getContext());
-                prefs.edit().putBoolean("WHAT_ALARM", binding.sChoiceAlarm.isChecked()).apply();
+                prefs.setCheckedBuiltinAlarm(binding.sChoiceAlarm.isChecked());
             }catch (Exception ex){
                 errorPlay();
             }
@@ -176,10 +175,10 @@ public class SettingsFragment extends Fragment {
 
         binding.sVibration.setOnClickListener(view -> {
             try{
-                if (prefs.getBoolean("VIBRATIONS", true)){
+                if (prefs.isVibrated()){
                     MyVibrator.vibrate(30, getContext());
                 }
-                prefs.edit().putBoolean("VIBRATIONS", binding.sVibration.isChecked()).apply();
+                prefs.setVibrated(binding.sVibration.isChecked());
             }catch (Exception ex){
                 errorPlay();
             }
@@ -218,19 +217,19 @@ public class SettingsFragment extends Fragment {
     }
 
     private void getShared() {
-        prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
+        prefs = new MyPreferences.SettingsApp(requireContext());
         try{
-            binding.rgTheme.check(prefs.getInt("THEME", R.id.rbThemeAuto));
-            binding.sAnimations.setChecked(prefs.getBoolean("ANIMATIONS", true));
-            binding.npCycles.setValue(prefs.getInt("CARD_COUNT", 6));
-            binding.sSleepTime.setChecked(prefs.getBoolean("CHECK_SLEEP", false));
+            binding.rgTheme.check(prefs.getThemeId());
+            binding.sAnimations.setChecked(prefs.isAnimated());
+            binding.npCycles.setValue(prefs.getCardCount());
+            binding.sSleepTime.setChecked(prefs.isCheckedSleepTime());
             binding.npTimeSleep.setEnabled(binding.sSleepTime.isChecked());
-            binding.npTimeSleep.setValue(prefs.getInt("SLEEP_TIME", 0));
-            binding.sTimeFormat.setChecked(prefs.getBoolean("TIME_FORMAT", true));
-            binding.npDurationCycle.setValue(prefs.getInt("CYCLE_DURATION", 90));
-            binding.sQuoteShow.setChecked(prefs.getBoolean("QUOTE", true));
-            binding.sChoiceAlarm.setChecked(prefs.getBoolean("WHAT_ALARM", true));
-            binding.sVibration.setChecked(prefs.getBoolean("VIBRATIONS", true));
+            binding.npTimeSleep.setValue(prefs.getSleepTime());
+            binding.sTimeFormat.setChecked(prefs.is24TimeFormat());
+            binding.npDurationCycle.setValue(prefs.getCycleDuration());
+            binding.sQuoteShow.setChecked(prefs.isCheckedQuotes());
+            binding.sChoiceAlarm.setChecked(prefs.isBuiltinAlarm());
+            binding.sVibration.setChecked(prefs.isVibrated());
             loadPlay();
             Log.i("LOADING_SETTINGS", "Ok");
         }catch (Exception ex){
@@ -252,7 +251,7 @@ public class SettingsFragment extends Fragment {
     };
 
     private void ClearSharedPreferences(){
-        prefs.edit().clear().apply();
+        prefs.clearSettingsApp();
     }
 
     @Override

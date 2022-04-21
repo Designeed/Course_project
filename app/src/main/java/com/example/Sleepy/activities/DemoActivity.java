@@ -15,8 +15,8 @@ import android.widget.LinearLayout;
 import com.example.Sleepy.adapters.OnBoarding;
 import com.example.Sleepy.R;
 import com.example.Sleepy.adapters.OnBoardingAdapter;
-import com.example.Sleepy.classes.AppTheme;
-import com.example.Sleepy.classes.MyVibrator;
+import com.example.Sleepy.shared.AppTheme;
+import com.example.Sleepy.shared.MyVibrator;
 import com.example.Sleepy.databinding.ActivityDemoBinding;
 
 import java.util.ArrayList;

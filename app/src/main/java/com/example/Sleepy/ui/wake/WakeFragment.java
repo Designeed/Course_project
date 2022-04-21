@@ -1,9 +1,7 @@
 package com.example.Sleepy.ui.wake;
 
-import static com.example.Sleepy.classes.MyTimer.getFormatTime;
+import static com.example.Sleepy.shared.MyTimer.getFormatTime;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,10 +18,11 @@ import com.example.Sleepy.R;
 import com.example.Sleepy.activities.MainActivity;
 import com.example.Sleepy.adapters.WakeCards;
 import com.example.Sleepy.adapters.WakeCardsAdapter;
-import com.example.Sleepy.classes.MyAnimator;
-import com.example.Sleepy.classes.MyTimer;
-import com.example.Sleepy.classes.MyVibrator;
-import com.example.Sleepy.classes.Quotes;
+import com.example.Sleepy.shared.MyAnimator;
+import com.example.Sleepy.shared.MyPreferences;
+import com.example.Sleepy.shared.MyTimer;
+import com.example.Sleepy.shared.MyVibrator;
+import com.example.Sleepy.shared.Quotes;
 import com.example.Sleepy.databinding.FragmentWakeBinding;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -141,11 +140,11 @@ public class WakeFragment extends Fragment {
     }
 
     private void getShared(){
-        SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("SETTINGS", Context.MODE_PRIVATE);
-        cardCount = prefs.getInt("CARD_COUNT", 6);
-        fallingAsleepTime = prefs.getInt("SLEEP_TIME", 0);
-        cycleDuration = prefs.getInt("CYCLE_DURATION", 90);
-        isAnimate = prefs.getBoolean("ANIMATIONS", true);
+        MyPreferences.SettingsApp prefs = new MyPreferences.SettingsApp(requireContext());
+        cardCount = prefs.getCardCount();
+        fallingAsleepTime = prefs.getSleepTime();
+        cycleDuration = prefs.getCycleDuration();
+        isAnimate = prefs.isAnimated();
     }
 
     private void initCardItem() {
@@ -164,7 +163,7 @@ public class WakeFragment extends Fragment {
     }
 
     private void setTitleTime(){
-        if (timeCards.size() >= 6) mainAct.setTitleAppBar(R.string.optimal_time + timeCards.get(6-1).getTime());
+        if (timeCards.size() >= 6) mainAct.setTitleAppBar(getString(R.string.optimal_time) + timeCards.get(5).getTime());
     }
 
     @Override

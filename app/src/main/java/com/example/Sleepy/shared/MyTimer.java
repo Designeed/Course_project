@@ -1,4 +1,4 @@
-package com.example.Sleepy.classes;
+package com.example.Sleepy.shared;
 
 import android.content.Context;
 import android.content.Intent;
