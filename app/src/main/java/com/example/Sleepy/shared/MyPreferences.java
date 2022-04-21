@@ -22,7 +22,7 @@ public class MyPreferences {
 
         public boolean isAnimated() { return preferences.getBoolean("ANIMATIONS", true); }
 
-        public void setAnimated(boolean isAnimated) { preferences.edit().putBoolean("THEME", isAnimated).apply(); }
+        public void setAnimated(boolean isAnimated) { preferences.edit().putBoolean("ANIMATIONS", isAnimated).apply(); }
 
         public int getCardCount() {
             return preferences.getInt("CARD_COUNT", 6);

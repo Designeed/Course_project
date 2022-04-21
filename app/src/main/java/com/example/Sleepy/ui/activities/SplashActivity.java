@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppTheme.setShareTheme(getApplicationContext());
+        AppTheme.setShareTheme(this);
         setContentView(R.layout.activity_splash);
 
         init();
@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
             run.setCheckedRun(false);
             Log.i("run","first");
         }else{
-            startActivity(new Intent(this, AlarmActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
             Log.i("run","not first");
         }

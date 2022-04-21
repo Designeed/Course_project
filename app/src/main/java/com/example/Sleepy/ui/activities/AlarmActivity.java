@@ -53,9 +53,9 @@ public class AlarmActivity extends AppCompatActivity {
         init();
         playSound();
 
-        binding.bStopAlarm.setOnClickListener(view -> finish());
+        binding.bStopAlarm.setOnClickListener(v -> finish());
 
-        binding.bPlusTime.setOnClickListener(view -> setAlarmWithExtraTime());
+        binding.bPlusTime.setOnClickListener(v -> setAlarmWithExtraTime());
     }
 
     private void init(){
