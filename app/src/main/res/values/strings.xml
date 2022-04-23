@@ -1,0 +1,115 @@
+<resources>
+    <string name="app_name" translatable="false">Sleepy</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Sleepy</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="when_sleep">Когда уснуть</string>
+    <string name="when_wake">Когда проснуться</string>
+    <string name="settings">Настройки</string>
+    <string name="title_activity_settings" translatable="false">SettingsActivity</string>
+    <string name="item1_description">Здесь вы сможете удобно расчитать время для засыпания и пробуждения</string>
+    <string name="item2_description">Меняйте тему приложения в настрйоках</string>
+    <string name="item3_description">Устанавливайте будильники свайпом</string>
+    <string name="board_start_activity">Понятно</string>
+    <string name="board_next">Далее</string>
+    <string name="btn_calc">Рассчитать</string>
+    <string name="six_cycles">6 циклов</string>
+    <string name="skip">Пропустить</string>
+    <string name="settings_theme">Интерфейс</string>
+    <string name="settings_main">Основные настройки</string>
+    <string name="settings_select_cycles">Выберите отображаемое количество циклов</string>
+    <string name="fab_txt">Сохранить</string>
+    <string name="font" translatable="false">comfortaa_bold</string>
+    <string name="alarm">Будильник</string>
+    <string name="s_animations">Анимации</string>
+    <string name="s_use_anim">Использовать анимации в приложении</string>
+    <string name="s_card">Карточки</string>
+    <string name="s_sleep">Засыпание</string>
+    <string name="s_time_sleep">Учитывать время засыпания</string>
+    <string name="s_time_sleep_sub">Время засыпания</string>
+    <string name="s_select_time_sleep">Выберите время засыпания (мин.)</string>
+    <string name="s_time_format">Формат веремни</string>
+    <string name="s_time_format_24">Использовать 24-часовой формат</string>
+    <string name="s_cycle">Цикл сна</string>
+    <string name="s_duration_sleep">Укажите продолжительность цикла сна (мин.)</string>
+    <string name="alarm_list">Следующий будильник</string>
+    <string name="add_alarm">Добавить</string>
+    <string name="b_stop">Выключить</string>
+    <string name="_00_00" translatable="false">00:00</string>
+    <string name="cancel_alarm">Отменить</string>
+    <string name="default_set">По умолчанию</string>
+    <string name="title_alert_setting">Предупреждение</string>
+    <string name="pos_b_alert_setting">Принять</string>
+    <string name="neg_b_alert_setting">Отменить</string>
+    <string name="pos_b_alert">Ок</string>
+    <string name="title_alert_cat">Анекдот</string>
+    <string name="title_alert_sloth">Интересный факт</string>
+    <string name="message_alert_setting">Текущие настройки будут сброшены</string>
+    <string name="alarm_setting">Настройки будильника</string>
+    <string name="quote_settings">Цитаты</string>
+    <string name="quote_settings_desc">Показывать случайные цитаты на экране будильника</string>
+    <string name="vol_alarm_settings">Громкость</string>
+    <string name="settings_done">Настройки загружены</string>
+    <string name="cd_menu" translatable="false">menu</string>
+    <string name="cd_information" translatable="false">information</string>
+    <string name="choice_alarm_desc">Использовать встроенный будильник Sleepy вместо системного</string>
+    <string name="choice_alarm_title">Встроенный будильник</string>
+    <string name="language_settings">Язык</string>
+    <string name="choice_language_settings">Выберите язык приложения</string>
+    <string name="info_set_how_work">\t\t\t\tКогда человек засыпает, он проходит несколько циклов медленной и быстрой фаз сна. \n\n\t\t\t\tЕсли вы проснетесь в период медленной фазы, то будете ощущать тяжесть, разбитость и усталость. Вам будет сложнее пробудиться и встать с кровати, чего не произойдет, если проснуться в конце «быстрой фазы». Вот почему так важно просыпаться в правильное время. \n\n\t\t\t\tВ калькуляторе сна онлайн учитывается продолжительность циклов сна, которые длятся в среднем 90 минут. Вам необходимо указать время, когда вы намерены лечь спать, а мы дадим вам ответ на вопрос, когда лучше подняться утром, чтобы чувствовать себя полноценно отдохнувшим. \n\n\t\t\t\t Калькулятор учитывает и время на засыпание, потому вам не нужно добавлять его к графику пробуждения.</string>
+    <string name="info_set_title_how_work"> 🌙 Как работает калькулятор сна Sleepy?</string>
+    <string name="cd_ellipse" translatable="false">Ellipse</string>
+    <string name="info_set_average_sleep_time">🕓 Сколько человеку нужно в среднем времени на сон?</string>
+    <string name="info_set_newborns">Новорожденные 👶</string>
+    <string name="info_set_0_3_month">0 – 3 месяца</string>
+    <string name="cd_hours" translatable="false">Hours</string>
+    <string name="info_set_preschoolers">Дошкольники 👦</string>
+    <string name="info_set_3_5_year">3 – 5 лет</string>
+    <string name="info_set_pupils">Школьники 🧑</string>
+    <string name="info_set_6_13_year">6 – 13 лет</string>
+    <string name="info_set_teenagers">Подростки 🧑</string>
+    <string name="info_set_14_17_year">14 – 17 лет</string>
+    <string name="info_set_adults">Взрослые 🧔</string>
+    <string name="info_set_18_64_year">18 – 64 года</string>
+    <string name="info_set_elderly">Пожилые люди 👴</string>
+    <string name="info_set_64_year"><![CDATA[>64 лет]]></string>
+    <string name="info_set_title_stage">🌠 Какие бывают стадии сна?</string>
+    <string name="info_set_napping">Дремота 😴</string>
+    <string name="info_set_napping_desc">Снижение активности мозга под влиянием усталости</string>
+    <string name="cd_stage" translatable="false">Stage</string>
+    <string name="info_set_light_sleep">Легкий сон 💤</string>
+    <string name="info_set_light_sleep_desc">Снижение температуры тела и замедление пульса. Организм успокаивается</string>
+    <string name="info_set_deep_sleep">Глубокий сон 🛌🏿</string>
+    <string name="info_set_deep_sleep_desc">Расслабление и восстановление</string>
+    <string name="info_set_when_dream">✨ Когда возникают сновидения?</string>
+    <string name="info_set_when_dream_desc">\t\t\t\tСновидения возникают, как правило, в фазе быстрого сна. \n\n\t\t\t\tНовейшие исследования доказывают, что сновидения возникают также и во время медленного сна, но их продолжительность короче и они не такие эмоциональные.</string>
+    <string name="vibration_set_title">Вибрация</string>
+    <string name="use_vibration">Использовать вибрацию в приложении</string>
+    <string name="alarm_clock_for">Будильник на\u0020</string>
+    <string name="has_been_canceled">\u0020отменен</string>
+    <string name="return_alarm">Вернуть</string>
+    <string name="alarm_canceled">Будильник отменен</string>
+    <string name="remaining_time">Осталось\u0020</string>
+    <string name="no_alarm">Пока что нет будильников 😔\n</string>
+    <string name="alarm_set_for">"Будильник установлен на\u0020"</string>
+    <string name="remaining_time_snackbar">"\nОсталось\u0020"</string>
+    <string name="hours">ч</string>
+    <string name="minute">м</string>
+    <string name="error_open_alarm">Не удалось открыть будильник :(</string>
+    <string name="calculate_with_sleep_time">Расчитано с учетом времени засыпания -\u0020</string>
+    <string name="min">"\u0020мин."</string>
+    <string name="choose_time">Выберите время, в которое хотели бы проснуться…</string>
+    <string name="go_to_bed">Ложитесь в…</string>
+    <string name="choose_time_go_to_bed">Выберите время, в которое хотели бы лечь спать…</string>
+    <string name="wake_up">Вам нужно проснуться в…</string>
+    <string name="you_need_anecdote">Хочешь анекдот?</string>
+    <string name="yes">Да</string>
+    <string name="optimal_time">"Оптимальное время -\u0020"</string>
+    <string name="you_need_fact">Хочешь интересный факт?</string>
+    <string name="time_to_sleep">"Время на сон\u0020"</string>
+    <string name="settings_clear">Настройки сброшены</string>
+    <string name="extra_time_desc">Выберите время, на которое можно будет отложить будильник</string>
+    <string name="extra_time_title">5 минут и встаю</string>
+</resources>

@@ -1,0 +1,204 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Test_project" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/text_header_p</item>
+        <item name="colorPrimaryVariant">@color/bg_p</item>
+        <item name="colorOnPrimary">@color/bg_p</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/text_header_p</item>
+        <item name="colorSecondaryVariant">@color/checked_variant</item>
+        <item name="colorOnSecondary">@color/text_header_p</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--layouts-->
+
+    <style name="bg_tp_wake" parent="Theme.AppCompat.DayNight">
+        <item name="lottie_rawRes">@raw/sun_p</item>
+    </style>
+
+    <style name="yoga_wake" parent="Theme.AppCompat.DayNight">
+        <item name="lottie_rawRes">@raw/yoga_p</item>
+    </style>
+    
+    <style name="bottomSheet" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@drawable/bg_bottom_sheet_p</item>
+    </style>
+
+    <style name="numPicSettings" parent="Theme.AppCompat.DayNight">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:background">@drawable/bg_numpic_p</item>
+        <item name="np_dividerDistance">40dp</item>
+        <item name="np_dividerThickness">0dp</item>
+        <item name="np_orientation">horizontal</item>
+        <item name="np_selectedTextColor">@color/white</item>
+        <item name="np_selectedTextSize">20sp</item>
+        <item name="np_textColor">@color/indicator</item>
+        <item name="np_textSize">18sp</item>
+    </style>
+
+    <style name="bg_settings" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@drawable/bg_settings_p</item>
+    </style>
+
+    <style name="fab" parent="Theme.AppCompat.DayNight">
+        <item name="fontFamily">@font/comfortaa_bold</item>
+        <item name="android:backgroundTint">@color/text_header_p</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="btn_timer" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="card_style" parent="Theme.AppCompat.DayNight">
+        <item name="cardBackgroundColor">@color/bg_item_p</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="contentPaddingRight">20dp</item>
+        <item name="contentPaddingLeft">20dp</item>
+        <item name="contentPaddingTop">10dp</item>
+        <item name="contentPaddingBottom">10dp</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="alarm_card_style" parent="Theme.AppCompat.DayNight">
+        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="contentPaddingRight">20dp</item>
+        <item name="contentPaddingLeft">20dp</item>
+        <item name="contentPaddingTop">10dp</item>
+        <item name="contentPaddingBottom">10dp</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="alarm_divider" parent="Theme.AppCompat.DayNight">
+        <item name="dividerColor">@color/text_header_p</item>
+    </style>
+
+    <style name="tp_bg" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@color/bg_time_peak_p</item>
+    </style>
+
+    <style name="bg_menu" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@color/bg_p</item>
+    </style>
+
+    <style name="time_picker" parent="Theme.AppCompat.DayNight">
+        <item name="android:timePickerMode">spinner</item>
+    </style>
+
+    <style name="txt">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="txt_setting">
+        <item name="android:fontFamily">@font/comfortaa_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/txt_settings</item>
+    </style>
+
+    <style name="title" parent="Theme.AppCompat.DayNight">
+        <item name="android:textColor">@color/text_header_p</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="header_menu" parent="Theme.AppCompat.DayNight">
+        <item name="srcCompat">@drawable/header_logo_svg</item>
+        <item name="android:textColor">@color/text_header_p</item>
+        <item name="android:background">@color/bg_p</item>
+    </style>
+
+    <style name="splash_lottie" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="lottie_rawRes">@raw/logo_anim_p</item>
+    </style>
+
+    <style name="lottie_cat" parent="Theme.AppCompat.DayNight">
+        <item name="lottie_rawRes">@raw/sleep_cat</item>
+    </style>
+
+    <style name="Theme.splash" parent="Theme.AppCompat.DayNight">
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.AppCompat.DayNight.NoActionBar.FullScreen" parent="@style/Theme.splash">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="app_bar" parent="Theme.AppCompat.DayNight">
+        <item name="android:background">@color/bg_p</item>
+        <item name="titleTextColor">@color/text_header_p</item>
+        <item name="subtitleTextColor">@color/text_header_p</item>
+    </style>
+
+    <style name="bg_menu_button" parent="Theme.AppCompat.DayNight">
+        <item name="srcCompat">@drawable/button_menu_bg</item>
+    </style>
+
+    <!--other-->
+    <style name="Theme.Test_project.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBarOverlay">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="PopupOverlay">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/text_header_p</item>
+    </style>
+
+    <style name="Theme.Test_project.Fullscreen" parent="Theme.Test_project">
+        <item name="android:actionBarStyle">@style/Widget.Theme.Test_project.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="Theme.Test_project.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Test_project.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ThemeOverlay.Test_project.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+
+</resources>

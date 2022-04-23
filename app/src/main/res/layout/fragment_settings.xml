@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/clSettingsBg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.modules.settings.presentation.SettingsFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    style="@style/bg_settings">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvTitleThemeSet"
+                            style="@style/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/lCheckLoad"
+                            android:gravity="start"
+                            android:text="@string/settings_theme" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/lCheckLoad"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:tooltipText="@string/settings_done"
+                            app:lottie_rawRes="@raw/check_mark_settings"
+                            tools:ignore="ImageContrastCheck"
+                            tools:targetApi="o" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/rgTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+
+                        <RadioButton
+                            android:id="@+id/rbThemePurple"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="30dp"
+                            android:button="@drawable/ic_checked_btn"
+                            android:drawableEnd="@drawable/button_theme_p"
+                            android:drawablePadding="-20dp"
+                            android:gravity="start"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <RadioButton
+                            android:id="@+id/rbThemeDark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="30dp"
+                            android:button="@drawable/ic_checked_btn"
+                            android:drawableEnd="@drawable/button_theme_d"
+                            android:drawablePadding="-20dp"
+                            android:gravity="start" />
+
+                        <RadioButton
+                            android:id="@+id/rbThemeAuto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/ic_checked_btn"
+                            android:checked="true"
+                            android:drawableEnd="@drawable/button_theme_a"
+                            android:drawablePadding="-20dp"
+                            android:gravity="start"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+                    </RadioGroup>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvAnimSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sAnimations"
+                            android:text="@string/s_animations" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvAnimSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sAnimations"
+                            android:text="@string/s_use_anim"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sAnimations"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvVibrationSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sVibration"
+                            android:text="@string/vibration_set_title" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvVibrationSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sVibration"
+                            android:text="@string/use_vibration"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sVibration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:checked="true"
+                            android:layout_marginStart="20dp"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    style="@style/bg_settings"
+                    android:padding="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/ivSettingsInfo"
+                            android:gravity="start"
+                            android:text="@string/settings_main" />
+
+                        <ImageView
+                            android:id="@+id/ivSettingsInfo"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_info"
+                            android:contentDescription="@string/cd_information"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvSelectCyclesSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/npCycles"
+                            android:text="@string/s_card" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvSelectCyclesSet"
+                            android:layout_toStartOf="@+id/npCycles"
+                            android:text="@string/settings_select_cycles"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/npCycles"
+                            style="@style/numPicSettings"
+                            app:np_max="30"
+                            app:np_maxFlingVelocityCoefficient="10"
+                            app:np_min="6"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvCheckTimeSleepSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/sSleepTime"
+                            android:text="@string/s_sleep" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvCheckTimeSleepSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sSleepTime"
+                            android:text="@string/s_time_sleep"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sSleepTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvTimeSleepSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/npTimeSleep"
+                            android:text="@string/s_time_sleep_sub" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTimeSleepSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/npTimeSleep"
+                            android:text="@string/s_select_time_sleep"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/npTimeSleep"
+                            style="@style/numPicSettings"
+                            app:np_max="60"
+                            app:np_maxFlingVelocityCoefficient="4"
+                            app:np_min="0"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvFormatSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sTimeFormat"
+                            android:text="@string/s_time_format" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvFormatSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sTimeFormat"
+                            android:text="@string/s_time_format_24"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sTimeFormat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:checked="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvSleepCycleSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/npDurationCycle"
+                            android:text="@string/s_cycle" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvSleepCycleSet"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/npDurationCycle"
+                            android:text="@string/s_duration_sleep"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/npDurationCycle"
+                            style="@style/numPicSettings"
+                            app:np_max="180"
+                            app:np_maxFlingVelocityCoefficient="2"
+                            app:np_min="30"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    style="@style/bg_settings"
+                    android:padding="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="start"
+                            android:text="@string/alarm_setting" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvQuoteSet"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/sQuoteShow"
+                            android:text="@string/quote_settings" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sQuoteShow"
+                            android:layout_below="@+id/tvQuoteSet"
+                            android:text="@string/quote_settings_desc" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sQuoteShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:checked="true"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvChoiceAlarm"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/sChoiceAlarm"
+                            android:text="@string/choice_alarm_title" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvChoiceAlarm"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/sChoiceAlarm"
+                            android:text="@string/choice_alarm_desc" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/sChoiceAlarm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:checked="true"
+                            app:useMaterialThemeColors="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvSetExtraTime"
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/npExtraTime"
+                            android:text="@string/extra_time_title" />
+
+                        <TextView
+                            style="@style/txt_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvSetExtraTime"
+                            android:layout_toStartOf="@+id/npExtraTime"
+                            android:text="@string/extra_time_desc"
+                            tools:ignore="TextContrastCheck" />
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/npExtraTime"
+                            style="@style/numPicSettings"
+                            app:np_max="60"
+                            app:np_maxFlingVelocityCoefficient="10"
+                            app:np_min="1"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vol_alarm_settings" />
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/sVolAlarm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:valueFrom="0"
+                            android:valueTo="20"
+                            android:stepSize="1"
+                            app:labelBehavior="gone"
+                            app:tickVisible="false"
+                            android:layout_marginTop="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bSettingsDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:cornerRadius="20dp"
+                    style="@style/txt"
+                    android:drawableLeft="@drawable/ic_rotate_reloaded"
+                    android:background="@color/transparent"
+                    android:textSize="15sp"
+                    android:textAllCaps="false"
+                    android:text="@string/default_set"
+                    tools:ignore="RtlHardcoded" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <include layout="@layout/bottom_sheet_settings" android:id="@+id/incBottomSheet"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
