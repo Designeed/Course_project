@@ -12,8 +12,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Sleepy.R;
-import com.example.Sleepy.ui.activities.AlarmActivity;
-import com.example.Sleepy.ui.activities.MainActivity;
+import com.example.Sleepy.main.modules.alarm.presentation.AlarmActivity;
+import com.example.Sleepy.core.presentation.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;

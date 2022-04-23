@@ -5,7 +5,7 @@
     android:id="@+id/rlMainAlarm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.AlarmActivity"
+    tools:context=".main.modules.alarm.presentation.AlarmActivity"
     android:background="@color/black">
 
     <LinearLayout
@@ -50,7 +50,6 @@
                 android:id="@+id/bStopAlarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/comfortaa_bold"
                 android:padding="10dp"
@@ -63,7 +62,6 @@
                 android:id="@+id/bPlusTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:backgroundTint="#1DFFFFFF"
                 android:drawableLeft="@drawable/ic_add_time"
                 android:layout_marginStart="20dp"
