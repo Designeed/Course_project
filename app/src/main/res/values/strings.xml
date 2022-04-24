@@ -87,19 +87,16 @@
     <string name="info_set_when_dream_desc">\t\t\t\tСновидения возникают, как правило, в фазе быстрого сна. \n\n\t\t\t\tНовейшие исследования доказывают, что сновидения возникают также и во время медленного сна, но их продолжительность короче и они не такие эмоциональные.</string>
     <string name="vibration_set_title">Вибрация</string>
     <string name="use_vibration">Использовать вибрацию в приложении</string>
-    <string name="alarm_clock_for">Будильник на\u0020</string>
-    <string name="has_been_canceled">\u0020отменен</string>
+    <string name="alarm_clock_has_been_canceled">Будильник на %1$s отменен</string>
     <string name="return_alarm">Вернуть</string>
     <string name="alarm_canceled">Будильник отменен</string>
     <string name="remaining_time">Осталось\u0020</string>
     <string name="no_alarm">Пока что нет будильников 😔\n</string>
-    <string name="alarm_set_for">"Будильник установлен на\u0020"</string>
-    <string name="remaining_time_snackbar">"\nОсталось\u0020"</string>
+    <string name="alarm_set_for_remaining_time">"Будильник установлен на %1$s \nОсталось %2$s"</string>
     <string name="hours">ч</string>
     <string name="minute">м</string>
     <string name="error_open_alarm">Не удалось открыть будильник :(</string>
-    <string name="calculate_with_sleep_time">Расчитано с учетом времени засыпания -\u0020</string>
-    <string name="min">"\u0020мин."</string>
+    <string name="calculate_with_sleep_time">Расчитано с учетом времени засыпания - %1$d мин.</string>
     <string name="choose_time">Выберите время, в которое хотели бы проснуться…</string>
     <string name="go_to_bed">Ложитесь в…</string>
     <string name="choose_time_go_to_bed">Выберите время, в которое хотели бы лечь спать…</string>
@@ -108,8 +105,9 @@
     <string name="yes">Да</string>
     <string name="optimal_time">"Оптимальное время -\u0020"</string>
     <string name="you_need_fact">Хочешь интересный факт?</string>
-    <string name="time_to_sleep">"Время на сон\u0020"</string>
+    <string name="time_to_sleep">"Время на сон %1$s"</string>
     <string name="settings_clear">Настройки сброшены</string>
     <string name="extra_time_desc">Выберите время, на которое можно будет отложить будильник</string>
     <string name="extra_time_title">5 минут и встаю</string>
+    <string name="add_more_time">Еще %1$d мин.</string>
 </resources>

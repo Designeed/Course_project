@@ -74,19 +74,16 @@
     <string name="use_vibration">Use vibration in the app</string>
     <string name="info_set_how_work">\t\t\t\tWhen a person falls asleep, he goes through several cycles of slow and fast sleep phases. \n\n\t\t\t\tIf you wake up during the slow phase, you will feel heavy, broken and tired. It will be more difficult for you to wake up and get out of bed, which will not happen if you wake up at the end of the "fast phase". That\'s why it\'s so important to wake up at the right time. \n\n\t\t\t\tThe sleep calculator online takes into account the duration of sleep cycles, which last an average of 90 minutes. You need to specify the time when you intend to go to bed, and we will give you the answer to the question when it is better to get up in the morning to feel fully rested. \n\n\t\t\t\t The calculator also takes into account the time to fall asleep, so you do not need to add it to the wake-up schedule.</string>
     <string name="info_set_when_dream_desc">\t\t\t\tDreams occur, as a rule, in the rem sleep phase. \n\n\t\t\t\tThe latest research proves that dreams also occur during slow sleep, but their duration is shorter and they are not as emotional.</string>
-    <string name="alarm_clock_for">Alarm clock for\u0020</string>
-    <string name="has_been_canceled">\u0020has been canceled</string>
+    <string name="alarm_clock_has_been_canceled">Alarm clock for %1$s has been canceled</string>
     <string name="return_alarm">Return</string>
     <string name="alarm_canceled">Alarm canceled</string>
     <string name="remaining_time">Remaining\u0020</string>
     <string name="no_alarm">There are no alarm clocks yet 😔\n</string>
-    <string name="alarm_set_for">"The alarm is set for\u0020"</string>
+    <string name="alarm_set_for_remaining_time">"The alarm is set for %1$s \nRemaining %2$s"</string>
     <string name="hours">h</string>
     <string name="minute">m</string>
     <string name="error_open_alarm">Failed to open the alarm clock :(</string>
-    <string name="calculate_with_sleep_time">Calculated taking into account the time of falling asleep -\u0020</string>
-    <string name="min">"\u0020min."</string>
-    <string name="remaining_time_snackbar">\nRemaining\u0020</string>
+    <string name="calculate_with_sleep_time">Calculated taking into account the time of falling asleep - %1$d min.</string>
     <string name="choose_time">Choose the time at which you would like to wake up…</string>
     <string name="go_to_bed">Go to bed at…</string>
     <string name="choose_time_go_to_bed">Choose the time at which you would like to go to bed…</string>
@@ -95,8 +92,9 @@
     <string name="yes">Yes</string>
     <string name="optimal_time">Optimal time -\u0020</string>
     <string name="you_need_fact">Do you want an interesting fact?</string>
-    <string name="time_to_sleep">Time to sleep\u0020</string>
+    <string name="time_to_sleep">Time to sleep %1$s</string>
     <string name="settings_clear">Settings reset</string>
     <string name="extra_time_desc">Select the time for which you can postpone the alarm</string>
     <string name="extra_time_title">5 minutes and I get up</string>
+    <string name="add_more_time">Add %1$d min</string>
 </resources>

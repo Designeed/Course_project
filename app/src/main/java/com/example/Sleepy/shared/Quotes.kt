@@ -1,9 +1,10 @@
-package com.example.Sleepy.shared;
+package com.example.Sleepy.shared
 
-import java.util.Random;
+import java.util.*
 
-public class Quotes {
-    private static final String[] quoteArrayAlarm = new String[]{
+class Quotes {
+    companion object{
+        private val quoteArrayAlarm = arrayOf(
             "Здесь мог бы быть анекдот про Штирлица",
             "За дверью послышались споры\n-Грибы, - подумал Штирлиц",
             "Труднее всего вылезать из долгов и из постели в холодное утро",
@@ -29,9 +30,9 @@ public class Quotes {
             "Реклама в будильнике?\nRaid: Shadow Legends RPG Strategy Game...",
             "Raid: Shadow Legends RPG Strategy Game",
             "10 раз хлопни, посмотри на потолок, 3 раза моргни, расскажи это 5 своим друзьям, посмотри под подушку и там IPad Air"
-    };
+        )
 
-    private static final String[] quoteArrayCat = new String[]{
+        private val quoteArrayCat = arrayOf(
             "Привет!",
             "Hello!",
             "Buon!",
@@ -51,14 +52,16 @@ public class Quotes {
             "Иди поспи",
             "Нажми на меня еще раз",
             "Хочешь анекдот?"
-    };
+        )
 
-    private static final String[] anecdotesArray = new String[]{
+        private val anecdotesArray = arrayOf(
             "Штирлиц залез на телеграфный столб и, чтобы не привлекать внимания прохожих, развернул газету.",
             "За дверью послышались споры\n-Грибы, - подумал Штирлиц",
-            "Приходит слепой в магазин берет собаку-поводыря и начинает раскручивать ее над головой\n" +
-                    "- Что вы делаете?!\n" +
-                    "- Да так, осматриваюсь",
+            """
+            Приходит слепой в магазин берет собаку-поводыря и начинает раскручивать ее над головой
+            - Что вы делаете?!
+            - Да так, осматриваюсь
+            """.trimIndent(),
             "Два психа сидят в коридоре психушки. Мимо проходит медсестра и пытается открыть какую-то дверь. " +
                     "У нее не получается. Психи: «Дергай сильнее». Она дергает ручку сильнее, дверь все равно не открывается. " +
                     "Медсестра, задумчиво: «Наверное, закрыто». Психи: «Да, закрыто… А мы думали тебе ручка нужна».",
@@ -70,14 +73,14 @@ public class Quotes {
             "Бабка, заметившая в маршрутке свободное сидение, выпрыгнула из такси.",
             "Чеченец забыл, как по-русски будет \"Два\". Заходит в магазин и говорит: \"Три батона, а один не надо\".",
             "Чем отличается десантник от сапера? — направлением полета.",
-            "Скачет Илья Муромец по пустыне, устал, силы на исходе, видит вдали оазис вода и еда, и там же Змей Горыныч." +
-                    " Илья Муромец достал свой меч и в бой с Змей Горынычем, бьётся день и ночь с ним в жестоком бою, " +
-                    "на третий день Змей Горыныч спрашивает у Богатыря, да что ж тебе надо от меня?\n" +
-                    "- Да пить я хочу.\n" +
-                    "- Да пей, что докопался то?!"
-    };
+            """
+            Скачет Илья Муромец по пустыне, устал, силы на исходе, видит вдали оазис вода и еда, и там же Змей Горыныч. Илья Муромец достал свой меч и в бой с Змей Горынычем, бьётся день и ночь с ним в жестоком бою, на третий день Змей Горыныч спрашивает у Богатыря, да что ж тебе надо от меня?
+            - Да пить я хочу.
+            - Да пей, что докопался то?!
+            """.trimIndent()
+        )
 
-    private static final String[] quoteArraySloth = new String[]{
+        private val quoteArraySloth = arrayOf(
             "Привет!",
             "Hello!",
             "Buon!",
@@ -95,9 +98,9 @@ public class Quotes {
             "Нажми на меня еще раз",
             "Хочешь анекдот?",
             "Ты очень любопытный"
-    };
+        )
 
-    private static final String[] factsArray = new String[]{
+        private val factsArray = arrayOf(
             "Каждое лето Эйфелева башня становится на 15 сантиметров выше.",
             "Зубы бобров никогда не перестают расти.",
             "В теле среднестатистического человека достаточно железа, чтобы сделать гвоздь длиной 7,62 сантиметра.",
@@ -113,25 +116,25 @@ public class Quotes {
             "Тома и Джерри первоначально звали Джаспером и Джинксом.",
             "Язык хамелеона длиннее, чем его тело.",
             "Анатидеофобия – это навязчивый страх, что из другого уголка мира за вами наблюдает утка."
-    };
+        )
 
-    public static String getQuoteAlarm(){
-        return quoteArrayAlarm[new Random().nextInt(quoteArrayAlarm.length)];
-    }
+        val quoteAlarm: String
+            get() = quoteArrayAlarm[Random().nextInt(quoteArrayAlarm.size)]
 
-    public static String getQuoteCat(){
-        return quoteArrayCat[new Random().nextInt(quoteArrayCat.length)];
-    }
+        @JvmStatic
+        val quoteCat: String
+            get() = quoteArrayCat[Random().nextInt(quoteArrayCat.size)]
 
-    public static String getAnecdote() {
-        return anecdotesArray[new Random().nextInt(anecdotesArray.length)];
-    }
+        @JvmStatic
+        val anecdote: String
+            get() = anecdotesArray[Random().nextInt(anecdotesArray.size)]
 
-    public static String getQuoteSloth(){
-        return quoteArraySloth[new Random().nextInt(quoteArraySloth.length)];
-    }
+        @JvmStatic
+        val quoteSloth: String
+            get() = quoteArraySloth[Random().nextInt(quoteArraySloth.size)]
 
-    public static String getFact(){
-        return factsArray[new Random().nextInt(factsArray.length)];
+        @JvmStatic
+        val fact: String
+            get() = factsArray[Random().nextInt(factsArray.size)]
     }
 }

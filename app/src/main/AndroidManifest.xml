@@ -9,9 +9,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
 
     <application
         android:configChanges="keyboardHidden|orientation|screenSize"
@@ -24,18 +21,18 @@
         android:theme="@style/Theme.Test_project"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name=".main.modules.alarm.presentation.AlarmActivity"
+            android:name="com.example.Sleepy.main.modules.alarm.presentation.AlarmActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:showOnLockScreen="true"
             android:launchMode="singleInstance"/>
         <activity
-            android:name=".main.modules.onBoarding.presentation.OnBoardingActivity"
+            android:name="com.example.Sleepy.main.modules.onBoarding.presentation.OnBoardingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Test_project.NoActionBar" />
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name="com.example.Sleepy.ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.splash" >
@@ -46,7 +43,7 @@
         </activity>
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:name=".core.presentation.MainActivity"
+            android:name="com.example.Sleepy.core.presentation.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.Test_project.NoActionBar" />
