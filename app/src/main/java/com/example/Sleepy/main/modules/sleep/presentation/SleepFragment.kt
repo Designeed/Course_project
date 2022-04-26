@@ -1,11 +1,9 @@
 package com.example.Sleepy.main.modules.sleep.presentation
 
+import android.annotation.SuppressLint
 import com.example.Sleepy.main.modules.sleep.domain.SleepViewModel
 import com.example.Sleepy.main.modules.sleep.domain.SleepCards
 import com.example.Sleepy.main.modules.sleep.domain.SleepCardsAdapter
-import com.example.Sleepy.core.presentation.MainActivity
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.os.Bundle
 import android.widget.TimePicker
 import androidx.core.widget.NestedScrollView
@@ -14,7 +12,7 @@ import com.example.Sleepy.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.content.DialogInterface
 import android.util.Log
-import android.view.View
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.Sleepy.shared.MyPreferences.SettingsApp
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +20,7 @@ import com.example.Sleepy.databinding.FragmentSleepBinding
 import com.example.Sleepy.shared.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.example.Sleepy.core.presentation.MainActivity
 
 class SleepFragment : Fragment() {
     private lateinit var sleepViewModel: SleepViewModel
@@ -38,6 +37,7 @@ class SleepFragment : Fragment() {
     private lateinit var mainAct: MainActivity
     private var isAnimate = false
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +49,7 @@ class SleepFragment : Fragment() {
 
         init()
         initCardItem()
-        MyAnimator.setFadeAnimation(root)
+        MyAnimator.setFadeAnimationStart(root)
 
         sleepViewModel.text.observe(
             viewLifecycleOwner,
@@ -61,9 +61,7 @@ class SleepFragment : Fragment() {
             binding.tpSleep.setIs24HourView(true)
         })
 
-        sleepViewModel.textSleep.observe(
-            viewLifecycleOwner,
-            { s: String? -> binding.tvGoToSleep.text = s })
+        sleepViewModel.textSleep.observe(viewLifecycleOwner, { s: String? -> binding.tvGoToSleep.text = s })
 
         binding.bCalc.setOnClickListener {
             MyVibrator.vibrate(30, requireContext())
@@ -92,15 +90,15 @@ class SleepFragment : Fragment() {
             MyTimer.clearTime(binding.tpSleep, requireContext())
         }
 
-        if (isAnimate) {
-            binding.svMainSleep.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
-                binding.lStarTimePicker.frame = scrollY / 8
-            }
+        binding.svMainSleep.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
+            if (isAnimate) binding.lStarTimePicker.frame = scrollY / 8
         }
 
         binding.bAddAlarm.setOnClickListener {
             MyAlarm.setAlarm(
-                requireContext(), MyTimer.getCurrentTime(binding.tpSleep), binding.clMain
+                requireContext(),
+                MyTimer.getCurrentTime(binding.tpSleep),
+                binding.clMain
             )
         }
 
@@ -114,14 +112,15 @@ class SleepFragment : Fragment() {
                     )
                         .setTitle(getString(R.string.title_alert_cat))
                         .setMessage(Quotes.anecdote)
-                        .setPositiveButton(getString(R.string.pos_b_alert)) {
-                                dialogInterface: DialogInterface, _: Int -> dialogInterface.cancel()
+                        .setPositiveButton(getString(R.string.pos_b_alert)) { dialogInterface: DialogInterface, _: Int ->
+                            dialogInterface.cancel()
                         }
                         .show()
                 }
             }
             s.show()
         }
+
         return root
     }
 
@@ -185,12 +184,14 @@ class SleepFragment : Fragment() {
     }
 
     private fun setTitleTime() {
-        //if (sleepCards.size >= 6) mainAct.setTitleAppBar(getString(R.string.optimal_time) + sleepCards[sleepCards.size - 6].title)
+        if (sleepCards.size >= 6)
+            requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle =
+                (getString(R.string.optimal_time) + sleepCards[sleepCards.size - 6].title)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //MainActivity().setTitleAppBar("")
+        requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle = ""
         sleepCards.clear()
     }
 }

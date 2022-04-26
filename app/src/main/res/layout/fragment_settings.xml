@@ -25,6 +25,7 @@
                 android:paddingEnd="20dp">
 
                 <LinearLayout
+                    android:id="@+id/llInterface"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -172,6 +173,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llMainSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -269,6 +271,8 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/rlSleepTime"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp">
@@ -369,6 +373,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llAlarmSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"

@@ -17,6 +17,7 @@ import com.example.Sleepy.shared.AppTheme
 import com.example.Sleepy.shared.MyAnimator
 import com.example.Sleepy.shared.MyPreferences.SettingsApp
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var mAppBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         AppTheme.setShareTheme(applicationContext)
         setContentView(binding.root)
         init()
-        MyAnimator.setFadeAnimation(binding.root)
+        MyAnimator.setFadeAnimationStart(binding.root)
     }
 
     private fun init() {
@@ -79,15 +80,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(this, R.id.nav_host_fragment_content_main)
         return (navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp())
-    }
+    }//todo swipe
 
     override fun onBackPressed() {
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) binding.drawerLayout.closeDrawer(
-            GravityCompat.START
-        ) else super.onBackPressed()
-    }
-
-    fun setTitleAppBar(title: String) {
-        binding.appBarMain.toolbar.subtitle = title
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START))
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        else super.onBackPressed()
     }
 }

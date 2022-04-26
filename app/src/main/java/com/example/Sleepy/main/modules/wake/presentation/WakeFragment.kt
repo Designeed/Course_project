@@ -52,7 +52,7 @@ class WakeFragment : Fragment() {
 
         init()
         initCardItem()
-        MyAnimator.setFadeAnimation(root)
+        MyAnimator.setFadeAnimationStart(root)
 
         wakeViewModel.text.observe(
             viewLifecycleOwner,
@@ -176,12 +176,14 @@ class WakeFragment : Fragment() {
     }
 
     private fun setTitleTime() {
-        //if (timeCards.size >= 6) mainAct.setTitleAppBar(getString(R.string.optimal_time) + timeCards[5].time)
+        if (timeCards.size >= 6)
+            requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle =
+                (getString(R.string.optimal_time) + timeCards[5].time)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //MainActivity().setTitleAppBar("")
+        requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle = ""
         timeCards.clear()
     }
 }

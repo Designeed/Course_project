@@ -20,7 +20,9 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import com.example.Sleepy.databinding.FragmentSettingsBinding
 import com.example.Sleepy.shared.AppTheme
 import com.example.Sleepy.shared.MyAnimator
@@ -45,7 +47,7 @@ class SettingsFragment : Fragment() {
         val root: View = binding.root
 
         init()
-        MyAnimator.setFadeAnimation(root)
+        MyAnimator.setFadeAnimationStart(root)
 
         binding.bSettingsDefault.setOnClickListener {
             MaterialAlertDialogBuilder(
@@ -68,8 +70,10 @@ class SettingsFragment : Fragment() {
 
         binding.sSleepTime.setOnClickListener {
             try {
-                binding.npTimeSleep.isEnabled = binding.sSleepTime.isChecked
+                checkVisible()
+
                 MyVibrator.vibrate(30, requireContext())
+                binding.npTimeSleep.isEnabled = binding.sSleepTime.isChecked
                 prefs.isCheckedSleepTime = binding.sSleepTime.isChecked
                 binding.npTimeSleep.value = 0
                 prefs.sleepTime = 0
@@ -83,12 +87,6 @@ class SettingsFragment : Fragment() {
                 prefs.themeId = i
                 AppTheme.setShareTheme(requireContext())
                 MyVibrator.vibrate(30, requireContext())
-//                when (i) {
-//                    R.id.rbThemeAuto -> prefs.themeId = R.id.rbThemeAuto
-//                    R.id.rbThemeDark -> prefs.themeId = R.id.rbThemeDark
-//                    R.id.rbThemePurple -> prefs.themeId = R.id.rbThemePurple
-//                }
-                //fixme requireActivity().recreate()
             } catch (ex: Exception) {
                 errorPlay()
             }
@@ -98,7 +96,7 @@ class SettingsFragment : Fragment() {
             try {
                 MyVibrator.vibrate(30, requireContext())
                 prefs.isAnimated = binding.sAnimations.isChecked
-                //fixme requireActivity().recreate()
+                setAnimations()
             } catch (ex: Exception) {
                 errorPlay()
             }
@@ -206,15 +204,42 @@ class SettingsFragment : Fragment() {
         return root
     }
 
+    private fun checkVisible() {
+        when(binding.sSleepTime.isChecked){
+            true -> {
+                binding.rlSleepTime.visibility = View.VISIBLE
+                MyAnimator.setFadeAnimationStart(binding.rlSleepTime)
+            }
+            false -> binding.rlSleepTime.visibility = View.GONE
+        }
+    }
+
     private fun init() {
         amAlarm = requireContext().getSystemService(Context.AUDIO_SERVICE) as AudioManager
         binding.sVolAlarm.value = amAlarm.getStreamVolume(AudioManager.STREAM_ALARM).toFloat()
         BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).state = BottomSheetBehavior.STATE_COLLAPSED
         handler = Handler(Looper.getMainLooper())
-        //fixme handler.removeCallbacks(run)
-        //handler.post(run)
         shared
+        checkVisible()
         setVolumeAlarm()
+        setAnimations()
+    }
+
+    private fun setAnimations(){
+        try{
+            if(requireActivity().findViewById<LottieAnimationView>(R.id.lLogo) != null){
+                if(!prefs.isAnimated){
+                    requireActivity().findViewById<LottieAnimationView>(R.id.lLogo).speed = 0f
+                    requireActivity().findViewById<LottieAnimationView>(R.id.lMenuBg).speed = 0f
+                }else{
+                    requireActivity().findViewById<LottieAnimationView>(R.id.lLogo).speed = 1f
+                    requireActivity().findViewById<LottieAnimationView>(R.id.lMenuBg).speed = 1f
+                }
+            }
+        }catch (ex: Exception){
+            Log.e("animations", ex.toString())
+        }
+
     }
 
     private fun setVolumeAlarm() {

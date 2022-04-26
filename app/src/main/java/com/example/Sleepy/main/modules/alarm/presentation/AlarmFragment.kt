@@ -47,7 +47,7 @@ class AlarmFragment : Fragment() {
         val root: View = binding.root
 
         init()
-        MyAnimator.setFadeAnimation(root)
+        MyAnimator.setFadeAnimationStart(root)
 
         binding.fabAddAlarm.setOnClickListener {
             mtpTimeAlarm = MaterialTimePicker.Builder()

@@ -1,18 +1,32 @@
 package com.example.Sleepy.shared
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.ScaleAnimation
-import android.view.animation.Animation
+import android.view.animation.*
 
 class MyAnimator {
     companion object{
-        fun setFadeAnimation(view: View) {
+        fun setFadeAnimationStart(view: View) {
             val anim = AlphaAnimation(0.0f, 1.0f)
             anim.duration = 500
             anim.interpolator = AccelerateInterpolator()
             view.startAnimation(anim)
+        }
+
+        fun setFadeAnimationEnd(view: View){
+            val anim = AlphaAnimation(1.0f, 0.0f)
+            anim.duration = 500
+            anim.interpolator = AccelerateInterpolator()
+            view.startAnimation(anim)
+        }
+
+        fun setScaleHeightObjectAnimation(view: View){
+            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f)
+            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 4f)
+            val animator = ObjectAnimator.ofPropertyValuesHolder(
+                view, scaleX, scaleY)
+            animator.start()
         }
 
         fun setScaleAnimation(view: View) {
