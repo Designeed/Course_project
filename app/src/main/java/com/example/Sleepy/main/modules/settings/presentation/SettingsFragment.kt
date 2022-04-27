@@ -70,7 +70,13 @@ class SettingsFragment : Fragment() {
 
         binding.sSleepTime.setOnClickListener {
             try {
-                checkVisible()
+                when(binding.sSleepTime.isChecked){
+                    true -> {
+                        binding.rlSleepTime.visibility = View.VISIBLE
+                        MyAnimator.setFadeAnimationStart(binding.rlSleepTime)
+                    }
+                    false -> binding.rlSleepTime.visibility = View.GONE
+                }
 
                 MyVibrator.vibrate(30, requireContext())
                 binding.npTimeSleep.isEnabled = binding.sSleepTime.isChecked
@@ -208,7 +214,6 @@ class SettingsFragment : Fragment() {
         when(binding.sSleepTime.isChecked){
             true -> {
                 binding.rlSleepTime.visibility = View.VISIBLE
-                MyAnimator.setFadeAnimationStart(binding.rlSleepTime)
             }
             false -> binding.rlSleepTime.visibility = View.GONE
         }
