@@ -90,7 +90,7 @@
     <string name="alarm_clock_has_been_canceled">Будильник на %1$s отменен</string>
     <string name="return_alarm">Вернуть</string>
     <string name="alarm_canceled">Будильник отменен</string>
-    <string name="remaining_time">Осталось\u0020</string>
+    <string name="remaining_time">Осталось %1$s</string>
     <string name="no_alarm">Пока что нет будильников 😔\n</string>
     <string name="alarm_set_for_remaining_time">"Будильник установлен на %1$s \nОсталось %2$s"</string>
     <string name="hours">ч</string>
@@ -103,7 +103,7 @@
     <string name="wake_up">Вам нужно проснуться в…</string>
     <string name="you_need_anecdote" translatable="false">Хочешь анекдот?</string>
     <string name="yes">Да</string>
-    <string name="optimal_time">"Оптимальное время -\u0020"</string>
+    <string name="optimal_time">"Оптимальное время - %1$s"</string>
     <string name="you_need_fact" translatable="false">Хочешь интересный факт?</string>
     <string name="time_to_sleep">"Время на сон %1$s"</string>
     <string name="settings_clear">Настройки сброшены</string>

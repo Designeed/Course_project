@@ -163,7 +163,7 @@ class SleepFragment : Fragment() {
         binding.rvCards.adapter = sleepCardsAdapter
         sleepCards.clear()
         curTimeFull.add(Calendar.MINUTE, minutesCycle * (cardCount + 1))
-        curTimeFull.add(Calendar.MINUTE, fallingAsleepTime)
+        curTimeFull.add(Calendar.MINUTE, -fallingAsleepTime)
         remMinutes *= cardCount
 
         for (i in 0 until cardCount) {
@@ -171,10 +171,11 @@ class SleepFragment : Fragment() {
             sleepCards.add(
                 SleepCards(
                     sdf.format(curTimeFull.time),
-                    getString(R.string.remaining_time) + MyTimer.getFormatTime(
+                    getString(R.string.time_to_sleep,
+                        MyTimer.getFormatTime(
                         remMinutes.toLong(),
                         requireContext()
-                    )
+                    ))
                 )
             )
             remMinutes -= cycleDuration
@@ -185,7 +186,7 @@ class SleepFragment : Fragment() {
     private fun setTitleTime() {
         if (sleepCards.size >= 6)
             requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle =
-                (getString(R.string.optimal_time) + sleepCards[sleepCards.size - 6].title)
+                (getString(R.string.optimal_time, sleepCards[sleepCards.size - 6].title))
     }
 
     override fun onDestroyView() {

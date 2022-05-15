@@ -138,7 +138,11 @@ class AlarmFragment : Fragment() {
             alarmCards.add(
                 SleepCards(
                     SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(alarmManager.nextAlarmClock.triggerTime)),
-                    getString(R.string.remaining_time) + MyTimer.calcRemainingTimeMinute(Date(alarmManager.nextAlarmClock.triggerTime), requireContext())
+                    getString(R.string.remaining_time,
+                        MyTimer.calcRemainingTimeMinute(
+                            Date(alarmManager.nextAlarmClock.triggerTime),
+                            requireContext())
+                    )
                 )
             )
         }else{

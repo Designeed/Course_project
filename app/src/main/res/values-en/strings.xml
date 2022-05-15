@@ -77,7 +77,7 @@
     <string name="alarm_clock_has_been_canceled">Alarm clock for %1$s has been canceled</string>
     <string name="return_alarm">Return</string>
     <string name="alarm_canceled">Alarm canceled</string>
-    <string name="remaining_time">Remaining\u0020</string>
+    <string name="remaining_time">Remaining %1$s</string>
     <string name="no_alarm">There are no alarm clocks yet 😔\n</string>
     <string name="alarm_set_for_remaining_time">"The alarm is set for %1$s \nRemaining %2$s"</string>
     <string name="hours">h</string>
@@ -89,7 +89,7 @@
     <string name="choose_time_go_to_bed">Choose the time at which you would like to go to bed…</string>
     <string name="wake_up">You need to wake up in…</string>
     <string name="yes">Yes</string>
-    <string name="optimal_time">Optimal time -\u0020</string>
+    <string name="optimal_time">Optimal time - %1$s</string>
     <string name="time_to_sleep">Time to sleep %1$s</string>
     <string name="settings_clear">Settings reset</string>
     <string name="extra_time_desc">Select the time for which you can postpone the alarm</string>

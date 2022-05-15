@@ -177,7 +177,7 @@ class WakeFragment : Fragment() {
     private fun setTitleTime() {
         if (timeCards.size >= 6)
             requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).subtitle =
-                (getString(R.string.optimal_time) + timeCards[5].time)
+                (getString(R.string.optimal_time, timeCards[5].time))
     }
 
     override fun onDestroyView() {
