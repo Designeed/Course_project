@@ -101,10 +101,10 @@
     <string name="go_to_bed">Ложитесь в…</string>
     <string name="choose_time_go_to_bed">Выберите время, в которое хотели бы лечь спать…</string>
     <string name="wake_up">Вам нужно проснуться в…</string>
-    <string name="you_need_anecdote">Хочешь анекдот?</string>
+    <string name="you_need_anecdote" translatable="false">Хочешь анекдот?</string>
     <string name="yes">Да</string>
     <string name="optimal_time">"Оптимальное время -\u0020"</string>
-    <string name="you_need_fact">Хочешь интересный факт?</string>
+    <string name="you_need_fact" translatable="false">Хочешь интересный факт?</string>
     <string name="time_to_sleep">"Время на сон %1$s"</string>
     <string name="settings_clear">Настройки сброшены</string>
     <string name="extra_time_desc">Выберите время, на которое можно будет отложить будильник</string>

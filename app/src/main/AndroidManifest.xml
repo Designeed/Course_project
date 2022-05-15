@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.Sleepy" >
+    package="com.example.sleepy" >
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -21,18 +21,18 @@
         android:theme="@style/Theme.Test_project"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name="com.example.Sleepy.main.modules.alarm.presentation.AlarmActivity"
+            android:name="com.example.sleepy.presentation.alarm.alarmInfo.AlarmActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:showOnLockScreen="true"
             android:launchMode="singleInstance"/>
         <activity
-            android:name="com.example.Sleepy.main.modules.onBoarding.presentation.OnBoardingActivity"
+            android:name="com.example.sleepy.presentation.onBoarding.OnBoardingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Test_project.NoActionBar" />
         <activity
-            android:name="com.example.Sleepy.ui.splash.SplashActivity"
+            android:name="com.example.sleepy.presentation.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.splash" >
@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:name="com.example.Sleepy.core.presentation.MainActivity"
+            android:name="com.example.sleepy.presentation.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.Test_project.NoActionBar" />

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_sleep"
-        android:name="com.example.Sleepy.main.modules.sleep.presentation.SleepFragment"
+        android:name="com.example.sleepy.presentation.sleep.SleepFragment"
         android:label="@string/when_sleep"
         tools:layout="@layout/fragment_sleep" />
 
     <fragment
         android:id="@+id/nav_wake"
-        android:name="com.example.Sleepy.main.modules.wake.presentation.WakeFragment"
+        android:name="com.example.sleepy.presentation.wake.WakeFragment"
         android:label="@string/when_wake"
         tools:layout="@layout/fragment_wake" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.Sleepy.main.modules.settings.presentation.SettingsFragment"
+        android:name="com.example.sleepy.presentation.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_alarm"
-        android:name="com.example.Sleepy.main.modules.alarm.presentation.AlarmFragment"
+        android:name="com.example.sleepy.presentation.alarm.AlarmFragment"
         android:label="@string/alarm"
         tools:layout="@layout/fragment_alarm" />
 </navigation>

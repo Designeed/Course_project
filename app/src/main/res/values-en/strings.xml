@@ -88,10 +88,8 @@
     <string name="go_to_bed">Go to bed at…</string>
     <string name="choose_time_go_to_bed">Choose the time at which you would like to go to bed…</string>
     <string name="wake_up">You need to wake up in…</string>
-    <string name="you_need_anecdote">Do you want a joke?</string>
     <string name="yes">Yes</string>
     <string name="optimal_time">Optimal time -\u0020</string>
-    <string name="you_need_fact">Do you want an interesting fact?</string>
     <string name="time_to_sleep">Time to sleep %1$s</string>
     <string name="settings_clear">Settings reset</string>
     <string name="extra_time_desc">Select the time for which you can postpone the alarm</string>

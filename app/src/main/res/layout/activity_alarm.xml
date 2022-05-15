@@ -5,7 +5,7 @@
     android:id="@+id/rlMainAlarm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.modules.alarm.presentation.AlarmActivity"
+    tools:context=".presentation.alarm.alarmInfo.AlarmActivity"
     android:background="@color/black">
 
     <LinearLayout
