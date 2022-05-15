@@ -2,8 +2,7 @@ package com.example.sleepy.utils
 
 import java.util.*
 
-class Quotes {
-    companion object{
+object Quotes {
         private val quoteArrayAlarm = arrayOf(
             "Здесь мог бы быть анекдот про Штирлица",
             "За дверью послышались споры\n-Грибы, - подумал Штирлиц",
@@ -118,23 +117,13 @@ class Quotes {
             "Анатидеофобия – это навязчивый страх, что из другого уголка мира за вами наблюдает утка."
         )
 
-        val quoteAlarm: String
-            get() = quoteArrayAlarm[Random().nextInt(quoteArrayAlarm.size)]
+        val quoteAlarm: String get() = quoteArrayAlarm[Random().nextInt(quoteArrayAlarm.size)]
 
-        @JvmStatic
-        val quoteCat: String
-            get() = quoteArrayCat[Random().nextInt(quoteArrayCat.size)]
+        val quoteCat: String get() = quoteArrayCat[Random().nextInt(quoteArrayCat.size)]
 
-        @JvmStatic
-        val anecdote: String
-            get() = anecdotesArray[Random().nextInt(anecdotesArray.size)]
+        val anecdote: String get() = anecdotesArray[Random().nextInt(anecdotesArray.size)]
 
-        @JvmStatic
-        val quoteSloth: String
-            get() = quoteArraySloth[Random().nextInt(quoteArraySloth.size)]
+        val quoteSloth: String get() = quoteArraySloth[Random().nextInt(quoteArraySloth.size)]
 
-        @JvmStatic
-        val fact: String
-            get() = factsArray[Random().nextInt(factsArray.size)]
-    }
+        val fact: String get() = factsArray[Random().nextInt(factsArray.size)]
 }

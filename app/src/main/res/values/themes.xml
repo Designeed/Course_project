@@ -109,18 +109,6 @@
         <item name="android:timePickerMode">spinner</item>
     </style>
 
-    <style name="txt">
-        <item name="android:fontFamily">@font/comfortaa_bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="txt_setting">
-        <item name="android:fontFamily">@font/comfortaa_regular</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/txt_settings</item>
-    </style>
-
     <style name="title" parent="Theme.AppCompat.DayNight">
         <item name="android:textColor">@color/text_header_p</item>
         <item name="android:fontFamily">@font/comfortaa_bold</item>
@@ -147,13 +135,6 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="Theme.AppCompat.DayNight.NoActionBar.FullScreen" parent="@style/Theme.splash">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
     <style name="app_bar" parent="Theme.AppCompat.DayNight">
         <item name="android:background">@color/bg_p</item>
         <item name="titleTextColor">@color/text_header_p</item>
@@ -164,41 +145,9 @@
         <item name="srcCompat">@drawable/button_menu_bg</item>
     </style>
 
-    <!--other-->
-    <style name="Theme.Test_project.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppBarOverlay">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="PopupOverlay">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
+    <!--burger-->
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@color/text_header_p</item>
     </style>
-
-    <style name="Theme.Test_project.Fullscreen" parent="Theme.Test_project">
-        <item name="android:actionBarStyle">@style/Widget.Theme.Test_project.ActionBar.Fullscreen
-        </item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-    </style>
-
-    <style name="Theme.Test_project.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Test_project.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="ThemeOverlay.Test_project.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
-    </style>
-
 </resources>

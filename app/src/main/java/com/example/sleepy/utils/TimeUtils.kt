@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TextView
 import java.util.*
 
-class MyTimer {
+class TimeUtils {
     companion object{
         fun calcRemainingTimeMinute(date: Date, context: Context): String {
             val remTime: String
@@ -36,7 +36,7 @@ class MyTimer {
         }
 
         fun clearTime(tp: TimePicker, context: Context) {
-            MyVibrator.vibrate(30, context)
+            VibrationUtils.vibrate(30, context)
             tp.hour = Calendar.getInstance()[Calendar.HOUR_OF_DAY]
             tp.minute = Calendar.getInstance()[Calendar.MINUTE]
         }

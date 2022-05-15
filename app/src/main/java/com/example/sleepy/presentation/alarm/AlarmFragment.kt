@@ -17,10 +17,10 @@ import com.example.sleepy.R
 import com.example.sleepy.databinding.FragmentAlarmBinding
 import com.example.sleepy.presentation.sleep.recycler.SleepCards
 import com.example.sleepy.presentation.sleep.recycler.SleepCardsAdapter
-import com.example.sleepy.utils.MyAlarm
-import com.example.sleepy.utils.MyAnimator
-import com.example.sleepy.utils.MyTimer
-import com.example.sleepy.utils.MyVibrator
+import com.example.sleepy.utils.AlarmUtils
+import com.example.sleepy.utils.AnimationsUtils
+import com.example.sleepy.utils.TimeUtils
+import com.example.sleepy.utils.VibrationUtils
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -46,7 +46,7 @@ class AlarmFragment : Fragment() {
         val root: View = binding.root
 
         init()
-        MyAnimator.setFadeAnimationStart(root)
+        AnimationsUtils.setFadeAnimationStart(root)
 
         binding.fabAddAlarm.setOnClickListener {
             mtpTimeAlarm = MaterialTimePicker.Builder()
@@ -67,7 +67,7 @@ class AlarmFragment : Fragment() {
             try {
                 val timeLastAlarm: Calendar = GregorianCalendar()
                 timeLastAlarm.time = Date(alarmManager.nextAlarmClock.triggerTime)
-                MyAlarm.cancelAlarm(binding.clAlarm)
+                AlarmUtils.cancelAlarm(binding.clAlarm)
                 initCardItem()
                 alarmCards.clear()
                 Snackbar.make(
@@ -94,7 +94,7 @@ class AlarmFragment : Fragment() {
         }
 
         binding.srlUpdateAlarm.setOnRefreshListener {
-            MyVibrator.vibrate(30, requireContext())
+            VibrationUtils.vibrate(30, requireContext())
             init()
             binding.srlUpdateAlarm.isRefreshing = false
         }
@@ -122,7 +122,7 @@ class AlarmFragment : Fragment() {
         }
 
     private fun setAlarm(time: Calendar, view: View) {
-        MyAlarm.setAlarm(requireContext(), time, view)
+        AlarmUtils.setAlarm(requireContext(), time, view)
         initCardItem()
         Log.i("alarm", "Time Alarm - " + time[Calendar.HOUR_OF_DAY] + ":" + time[Calendar.MINUTE])
     }
@@ -139,7 +139,7 @@ class AlarmFragment : Fragment() {
                 SleepCards(
                     SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(alarmManager.nextAlarmClock.triggerTime)),
                     getString(R.string.remaining_time,
-                        MyTimer.calcRemainingTimeMinute(
+                        TimeUtils.calcRemainingTimeMinute(
                             Date(alarmManager.nextAlarmClock.triggerTime),
                             requireContext())
                     )

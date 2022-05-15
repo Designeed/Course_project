@@ -108,7 +108,7 @@
 
                         <TextView
                             android:id="@+id/tvAnimSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -142,7 +142,7 @@
 
                         <TextView
                             android:id="@+id/tvVibrationSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -213,7 +213,7 @@
 
                         <TextView
                             android:id="@+id/tvSelectCyclesSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/npCycles"
@@ -244,7 +244,7 @@
 
                         <TextView
                             android:id="@+id/tvCheckTimeSleepSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/sSleepTime"
@@ -279,7 +279,7 @@
 
                         <TextView
                             android:id="@+id/tvTimeSleepSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/npTimeSleep"
@@ -311,7 +311,7 @@
 
                         <TextView
                             android:id="@+id/tvFormatSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -346,7 +346,7 @@
 
                         <TextView
                             android:id="@+id/tvSleepCycleSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/npDurationCycle"
@@ -402,7 +402,7 @@
 
                         <TextView
                             android:id="@+id/tvQuoteSet"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/sQuoteShow"
@@ -435,7 +435,7 @@
 
                         <TextView
                             android:id="@+id/tvChoiceAlarm"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/sChoiceAlarm"
@@ -468,7 +468,7 @@
 
                         <TextView
                             android:id="@+id/tvSetExtraTime"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@+id/npExtraTime"
@@ -499,7 +499,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/vol_alarm_settings" />
@@ -522,7 +522,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     app:cornerRadius="20dp"
-                    style="@style/txt"
+                    style="@style/txt_bold"
                     android:drawableLeft="@drawable/ic_rotate_reloaded"
                     android:background="@color/transparent"
                     android:textSize="15sp"

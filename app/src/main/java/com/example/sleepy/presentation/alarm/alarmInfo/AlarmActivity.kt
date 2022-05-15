@@ -5,11 +5,10 @@ import android.media.MediaPlayer
 import android.media.Ringtone
 import android.os.PowerManager.WakeLock
 import android.media.AudioAttributes
-import com.example.sleepy.utils.MyPreferences.SettingsApp
 import android.os.Bundle
 import com.example.sleepy.R
 import android.media.AudioManager
-import com.example.sleepy.utils.MyAlarm
+import com.example.sleepy.utils.AlarmUtils
 import android.media.RingtoneManager
 import android.os.Build
 import android.os.PowerManager
@@ -18,6 +17,7 @@ import com.example.sleepy.utils.Quotes
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.ActivityAlarmBinding
 import com.example.sleepy.presentation.splash.SplashActivity
 import java.lang.Exception
@@ -31,7 +31,7 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var notificationUri: Uri
     private lateinit var mWakeLock: WakeLock
     private lateinit var aaAlarmType: AudioAttributes
-    private lateinit var prefs: SettingsApp
+    private lateinit var prefs: PrefsStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class AlarmActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        prefs = SettingsApp(this)
+        prefs = PrefsStorage(this)
         binding.bPlusTime.text = getString(R.string.add_more_time, prefs.extraTime)
         supportActionBar?.hide()
         volumeControlStream = AudioManager.STREAM_ALARM
@@ -57,7 +57,7 @@ class AlarmActivity : AppCompatActivity() {
         val c = Calendar.getInstance()
         c.add(Calendar.MINUTE, prefs.extraTime)
         finish()
-        MyAlarm.setAlarm(this, c, binding.rlMainAlarm)
+        AlarmUtils.setAlarm(this, c, binding.rlMainAlarm)
     }
 
     private fun setAlarmType() {

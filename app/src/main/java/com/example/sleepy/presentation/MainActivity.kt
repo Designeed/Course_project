@@ -12,10 +12,10 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.sleepy.R
+import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.ActivityMainBinding
 import com.example.sleepy.utils.AppTheme
-import com.example.sleepy.utils.MyAnimator
-import com.example.sleepy.utils.MyPreferences.SettingsApp
+import com.example.sleepy.utils.AnimationsUtils
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         AppTheme.setShareTheme(applicationContext)
         setContentView(binding.root)
         init()
-        MyAnimator.setFadeAnimationStart(binding.root)
+        AnimationsUtils.setFadeAnimationStart(binding.root)
     }
 
     private fun init() {
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     private val shared: Unit
         get() {
-            val prefs = SettingsApp(this)
+            val prefs = PrefsStorage(this)
             isAnimate = prefs.isAnimated
         }
 

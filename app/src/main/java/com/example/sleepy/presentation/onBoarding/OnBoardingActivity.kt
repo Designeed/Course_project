@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.sleepy.utils.AppTheme
 import com.example.sleepy.R
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.sleepy.utils.MyVibrator
+import com.example.sleepy.utils.VibrationUtils
 import android.content.Intent
 import com.example.sleepy.presentation.MainActivity
 import android.media.AudioManager
@@ -22,6 +22,7 @@ class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingBinding
     private lateinit var states: ArrayList<OnBoarding>
     private lateinit var boardAdapter: OnBoardingAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppTheme.setShareTheme(applicationContext)
@@ -42,7 +43,7 @@ class OnBoardingActivity : AppCompatActivity() {
         })
 
         binding.bNext.setOnClickListener {
-            MyVibrator.vibrate(30, this@OnBoardingActivity)
+            VibrationUtils.vibrate(30, this@OnBoardingActivity)
 
             if (binding.vpDemo.currentItem + 1 < boardAdapter.itemCount) {
                 binding.vpDemo.currentItem = binding.vpDemo.currentItem + 1
@@ -55,7 +56,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         binding.bSkip.setOnClickListener {
             binding.bSkip.isEnabled = false
-            MyVibrator.vibrate(30, this@OnBoardingActivity)
+            VibrationUtils.vibrate(30, this@OnBoardingActivity)
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
         }
@@ -69,24 +70,23 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun initCardItem() {
-        val item1 = OnBoarding()
-        item1.title = getString(R.string.app_name)
-        item1.description = getString(R.string.item1_description)
-        item1.image = R.drawable.board_1_svg
+        states.add(OnBoarding(
+            title = getString(R.string.app_name),
+            description = getString(R.string.item1_description),
+            image = R.drawable.board_1_svg
+        ))
 
-        val item2 = OnBoarding()
-        item2.title = getString(R.string.app_name)
-        item2.description = getString(R.string.item2_description)
-        item2.image = R.drawable.board_2_svg
+        states.add(OnBoarding(
+            title = getString(R.string.app_name),
+            description = getString(R.string.item2_description),
+            image = R.drawable.board_2_svg
+        ))
 
-        val item3 = OnBoarding()
-        item3.title = getString(R.string.app_name)
-        item3.description = getString(R.string.item3_description)
-        item3.image = R.drawable.board_3_svg
-
-        states.add(item1)
-        states.add(item2)
-        states.add(item3)
+        states.add(OnBoarding(
+            title = getString(R.string.app_name),
+            description = getString(R.string.item3_description),
+            image = R.drawable.board_3_svg
+        ))
 
         boardAdapter = OnBoardingAdapter(states)
     }
@@ -97,6 +97,7 @@ class OnBoardingActivity : AppCompatActivity() {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+
         lParams.setMargins(8, 0, 8, 0)
 
         for (i in indicators.indices) {

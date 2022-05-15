@@ -2,7 +2,6 @@ package com.example.sleepy.presentation.settings
 
 import android.content.Context
 import android.media.AudioManager
-import com.example.sleepy.utils.MyPreferences.SettingsApp
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -21,10 +20,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
+import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.FragmentSettingsBinding
 import com.example.sleepy.utils.AppTheme
-import com.example.sleepy.utils.MyAnimator
-import com.example.sleepy.utils.MyVibrator
+import com.example.sleepy.utils.AnimationsUtils
+import com.example.sleepy.utils.VibrationUtils
 import com.shawnlin.numberpicker.NumberPicker
 import java.lang.Exception
 
@@ -33,7 +33,7 @@ class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var amAlarm: AudioManager
     private lateinit var handler: Handler
-    private lateinit var prefs: SettingsApp
+    private lateinit var prefs: PrefsStorage
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +45,7 @@ class SettingsFragment : Fragment() {
         val root: View = binding.root
 
         init()
-        MyAnimator.setFadeAnimationStart(root)
+        AnimationsUtils.setFadeAnimationStart(root)
 
         binding.bSettingsDefault.setOnClickListener {
             MaterialAlertDialogBuilder(
@@ -71,12 +71,12 @@ class SettingsFragment : Fragment() {
                 when(binding.sSleepTime.isChecked){
                     true -> {
                         binding.rlSleepTime.visibility = View.VISIBLE
-                        MyAnimator.setFadeAnimationStart(binding.rlSleepTime)
+                        AnimationsUtils.setFadeAnimationStart(binding.rlSleepTime)
                     }
                     false -> binding.rlSleepTime.visibility = View.GONE
                 }
 
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 binding.npTimeSleep.isEnabled = binding.sSleepTime.isChecked
                 prefs.isCheckedSleepTime = binding.sSleepTime.isChecked
                 binding.npTimeSleep.value = 0
@@ -90,7 +90,7 @@ class SettingsFragment : Fragment() {
             try {
                 prefs.themeId = i
                 AppTheme.setShareTheme(requireContext())
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
             } catch (ex: Exception) {
                 errorPlay()
             }
@@ -98,7 +98,7 @@ class SettingsFragment : Fragment() {
 
         binding.sAnimations.setOnClickListener {
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.isAnimated = binding.sAnimations.isChecked
                 setAnimations()
             } catch (ex: Exception) {
@@ -108,7 +108,7 @@ class SettingsFragment : Fragment() {
 
         binding.npCycles.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             try {
-                MyVibrator.vibrate(15, requireContext())
+                VibrationUtils.vibrate(15, requireContext())
                 prefs.cardCount = newVal
             } catch (ex: Exception) {
                 errorPlay()
@@ -117,7 +117,7 @@ class SettingsFragment : Fragment() {
 
         binding.npDurationCycle.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             try {
-                MyVibrator.vibrate(10, requireContext())
+                VibrationUtils.vibrate(10, requireContext())
                 prefs.cycleDuration = newVal
             } catch (ex: Exception) {
                 errorPlay()
@@ -126,7 +126,7 @@ class SettingsFragment : Fragment() {
 
         binding.npTimeSleep.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             try {
-                MyVibrator.vibrate(15, requireContext())
+                VibrationUtils.vibrate(15, requireContext())
                 if (binding.sSleepTime.isChecked) prefs.sleepTime = newVal
                 else prefs.sleepTime = 0
             } catch (ex: Exception) {
@@ -136,7 +136,7 @@ class SettingsFragment : Fragment() {
 
         binding.sTimeFormat.setOnClickListener {
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.is24TimeFormat = binding.sTimeFormat.isChecked
             } catch (ex: Exception) {
                 errorPlay()
@@ -145,7 +145,7 @@ class SettingsFragment : Fragment() {
 
         binding.sQuoteShow.setOnClickListener {
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.isCheckedQuotes = binding.sQuoteShow.isChecked
             } catch (ex: Exception) {
                 errorPlay()
@@ -154,7 +154,7 @@ class SettingsFragment : Fragment() {
 
         binding.sVolAlarm.addOnChangeListener(Slider.OnChangeListener { _: Slider?, value: Float, _: Boolean ->
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 amAlarm.setStreamVolume(AudioManager.STREAM_ALARM, value.toInt(), 0)
             } catch (ex: Exception) {
                 errorPlay()
@@ -163,7 +163,7 @@ class SettingsFragment : Fragment() {
 
         binding.sChoiceAlarm.setOnClickListener {
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.isBuiltinAlarm = binding.sChoiceAlarm.isChecked
             } catch (ex: Exception) {
                 errorPlay()
@@ -171,7 +171,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.ivSettingsInfo.setOnClickListener {
-            MyVibrator.vibrate(30, requireContext())
+            VibrationUtils.vibrate(30, requireContext())
             if (BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).state == BottomSheetBehavior.STATE_COLLAPSED) {
                 BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet)
                     .setState(BottomSheetBehavior.STATE_EXPANDED)
@@ -183,13 +183,13 @@ class SettingsFragment : Fragment() {
 
         binding.srlUpdate.setOnRefreshListener {
             init()
-            MyVibrator.vibrate(30, requireContext())
+            VibrationUtils.vibrate(30, requireContext())
             binding.srlUpdate.isRefreshing = false
         }
 
         binding.sVibration.setOnClickListener {
             try {
-                MyVibrator.vibrate(30, requireContext())
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.isVibrated = binding.sVibration.isChecked
             } catch (ex: Exception) {
                 errorPlay()
@@ -198,7 +198,7 @@ class SettingsFragment : Fragment() {
 
         binding.npExtraTime.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             try {
-                MyVibrator.vibrate(15, requireContext())
+                VibrationUtils.vibrate(15, requireContext())
                 prefs.extraTime = newVal
             } catch (ex: Exception) {
                 errorPlay()
@@ -264,7 +264,7 @@ class SettingsFragment : Fragment() {
 
     private val shared: Unit
         get() {
-            prefs = SettingsApp(requireContext())
+            prefs = PrefsStorage(requireContext())
             try {
                 binding.rgTheme.check(prefs.themeId)
                 binding.sAnimations.isChecked = prefs.isAnimated

@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/tvDescriptionBoard"
-        style="@style/txt"
+        style="@style/txt_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTitleBoard"

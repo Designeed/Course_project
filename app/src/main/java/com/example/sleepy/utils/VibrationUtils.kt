@@ -1,16 +1,16 @@
 package com.example.sleepy.utils
 
 import android.content.Context
-import com.example.sleepy.utils.MyPreferences.SettingsApp
 import android.os.Build
 import android.os.Vibrator
 import android.os.VibrationEffect
 import androidx.core.content.getSystemService
+import com.example.sleepy.data.storage.PrefsStorage
 
-class MyVibrator {
+class VibrationUtils {
     companion object{
         fun vibrate(ms: Long, context: Context) {
-            if (SettingsApp(context).isVibrated) {
+            if (PrefsStorage(context).isVibrated) {
                 if (Build.VERSION.SDK_INT >= 26) {
                     (context.getSystemService<Vibrator>())
                         ?.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE))

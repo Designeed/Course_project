@@ -13,14 +13,14 @@ import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.sleepy.utils.MyPreferences.SettingsApp
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.FragmentWakeBinding
 import com.example.sleepy.presentation.wake.recycler.WakeCards
 import com.example.sleepy.presentation.wake.recycler.WakeCardsAdapter
-import com.example.sleepy.utils.MyAnimator
-import com.example.sleepy.utils.MyTimer
-import com.example.sleepy.utils.MyVibrator
+import com.example.sleepy.utils.AnimationsUtils
+import com.example.sleepy.utils.TimeUtils
+import com.example.sleepy.utils.VibrationUtils
 import com.example.sleepy.utils.Quotes
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,7 +51,7 @@ class WakeFragment : Fragment() {
 
         init()
         initCardItem()
-        MyAnimator.setFadeAnimationStart(root)
+        AnimationsUtils.setFadeAnimationStart(root)
 
         wakeViewModel.text.observe(
             viewLifecycleOwner,
@@ -68,7 +68,7 @@ class WakeFragment : Fragment() {
             { s: String? -> binding.tvGoToSleep.text = s })
 
         binding.bClearTime.setOnClickListener {
-            MyTimer.clearTime(binding.tpWake, requireContext())
+            TimeUtils.clearTime(binding.tpWake, requireContext())
         }
 
         binding.tpWake.setOnTimeChangedListener { _: TimePicker?, hourOfDay: Int, minute: Int ->
@@ -79,7 +79,7 @@ class WakeFragment : Fragment() {
                     Calendar.getInstance()[Calendar.DATE],
                     hourOfDay] = minute
             wakeViewModel.setCurTime(c)
-            MyVibrator.vibrate(15, requireContext())
+            VibrationUtils.vibrate(15, requireContext())
         }
 
         if (isAnimate) {
@@ -106,7 +106,7 @@ class WakeFragment : Fragment() {
         }
 
         binding.bCalc.setOnClickListener {
-            MyVibrator.vibrate(30, requireContext())
+            VibrationUtils.vibrate(30, requireContext())
             remMinutes = cycleDuration
             setCurTime()
             initCardItem()
@@ -125,7 +125,7 @@ class WakeFragment : Fragment() {
         setCurTime()
         remMinutes = cycleDuration
         minutesCycle = cycleDuration
-        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, context!!)
+        TimeUtils.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, context!!)
         animations
     }
 
@@ -146,7 +146,7 @@ class WakeFragment : Fragment() {
 
     private val shared: Unit
         get() {
-            val prefs = SettingsApp(requireContext())
+            val prefs = PrefsStorage(requireContext())
             cardCount = prefs.cardCount
             fallingAsleepTime = prefs.sleepTime
             cycleDuration = prefs.cycleDuration
@@ -165,7 +165,7 @@ class WakeFragment : Fragment() {
                     sdf.format(curTime.time),
                     getString(
                         R.string.time_to_sleep,
-                        MyTimer.getFormatTime(remMinutes.toLong(), requireContext())),
+                        TimeUtils.getFormatTime(remMinutes.toLong(), requireContext())),
                     curTime
                 )
             )

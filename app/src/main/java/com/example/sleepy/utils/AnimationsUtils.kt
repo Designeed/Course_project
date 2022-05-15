@@ -5,7 +5,7 @@ import android.animation.PropertyValuesHolder
 import android.view.View
 import android.view.animation.*
 
-class MyAnimator {
+class AnimationsUtils {
     companion object{
         fun setFadeAnimationStart(view: View) {
             val anim = AlphaAnimation(0.0f, 1.0f)

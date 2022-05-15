@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlMainAlarm"
@@ -8,69 +8,76 @@
     tools:context=".presentation.alarm.alarmInfo.AlarmActivity"
     android:background="@color/black">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvAlarmTime"
+        android:layout_width="@dimen/null_size"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        style="@style/txt_bold"
+        android:text="@string/_00_00"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_alarm_header"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
-            android:id="@+id/tvAlarmTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa_bold"
-            android:text="@string/_00_00"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="50sp" />
+    <TextView
+        android:id="@+id/tvAlarmInfo"
+        android:layout_width="@dimen/null_size"
+        android:layout_height="wrap_content"
+        android:text="@string/alarm"
+        android:textAlignment="center"
+        style="@style/txt_regular"
+        android:textSize="@dimen/text_size_alarm_text"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/tvAlarmInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/comfortaa_regular"
-            android:text="@string/alarm"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bStopAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/comfortaa_bold"
+        android:padding="@dimen/padding_default"
+        android:text="@string/b_stop"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:cornerRadius="@dimen/corner_circle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bPlusTime"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:flexWrap="wrap"
-            app:alignItems="stretch"
-            app:alignContent="center"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bPlusTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        app:strokeWidth="@dimen/stroke_default"
+        app:strokeColor="@color/white"
+        android:drawableLeft="@drawable/ic_add_time"
+        android:drawableTint="@color/white"
+        android:fontFamily="@font/comfortaa_bold"
+        android:padding="@dimen/padding_default"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/corner_circle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bStopAlarm"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bStopAlarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/comfortaa_bold"
-                android:padding="10dp"
-                android:text="@string/b_stop"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:cornerRadius="20dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bPlusTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1DFFFFFF"
-                android:drawableLeft="@drawable/ic_add_time"
-                android:layout_marginStart="20dp"
-                android:drawableTint="@color/white"
-                android:fontFamily="@font/comfortaa_bold"
-                android:padding="10dp"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:cornerRadius="2000dp" />
-        </com.google.android.flexbox.FlexboxLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/null_size"
+        app:constraint_referenced_ids="bStopAlarm, bPlusTime"
+        app:flow_wrapMode="chain"
+        app:layout_constraintTop_toBottomOf="@id/tvAlarmInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:flow_verticalGap="@dimen/margin_components"
+        app:flow_horizontalGap="@dimen/margin_components"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalStyle="spread"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

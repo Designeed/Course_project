@@ -5,4 +5,21 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <!--null_values-->
+    <dimen name="null_size">0dp</dimen>
+    <!--text-->
+    <dimen name="text_size_default">20sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_alarm_header">50sp</dimen>
+    <dimen name="text_size_alarm_text">20dp</dimen>
+    <!--corners-->
+    <dimen name="corner_default">20dp</dimen>
+    <dimen name="corner_circle">9999999999dp</dimen>
+    <!--paddings-->
+    <dimen name="padding_default">10dp</dimen>
+    <!--margins-->
+    <dimen name="margin_default">15dp</dimen>
+    <dimen name="margin_components">20dp</dimen>
+    <!--other-->
+    <dimen name="stroke_default">2dp</dimen>
 </resources>

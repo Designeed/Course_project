@@ -120,7 +120,7 @@
 
                         <TextView
                             android:id="@+id/tv16Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -153,7 +153,7 @@
 
                         <TextView
                             android:id="@+id/tv12Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -186,7 +186,7 @@
 
                         <TextView
                             android:id="@+id/tv10Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -219,7 +219,7 @@
 
                         <TextView
                             android:id="@+id/tv9Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -252,7 +252,7 @@
 
                         <TextView
                             android:id="@+id/tv8Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -285,7 +285,7 @@
 
                         <TextView
                             android:id="@+id/tv7Title"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -335,7 +335,7 @@
 
                         <TextView
                             android:id="@+id/tv1StageTitle"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -369,7 +369,7 @@
 
                         <TextView
                             android:id="@+id/tv2StageTitle"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -403,7 +403,7 @@
 
                         <TextView
                             android:id="@+id/tv3StageTitle"
-                            style="@style/txt"
+                            style="@style/txt_bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"

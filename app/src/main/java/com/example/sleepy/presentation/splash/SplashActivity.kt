@@ -1,18 +1,18 @@
 package com.example.sleepy.presentation.splash
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sleepy.utils.MyPreferences.RunApp
 import android.os.Bundle
 import com.example.sleepy.R
 import android.media.AudioManager
 import android.content.Intent
 import android.util.Log
+import com.example.sleepy.data.storage.RunStorage
 import com.example.sleepy.presentation.MainActivity
 import com.example.sleepy.presentation.onBoarding.OnBoardingActivity
 import com.example.sleepy.utils.AppTheme
 
 class SplashActivity : AppCompatActivity() {
-    private lateinit var run: RunApp
+    private lateinit var run: RunStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun init() {
         volumeControlStream = AudioManager.STREAM_ALARM
-        run = RunApp(this)
+        run = RunStorage(this)
     }
 
     private fun checkRun() {

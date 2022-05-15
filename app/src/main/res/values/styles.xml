@@ -8,4 +8,22 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
+    <style name="txt_bold">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="txt_regular">
+        <item name="android:fontFamily">@font/comfortaa_regular</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="txt_setting">
+        <item name="android:fontFamily">@font/comfortaa_regular</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/txt_settings</item>
+    </style>
 </resources>

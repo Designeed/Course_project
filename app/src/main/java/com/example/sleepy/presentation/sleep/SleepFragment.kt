@@ -11,8 +11,8 @@ import android.content.DialogInterface
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import com.example.sleepy.utils.MyPreferences.SettingsApp
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.FragmentSleepBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,7 +48,7 @@ class SleepFragment : Fragment() {
 
         init()
         initCardItem()
-        MyAnimator.setFadeAnimationStart(root)
+        AnimationsUtils.setFadeAnimationStart(root)
 
         sleepViewModel.text.observe(
             viewLifecycleOwner,
@@ -63,7 +63,7 @@ class SleepFragment : Fragment() {
         sleepViewModel.textSleep.observe(viewLifecycleOwner, { s: String? -> binding.tvGoToSleep.text = s })
 
         binding.bCalc.setOnClickListener {
-            MyVibrator.vibrate(30, requireContext())
+            VibrationUtils.vibrate(30, requireContext())
             remMinutes = cycleDuration
             curTimeFull[
                     Calendar.YEAR,
@@ -82,11 +82,11 @@ class SleepFragment : Fragment() {
                     Calendar.getInstance()[Calendar.DATE],
                     hourOfDay] = minute
             sleepViewModel.setCurTime(c)
-            MyVibrator.vibrate(15, requireContext())
+            VibrationUtils.vibrate(15, requireContext())
         }
 
         binding.bClearTime.setOnClickListener {
-            MyTimer.clearTime(binding.tpSleep, requireContext())
+            TimeUtils.clearTime(binding.tpSleep, requireContext())
         }
 
         binding.svMainSleep.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
@@ -94,9 +94,9 @@ class SleepFragment : Fragment() {
         }
 
         binding.bAddAlarm.setOnClickListener {
-            MyAlarm.setAlarm(
+            AlarmUtils.setAlarm(
                 requireContext(),
-                MyTimer.getCurrentTime(binding.tpSleep),
+                TimeUtils.getCurrentTime(binding.tpSleep),
                 binding.clMain
             )
         }
@@ -136,7 +136,7 @@ class SleepFragment : Fragment() {
         shared
         remMinutes = cycleDuration
         minutesCycle = -cycleDuration
-        MyTimer.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, requireContext())
+        TimeUtils.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, requireContext())
         animations
     }
 
@@ -151,7 +151,7 @@ class SleepFragment : Fragment() {
 
     private val shared: Unit
         get() {
-            val prefs = SettingsApp(requireContext())
+            val prefs = PrefsStorage(requireContext())
             cardCount = prefs.cardCount
             fallingAsleepTime = prefs.sleepTime
             cycleDuration = prefs.cycleDuration
@@ -172,7 +172,7 @@ class SleepFragment : Fragment() {
                 SleepCards(
                     sdf.format(curTimeFull.time),
                     getString(R.string.time_to_sleep,
-                        MyTimer.getFormatTime(
+                        TimeUtils.getFormatTime(
                         remMinutes.toLong(),
                         requireContext()
                     ))

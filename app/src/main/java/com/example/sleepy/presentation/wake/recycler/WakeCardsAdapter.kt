@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.example.sleepy.R
 import android.widget.TextView
 import com.chauthai.swipereveallayout.SwipeRevealLayout
-import com.example.sleepy.utils.MyAlarm
+import com.example.sleepy.utils.AlarmUtils
 
 class WakeCardsAdapter(private val alarmCards: ArrayList<WakeCards>) :
     RecyclerView.Adapter<WakeCardsAdapter.ViewHolder>() {
@@ -29,7 +29,7 @@ class WakeCardsAdapter(private val alarmCards: ArrayList<WakeCards>) :
         viewBinderHelper.bind(holder.srlCard, state.time)
 
         holder.ivAddAlarm.setOnClickListener { view1: View? ->
-            MyAlarm.setAlarm(view.context, state.getTriggerTime(), view1!!)
+            AlarmUtils.setAlarm(view.context, state.getTriggerTime(), view1!!)
         }
         //Toast.makeText(view.getContext(), "" + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(state.getTriggerTime()), Toast.LENGTH_SHORT).show());
     }
