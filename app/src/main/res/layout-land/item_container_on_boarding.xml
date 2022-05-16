@@ -7,39 +7,39 @@
     <TextView
         android:id="@+id/tvTitleBoard"
         style="@style/title"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/null_size"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_default"
         android:gravity="center"
         android:text="@string/app_name"
         android:textSize="@dimen/text_size_fix_onboard_item"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lottieSrcBoard"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDescriptionBoard"
         style="@style/txt_bold"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/null_size"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="@dimen/margin_default"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleBoard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lottieSrcBoard"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleBoard" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieSrcBoard"
-        android:layout_width="@dimen/null_size"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/null_size"
         android:layout_marginTop="@dimen/margin_default"
         android:paddingStart="@dimen/padding_large"
         android:paddingEnd="@dimen/padding_large"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionBoard"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

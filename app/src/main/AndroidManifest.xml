@@ -25,28 +25,31 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:showOnLockScreen="true"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleInstance"
+            android:theme="@style/NoBar"/>
         <activity
             android:name="com.example.sleepy.presentation.onBoarding.OnBoardingActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Test_project.NoActionBar" />
-        <activity
-            android:name="com.example.sleepy.presentation.splash.SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.splash" >
+
+            android:theme="@style/NoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.sleepy.presentation.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.splash" >
+
+        </activity>
+        <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:name="com.example.sleepy.presentation.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Test_project.NoActionBar" />
+            android:theme="@style/NoBar"/>
     </application>
 
 </manifest>

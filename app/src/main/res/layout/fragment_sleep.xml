@@ -102,8 +102,7 @@
                         android:layout_alignBottom="@id/rlTimePicker"
                         android:layout_alignParentBottom="true"
                         android:minHeight="60dp"
-                        android:text="@string/btn_calc"
-                        tools:ignore="TextContrastCheck" />
+                        android:text="@string/btn_calc"/>
                 </RelativeLayout>
             </RelativeLayout>
 

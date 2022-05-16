@@ -8,31 +8,59 @@
     tools:context=".presentation.alarm.alarmInfo.AlarmActivity"
     android:background="@color/black">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAlarmTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/gl_start"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAlarmBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/gl_end"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAlarmStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/gl_start"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAlarmEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/gl_end"/>
+
     <TextView
         android:id="@+id/tvAlarmTime"
+        style="@style/txt_bold"
         android:layout_width="@dimen/null_size"
         android:layout_height="wrap_content"
-        style="@style/txt_bold"
         android:text="@string/_00_00"
         android:textAlignment="center"
         android:textSize="@dimen/text_size_alarm_header"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@+id/glAlarmBottom"
+        app:layout_constraintEnd_toStartOf="@+id/glAlarmEnd"
+        app:layout_constraintStart_toStartOf="@+id/glAlarmStart"
+        app:layout_constraintTop_toTopOf="@+id/glAlarmTop"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/tvAlarmInfo"
+        style="@style/txt_regular"
         android:layout_width="@dimen/null_size"
         android:layout_height="wrap_content"
         android:text="@string/alarm"
         android:textAlignment="center"
-        style="@style/txt_regular"
-        android:textSize="@dimen/text_size_alarm_text"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlarmTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textSize="@dimen/text_size_fix_alarm_text"
+        app:layout_constraintEnd_toStartOf="@+id/glAlarmEnd"
+        app:layout_constraintStart_toStartOf="@+id/glAlarmStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmTime" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bStopAlarm"
@@ -45,18 +73,16 @@
         android:textAllCaps="false"
         android:textColor="@color/black"
         app:cornerRadius="@dimen/corner_circle"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/glAlarmBottom"
         app:layout_constraintEnd_toStartOf="@+id/bPlusTime"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="@+id/glAlarmStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bPlusTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        app:strokeWidth="@dimen/stroke_default"
-        app:strokeColor="@color/white"
         android:drawableLeft="@drawable/ic_add_time"
         android:drawableTint="@color/white"
         android:fontFamily="@font/comfortaa_bold"
@@ -64,20 +90,25 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:cornerRadius="@dimen/corner_circle"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/glAlarmBottom"
+        app:layout_constraintEnd_toStartOf="@+id/glAlarmEnd"
         app:layout_constraintStart_toEndOf="@+id/bStopAlarm"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmInfo"
+        app:strokeColor="@color/white"
+        app:strokeWidth="@dimen/stroke_default" />
 
     <androidx.constraintlayout.helper.widget.Flow
-        android:layout_width="match_parent"
+        android:id="@+id/flow"
+        android:layout_width="@dimen/null_size"
         android:layout_height="@dimen/null_size"
         app:constraint_referenced_ids="bStopAlarm, bPlusTime"
-        app:flow_wrapMode="chain"
-        app:layout_constraintTop_toBottomOf="@id/tvAlarmInfo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:flow_verticalGap="@dimen/margin_components"
-        app:flow_horizontalGap="@dimen/margin_components"
         app:flow_horizontalAlign="center"
-        app:flow_horizontalStyle="spread"/>
+        app:flow_horizontalGap="@dimen/margin_components"
+        app:flow_horizontalStyle="spread"
+        app:flow_verticalGap="@dimen/margin_components"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toTopOf="@id/glAlarmBottom"
+        app:layout_constraintEnd_toStartOf="@id/glAlarmEnd"
+        app:layout_constraintStart_toEndOf="@id/glAlarmStart"
+        app:layout_constraintTop_toBottomOf="@id/tvAlarmInfo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
