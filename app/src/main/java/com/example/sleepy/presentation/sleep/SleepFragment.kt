@@ -51,16 +51,18 @@ class SleepFragment : Fragment() {
         AnimationsUtils.setFadeAnimationStart(root)
 
         sleepViewModel.text.observe(
-            viewLifecycleOwner,
-            { s: String? -> binding.tvSetTime.text = s })
+            viewLifecycleOwner
+        ) { s: String? -> binding.tvSetTime.text = s }
 
-        sleepViewModel.getCurTime().observe(viewLifecycleOwner, { date: Calendar ->
+        sleepViewModel.getCurTime().observe(viewLifecycleOwner) { date: Calendar ->
             binding.tpSleep.hour = date[Calendar.HOUR_OF_DAY]
             binding.tpSleep.minute = date[Calendar.MINUTE]
             binding.tpSleep.setIs24HourView(true)
-        })
+        }
 
-        sleepViewModel.textSleep.observe(viewLifecycleOwner, { s: String? -> binding.tvGoToSleep.text = s })
+        sleepViewModel.textSleep.observe(viewLifecycleOwner) { s: String? ->
+            binding.tvGoToSleep.text = s
+        }
 
         binding.bCalc.setOnClickListener {
             VibrationUtils.vibrate(30, requireContext())
