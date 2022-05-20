@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
@@ -16,6 +18,8 @@ import com.example.sleepy.data.storage.PrefsStorage
 import com.example.sleepy.databinding.ActivityMainBinding
 import com.example.sleepy.utils.AppTheme
 import com.example.sleepy.utils.AnimationsUtils
+import com.example.sleepy.utils.VibrationUtils
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +36,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         init()
         AnimationsUtils.setFadeAnimationStart(binding.root)
+
+        binding.appBarMain.ibShowInfo.setOnClickListener{
+            VibrationUtils.vibrate(30, this)
+            if (BottomSheetBehavior.from(binding.appBarMain.incBottomSheet.flBottomSheet).state == BottomSheetBehavior.STATE_COLLAPSED) {
+                BottomSheetBehavior.from(binding.appBarMain.incBottomSheet.flBottomSheet)
+                    .setState(BottomSheetBehavior.STATE_EXPANDED)
+            } else {
+                BottomSheetBehavior.from(binding.appBarMain.incBottomSheet.flBottomSheet)
+                    .setState(BottomSheetBehavior.STATE_COLLAPSED)
+            }
+        }
     }
 
     private fun init() {
@@ -39,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
         lLogo = binding.navView.getHeaderView(0).findViewById(R.id.lLogo)
         lStar = binding.navView.getHeaderView(0).findViewById(R.id.lMenuBg)
+        BottomSheetBehavior.from(binding.appBarMain.incBottomSheet.flBottomSheet).state = BottomSheetBehavior.STATE_COLLAPSED
         setNavConfig()
         shared
         setAnimation()
@@ -69,7 +85,8 @@ class MainActivity : AppCompatActivity() {
         )
             .setOpenableLayout(binding.drawerLayout)
             .build()
-        val navController = findNavController(this, R.id.nav_host_fragment_content_main)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        val navController: NavController = navHostFragment.navController
         setupActionBarWithNavController(this, navController, mAppBarConfiguration)
         setupWithNavController(binding.navView, navController)
     }

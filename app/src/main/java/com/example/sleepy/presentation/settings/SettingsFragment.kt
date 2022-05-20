@@ -170,17 +170,6 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        binding.ivSettingsInfo.setOnClickListener {
-            VibrationUtils.vibrate(30, requireContext())
-            if (BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).state == BottomSheetBehavior.STATE_COLLAPSED) {
-                BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet)
-                    .setState(BottomSheetBehavior.STATE_EXPANDED)
-            } else {
-                BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet)
-                    .setState(BottomSheetBehavior.STATE_COLLAPSED)
-            }
-        }
-
         binding.srlUpdate.setOnRefreshListener {
             init()
             VibrationUtils.vibrate(30, requireContext())
@@ -220,7 +209,6 @@ class SettingsFragment : Fragment() {
     private fun init() {
         amAlarm = requireContext().getSystemService(Context.AUDIO_SERVICE) as AudioManager
         binding.sVolAlarm.value = amAlarm.getStreamVolume(AudioManager.STREAM_ALARM).toFloat()
-        BottomSheetBehavior.from(binding.incBottomSheet.flBottomSheet).state = BottomSheetBehavior.STATE_COLLAPSED
         handler = Handler(Looper.getMainLooper())
         shared
         checkVisible()

@@ -29,8 +29,20 @@
             android:background="@color/transparent"
             android:gravity="center"
             android:paddingStart="-3dp"
-            android:paddingEnd="-3dp" />
+            android:paddingEnd="-3dp">
+
+            <ImageButton
+                android:id="@+id/ibShowInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/cd_information"
+                android:src="@drawable/ic_info"
+                android:background="@color/transparent"
+                android:layout_gravity="end|center_vertical"
+                android:padding="@dimen/padding_large"/>
+        </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
 
     <include layout="@layout/content_main"/>
+    <include layout="@layout/bottom_sheet_info" android:id="@+id/incBottomSheet"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

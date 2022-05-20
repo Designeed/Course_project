@@ -30,19 +30,16 @@
         <activity
             android:name="com.example.sleepy.presentation.onBoarding.OnBoardingActivity"
             android:exported="true"
-
-            android:theme="@style/NoBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/NoBar"/>
         <activity
             android:name="com.example.sleepy.presentation.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.splash" >
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
