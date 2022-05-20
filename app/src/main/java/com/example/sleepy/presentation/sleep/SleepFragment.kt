@@ -101,13 +101,14 @@ class SleepFragment : Fragment() {
             )
         }
 
-        binding.lCatSleepMain.setOnClickListener { view: View? ->
+        binding.lCatSleepMain.setOnClickListener {
             val q = Quotes.quoteCat
-            val s = Snackbar.make(view!!, q, Snackbar.LENGTH_LONG).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+            val s = Snackbar.make(requireView(), q, Snackbar.LENGTH_LONG).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
             if (q == getString(R.string.you_need_anecdote)) {
                 s.setAction(R.string.yes) {
                     MaterialAlertDialogBuilder(
-                        requireContext()
+                        requireContext(),
+                        R.style.ThemeOverlay_App_MaterialAlertDialog
                     )
                         .setTitle(getString(R.string.title_alert_cat))
                         .setMessage(Quotes.anecdote)

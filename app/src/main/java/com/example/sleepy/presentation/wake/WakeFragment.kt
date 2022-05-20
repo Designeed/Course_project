@@ -54,18 +54,18 @@ class WakeFragment : Fragment() {
         AnimationsUtils.setFadeAnimationStart(root)
 
         wakeViewModel.text.observe(
-            viewLifecycleOwner,
-            { s: String? -> binding.tvSetTime.text = s })
+            viewLifecycleOwner
+        ) { s: String? -> binding.tvSetTime.text = s }
 
-        wakeViewModel.getCurTime().observe(viewLifecycleOwner, { date: Calendar ->
+        wakeViewModel.getCurTime().observe(viewLifecycleOwner) { date: Calendar ->
             binding.tpWake.hour = date[Calendar.HOUR_OF_DAY]
             binding.tpWake.minute = date[Calendar.MINUTE]
             binding.tpWake.setIs24HourView(true)
-        })
+        }
 
         wakeViewModel.textWake.observe(
-            viewLifecycleOwner,
-            { s: String? -> binding.tvGoToSleep.text = s })
+            viewLifecycleOwner
+        ) { s: String? -> binding.tvGoToSleep.text = s }
 
         binding.bClearTime.setOnClickListener {
             TimeUtils.clearTime(binding.tpWake, requireContext())
@@ -88,13 +88,14 @@ class WakeFragment : Fragment() {
             }
         }
 
-        binding.lYogaWake.setOnClickListener { view: View? ->
+        binding.lYogaWake.setOnClickListener {
             val q = Quotes.quoteSloth
-            val s = Snackbar.make(view!!, q, Snackbar.LENGTH_LONG).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+            val s = Snackbar.make(requireView(), q, Snackbar.LENGTH_LONG).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
             if (q == getString(R.string.you_need_fact)) {
                 s.setAction(R.string.yes) {
                     MaterialAlertDialogBuilder(
-                        requireContext()
+                        requireContext(),
+                        R.style.ThemeOverlay_App_MaterialAlertDialog
                     )
                         .setTitle(getString(R.string.title_alert_sloth))
                         .setMessage(Quotes.fact)
@@ -125,7 +126,7 @@ class WakeFragment : Fragment() {
         setCurTime()
         remMinutes = cycleDuration
         minutesCycle = cycleDuration
-        TimeUtils.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, context!!)
+        TimeUtils.getAsleepText(fallingAsleepTime, binding.tvTimeAsleep, requireContext())
         animations
     }
 
