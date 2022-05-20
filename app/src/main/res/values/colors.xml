@@ -17,7 +17,7 @@
     <color name="bg_time_peak_page_p">#AE76A9</color>
     <color name="bg_time_peak_p">#4DEB4DDB</color>
     <color name="bg_item_p">#78ED95E4</color>
-    <color name="bg_menu_p">@color/bg_time_peak_p</color>
+    <color name="bg_menu_p">#4DEB4DDB</color>
     <color name="bg_menu_header_p">#5B2056</color>
     <color name="text_header_p">#ED95E4</color>
     <color name="bg_logo_splash_p">#50376E</color>
@@ -29,7 +29,7 @@
     <color name="bg_time_peak_page_d">#DC8778</color>
     <color name="bg_time_peak_d">#4DA04636</color>
     <color name="bg_item_d">#78F1DCC9</color>
-    <color name="bg_menu_d">@color/bg_time_peak_d</color>
+    <color name="bg_menu_d">#4DA04636</color>
     <color name="bg_menu_header_d">#542323</color>
     <color name="text_header_d">#F1DCC9</color>
     <color name="bg_logo_splash_d">#6D2D2D</color>

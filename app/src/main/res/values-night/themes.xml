@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Test_project" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+        <!--ТЕМНАЯ ТЕМА-->
         <item name="colorPrimary">@color/bg_time_peak_page_d</item>
         <item name="colorPrimaryVariant">@color/bg_d</item>
         <item name="colorOnPrimary">@color/bg_d</item>
