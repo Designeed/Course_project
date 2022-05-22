@@ -25,7 +25,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppTheme.setShareTheme(applicationContext)
+        //AppTheme.setShareTheme(applicationContext)
         setContentView(R.layout.activity_on_boarding)
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -50,6 +50,7 @@ class OnBoardingActivity : AppCompatActivity() {
             } else {
                 binding.bNext.isEnabled = false
                 startActivity(Intent(applicationContext, MainActivity::class.java))
+                overridePendingTransition(R.anim.enter_alpha, R.anim.exit_alpha)
                 finish()
             }
         }
@@ -58,6 +59,7 @@ class OnBoardingActivity : AppCompatActivity() {
             binding.bSkip.isEnabled = false
             VibrationUtils.vibrate(30, this@OnBoardingActivity)
             startActivity(Intent(applicationContext, MainActivity::class.java))
+            overridePendingTransition(R.anim.enter_alpha, R.anim.exit_alpha)
             finish()
         }
     }

@@ -21,6 +21,15 @@ class AnimationsUtils {
             view.startAnimation(anim)
         }
 
+        fun setFadeAnimation(view: View){
+            val anim = AlphaAnimation(1.0f, 0.0f)
+            anim.duration = 300
+            anim.repeatCount = 1
+            anim.repeatMode = Animation.REVERSE
+            anim.interpolator = AccelerateInterpolator()
+            view.startAnimation(anim)
+        }
+
         fun setScaleHeightObjectAnimation(view: View){
             val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f)
             val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 4f)
@@ -32,9 +41,9 @@ class AnimationsUtils {
         fun setScaleAnimation(view: View) {
             val anim = ScaleAnimation(
                 0.0f,
-                1.0f,
+                20.0f,
                 0.0f,
-                1.0f,
+                20.0f,
                 Animation.RELATIVE_TO_SELF,
                 0.5f,
                 Animation.RELATIVE_TO_SELF,

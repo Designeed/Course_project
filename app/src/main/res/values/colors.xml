@@ -47,4 +47,9 @@
     <color name="txt_settings">#B3FFFFFF</color>
     <color name="divider">#33FFFFFF</color>
     <color name="error">#E15449</color>
+
+
+
+    <color name="splash_start">#BC6FF8</color>
+    <color name="splash_end">#32889B</color>
 </resources>

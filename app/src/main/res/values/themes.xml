@@ -14,7 +14,7 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:textColorSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -127,13 +127,6 @@
 
     <style name="lottie_cat" parent="Theme.AppCompat.DayNight">
         <item name="lottie_rawRes">@raw/sleep_cat</item>
-    </style>
-
-    <style name="Theme.splash" parent="Theme.AppCompat.DayNight">
-        <item name="android:windowBackground">@drawable/splash_bg</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="app_bar" parent="Theme.AppCompat.DayNight">

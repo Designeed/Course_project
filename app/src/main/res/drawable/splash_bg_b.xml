@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list android:opacity="opaque">
+            <item>
+                <shape>
+                    <gradient
+                        android:startColor="@color/splash_start"
+                        android:endColor="@color/splash_end"
+                        android:angle="45"/>
+                </shape>
+            </item>
+<!--            <item-->
+<!--                android:drawable="@drawable/ic_logo_splash_mini"-->
+<!--                android:width="150dp"-->
+<!--                android:height="215dp"-->
+<!--                android:gravity="center_vertical|center_horizontal">-->
+<!--            </item>-->
+        </layer-list>
+    </item>
+</selector>
