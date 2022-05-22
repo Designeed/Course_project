@@ -8,6 +8,15 @@
     android:layout_height="match_parent"
     tools:context=".presentation.settings.SettingsFragment">
 
+    <ImageView
+        android:id="@+id/ivCircleSwitchTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_information"
+        android:src="@drawable/splash_circle"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srlUpdate"
         android:layout_width="wrap_content"

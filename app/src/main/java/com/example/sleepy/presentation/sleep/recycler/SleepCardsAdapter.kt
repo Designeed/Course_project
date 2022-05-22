@@ -4,8 +4,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import com.example.sleepy.R
 import android.widget.TextView
+import com.example.sleepy.utils.AnimationsUtils
 
 class SleepCardsAdapter(private val sleepCards: ArrayList<SleepCards>) :
     RecyclerView.Adapter<SleepCardsAdapter.ViewHolder>() {
@@ -20,7 +22,10 @@ class SleepCardsAdapter(private val sleepCards: ArrayList<SleepCards>) :
         val timeCards = sleepCards[position]
         holder.titleView.text = timeCards.title
         holder.secText.text = timeCards.secText
-        //MyAnimator.setScaleAnimation(holder.itemView);
+        AnimationsUtils.setFadeAnimationStart(holder.itemView)
+        if(position == itemCount - 6){
+            holder.isOptimal.visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +42,6 @@ class SleepCardsAdapter(private val sleepCards: ArrayList<SleepCards>) :
     ) {
         val titleView: TextView = view.findViewById(R.id.tvTitleCard)
         val secText: TextView = view.findViewById(R.id.tvSecCard)
-
+        val isOptimal: ImageView = view.findViewById(R.id.ivOptimalTime)
     }
 }

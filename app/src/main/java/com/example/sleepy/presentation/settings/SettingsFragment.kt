@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.example.sleepy.R
 import android.content.DialogInterface
+import android.graphics.Interpolator
 import com.google.android.material.snackbar.Snackbar
 import android.widget.RadioGroup
 import com.google.android.material.slider.Slider
@@ -18,6 +19,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateInterpolator
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.example.sleepy.data.storage.PrefsStorage
@@ -88,9 +90,9 @@ class SettingsFragment : Fragment() {
 
         binding.rgTheme.setOnCheckedChangeListener { _: RadioGroup?, i: Int ->
             try {
+                VibrationUtils.vibrate(30, requireContext())
                 prefs.themeId = i
                 AppTheme.setShareTheme(requireContext())
-                VibrationUtils.vibrate(30, requireContext())
             } catch (ex: Exception) {
                 errorPlay()
             }

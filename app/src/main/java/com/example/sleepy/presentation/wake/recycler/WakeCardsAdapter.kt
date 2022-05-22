@@ -10,6 +10,7 @@ import com.example.sleepy.R
 import android.widget.TextView
 import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.example.sleepy.utils.AlarmUtils
+import com.example.sleepy.utils.AnimationsUtils
 
 class WakeCardsAdapter(private val alarmCards: ArrayList<WakeCards>) :
     RecyclerView.Adapter<WakeCardsAdapter.ViewHolder>() {
@@ -31,7 +32,12 @@ class WakeCardsAdapter(private val alarmCards: ArrayList<WakeCards>) :
         holder.ivAddAlarm.setOnClickListener { view1: View? ->
             AlarmUtils.setAlarm(view.context, state.getTriggerTime(), view1!!)
         }
-        //Toast.makeText(view.getContext(), "" + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(state.getTriggerTime()), Toast.LENGTH_SHORT).show());
+
+        AnimationsUtils.setFadeAnimationStart(holder.itemView)
+
+        if(position == 5){
+            holder.isOptimal.visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int {
@@ -50,5 +56,6 @@ class WakeCardsAdapter(private val alarmCards: ArrayList<WakeCards>) :
         val remTime: TextView = view.findViewById(R.id.tvSecCard)
         val ivAddAlarm: ImageView = view.findViewById(R.id.ibAddAlarm)
         val srlCard: SwipeRevealLayout = view.findViewById(R.id.srlCard)
+        val isOptimal: ImageView = view.findViewById(R.id.ivOptimalTime)
     }
 }

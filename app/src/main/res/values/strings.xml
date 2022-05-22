@@ -110,4 +110,5 @@
     <string name="extra_time_desc">Выберите время, на которое можно будет отложить будильник</string>
     <string name="extra_time_title">5 минут и встаю</string>
     <string name="add_more_time">Еще %1$d мин.</string>
+    <string name="tt_optimal_time">Оптимальное время</string>
 </resources>

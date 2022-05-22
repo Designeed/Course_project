@@ -28,6 +28,7 @@
     <!--margins-->
     <dimen name="margin_default">15dp</dimen>
     <dimen name="margin_components">20dp</dimen>
+    <dimen name="margin_card">10dp</dimen>
     <!--other-->
     <dimen name="stroke_default">2dp</dimen>
 </resources>

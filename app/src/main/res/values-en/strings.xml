@@ -95,4 +95,5 @@
     <string name="extra_time_desc">Select the time for which you can postpone the alarm</string>
     <string name="extra_time_title">5 minutes and I get up</string>
     <string name="add_more_time">Add %1$d min</string>
+    <string name="tt_optimal_time">Optimal time</string>
 </resources>

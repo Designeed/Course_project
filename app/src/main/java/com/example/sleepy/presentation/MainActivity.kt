@@ -31,11 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //AppTheme.setShareTheme(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        AppTheme.setShareTheme(applicationContext)
         setContentView(binding.root)
         init()
-        AnimationsUtils.setFadeAnimationStart(binding.root)
+        //AnimationsUtils.setFadeAnimationStart(binding.root)
 
         binding.appBarMain.ibShowInfo.setOnClickListener{
             VibrationUtils.vibrate(30, this)
